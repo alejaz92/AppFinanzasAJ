@@ -49,6 +49,52 @@ namespace AppFinanzasAJ.Data
             }
             return ListaCuentas;
         }
+
+        public void insertCuenta(string nombreVar)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand insertSQL = null;
+
+                string sqlQuery = "INSERT INTO Dim_Cuenta (nombre) VALUES ('@NOMBRE')";
+
+                sqlQuery = sqlQuery.Replace("@NOMBRE", nombreVar);
+
+                insertSQL = new SqlCommand(sqlQuery, SqlConn);
+
+                insertSQL.ExecuteNonQuery();
+              
+            }
+            catch(Exception Ex)
+            {
+                Exception Excepcion = new Exception("Error al insertar cuenta", Ex);
+                throw Excepcion;
+            }
+        }
+
+        public void deleteCuenta(string nombreVar)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand insertSQL = null;
+
+                string sqlQuery = "DELETE FROM Dim_Cuenta WHERE NOMBRE = '@NOMBRE'";
+
+                sqlQuery = sqlQuery.Replace("@NOMBRE", nombreVar);
+
+                insertSQL = new SqlCommand(sqlQuery, SqlConn);
+
+                insertSQL.ExecuteNonQuery();
+
+            }
+            catch (Exception Ex)
+            {
+                Exception Excepcion = new Exception("Error al eliminar cuenta", Ex);
+                throw Excepcion;
+            }
+        }
     }
        
 }

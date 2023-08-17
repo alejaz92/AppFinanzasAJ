@@ -33,5 +33,15 @@ namespace AppFinanzasAJ.Negocio
         {
             return CuentaData.Getcuentas();
         }
+
+        public void insertCuenta(string nombreVar)
+        {
+            CuentaData.insertCuenta(nombreVar);
+        }
+
+        public void deleteCuenta(string nombreVar)
+        {
+            CuentaData.deleteCuenta(nombreVar);
+        }
     }
 }

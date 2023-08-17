@@ -35,5 +35,45 @@ namespace AppFinanzasAJ.UI.UserForms
             }
             
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if(txtAddCta.Text.Length != 0)
+            {
+                CuentaLogic cuentaLogic = new CuentaLogic();
+
+                cuentaLogic.insertCuenta(txtAddCta.Text);
+
+                lstCuentas.Items.Add(txtAddCta.Text);
+
+                txtAddCta.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Debe colocar un nombre de cuenta para insertar", "Importante");
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            string nombreVar = lstCuentas.Text;
+
+            
+
+            if (nombreVar.Length != 0)
+            {
+                CuentaLogic cuentaLogic = new CuentaLogic();
+
+                cuentaLogic.deleteCuenta(nombreVar);
+
+                lstCuentas.Items.Add(txtAddCta.Text);
+
+                lstCuentas.Items.Remove(nombreVar);
+            }
+            else
+            {
+                MessageBox.Show("Debe colocar un nombre de cuenta para insertar", "Importante");
+            }
+        }
     }
 }
