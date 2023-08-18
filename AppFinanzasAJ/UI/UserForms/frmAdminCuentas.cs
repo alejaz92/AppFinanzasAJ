@@ -66,7 +66,6 @@ namespace AppFinanzasAJ.UI.UserForms
 
                 cuentaLogic.deleteCuenta(nombreVar);
 
-                lstCuentas.Items.Add(txtAddCta.Text);
 
                 lstCuentas.Items.Remove(nombreVar);
             }
@@ -74,6 +73,11 @@ namespace AppFinanzasAJ.UI.UserForms
             {
                 MessageBox.Show("Debe colocar un nombre de cuenta para insertar", "Importante");
             }
+        }
+
+        private void lstCuentas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

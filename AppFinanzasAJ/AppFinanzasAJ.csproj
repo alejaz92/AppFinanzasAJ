@@ -51,13 +51,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Adapter.cs" />
+    <Compile Include="Data\MonedaAdapter.cs" />
     <Compile Include="Data\CuentaAdapter.cs" />
+    <Compile Include="Negocio\Moneda.cs" />
     <Compile Include="Negocio\Cuenta.cs" />
     <Compile Include="UI\UserForms\frmAdminCuentas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\UserForms\frmAdminCuentas.Designer.cs">
       <DependentUpon>frmAdminCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserForms\frmAdminMonedas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmAdminMonedas.Designer.cs">
+      <DependentUpon>frmAdminMonedas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserForms\frmEditMoneda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmEditMoneda.Designer.cs">
+      <DependentUpon>frmEditMoneda.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserForms\FrmIndex.cs">
       <SubType>Form</SubType>
@@ -69,6 +83,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="UI\UserForms\frmAdminCuentas.resx">
       <DependentUpon>frmAdminCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmAdminMonedas.resx">
+      <DependentUpon>frmAdminMonedas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmEditMoneda.resx">
+      <DependentUpon>frmEditMoneda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\FrmIndex.resx">
       <DependentUpon>FrmIndex.cs</DependentUpon>

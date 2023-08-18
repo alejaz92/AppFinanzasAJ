@@ -27,5 +27,16 @@ namespace AppFinanzasAJ
 
             frmAC.ShowDialog();
         }
+
+        private void btnMonedas_Click(object sender, EventArgs e)
+        {
+            frmAdminMonedas frmAM = new frmAdminMonedas();
+
+            frmAM.ShowDialog();
+        }
+
+        private void FrmIndex_Load(object sender, EventArgs e)
+        {
+        }
     }
 }
