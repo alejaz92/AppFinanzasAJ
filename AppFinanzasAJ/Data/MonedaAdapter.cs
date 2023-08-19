@@ -50,6 +50,46 @@ namespace AppFinanzasAJ.Data
             return ListaMonedas;
         }
 
+        public List<Moneda> GetMonedasPrincipal()
+        {
+            List<Moneda> ListaMonedas = new List<Moneda>();
+            try
+            {
+                OpenConnection();
+                string consulta_select = "SELECT NOMBRE, ESPRINCIPAL FROM Dim_Moneda;";
+
+                SqlCommand cmdMonedas = null;
+
+                cmdMonedas = new SqlCommand(consulta_select, SqlConn);
+
+                SqlDataReader reader = cmdMonedas.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Moneda newMoneda = new Moneda();
+                    newMoneda.NOMBRE = (string)reader["NOMBRE"];
+                    newMoneda.ESPRINCIPAL = (bool)reader["ESPRINCIPAL"];
+                    ListaMonedas.Add(newMoneda);
+                }
+
+                reader.Close();
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                ; Exception Excepcion = new Exception("Error al recuperar las monedas", Ex);
+                throw Excepcion;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return ListaMonedas;
+        }
+
         public List<Moneda> GetMonedasEdit(string nombreVar)
         {
             List<Moneda> ListaMonedas = new List<Moneda>();
@@ -185,6 +225,35 @@ namespace AppFinanzasAJ.Data
             catch (Exception Ex)
             {
                 Exception Excepcion = new Exception("Error al actualizar moneda", Ex);
+                throw Excepcion;
+            }
+
+
+        }
+
+
+        public void updatetMonedaPrincipal(string nombreVar)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand updateSQL = null;
+
+                string sqlQuery = "UPDATE Dim_Moneda SET ESPRINCIPAL = CASE WHEN NOMBRE = '@NOMBRE' THEN 1 ELSE 0 END";
+
+                sqlQuery = sqlQuery.Replace("@NOMBRE", nombreVar);
+
+
+
+
+                updateSQL = new SqlCommand(sqlQuery, SqlConn);
+
+                updateSQL.ExecuteNonQuery();
+
+            }
+            catch (Exception Ex)
+            {
+                Exception Excepcion = new Exception("Error al actualizar moneda principal", Ex);
                 throw Excepcion;
             }
 

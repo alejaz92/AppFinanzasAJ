@@ -15,7 +15,7 @@ namespace AppFinanzasAJ.UI.UserForms
 {
     public partial class frmAdminMonedas : Form
     {
-        public static string nombreEdit;
+        public  string nombreEdit;
         public frmAdminMonedas()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace AppFinanzasAJ.UI.UserForms
 
                 nombreEdit = lstMonedas.Text;
 
-                frmEditMoneda frmEM = new frmEditMoneda(this);
+                frmEditMoneda frmEM = new frmEditMoneda(this, nombreEdit);
                 frmEM.ShowDialog();
             }
         }
@@ -49,7 +49,7 @@ namespace AppFinanzasAJ.UI.UserForms
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             
-            frmEditMoneda frmEM = new frmEditMoneda(this);
+            frmEditMoneda frmEM = new frmEditMoneda(this, nombreEdit);
 
             nombreEdit = "";
 
@@ -92,5 +92,14 @@ namespace AppFinanzasAJ.UI.UserForms
             }
         }
 
+        private void btnMonedaPrincipal_Click(object sender, EventArgs e)
+        {
+            //frmEditMoneda frmEM = new frmEditMoneda(this, nombreEdit);
+
+           frmMonedaPrincipal frmMP = new frmMonedaPrincipal();
+            frmMP.Show();   
+
+           // frmEM.Show();
+        }
     }
 }

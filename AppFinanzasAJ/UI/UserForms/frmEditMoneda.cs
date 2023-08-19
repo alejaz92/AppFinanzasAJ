@@ -16,20 +16,23 @@ namespace AppFinanzasAJ.UI.UserForms
     {
         public bool esAgregar;
         frmAdminMonedas frmAM;
+        public string nombreEdit;
+
         public int monedaID; 
-        public frmEditMoneda(frmAdminMonedas f)
+        public frmEditMoneda(frmAdminMonedas f, string nEdit)
         {
             InitializeComponent();
             frmAM = f;
+            nombreEdit = nEdit;
         }
 
 
         private void frmEditMoneda_Load(object sender, EventArgs e)
         {
-            if (frmAdminMonedas.nombreEdit == "")
+            if (nombreEdit == "")
             {
                 esAgregar = true;
-
+                
              
 
             }
@@ -38,7 +41,7 @@ namespace AppFinanzasAJ.UI.UserForms
                 esAgregar = false;
 
                 MonedaLogic monedalogic = new MonedaLogic();
-                List<Moneda> listaMonedasEdit = monedalogic.GetMonedasEdit(frmAdminMonedas.nombreEdit);
+                List<Moneda> listaMonedasEdit = monedalogic.GetMonedasEdit(nombreEdit);
 
 
                 
