@@ -48,10 +48,10 @@ namespace AppFinanzasAJ.UI.UserForms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
+            nombreEdit = "";
             frmEditMoneda frmEM = new frmEditMoneda(this, nombreEdit);
 
-            nombreEdit = "";
+           
 
             frmEM.Show();
         }

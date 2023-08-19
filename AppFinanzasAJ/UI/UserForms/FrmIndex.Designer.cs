@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnCuentas = new System.Windows.Forms.Button();
             this.btnMonedas = new System.Windows.Forms.Button();
+            this.btnCuentas = new System.Windows.Forms.Button();
+            this.btnTipoMovimiento = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTipoMovimiento);
             this.groupBox1.Controls.Add(this.btnMonedas);
             this.groupBox1.Controls.Add(this.btnCuentas);
             this.groupBox1.Location = new System.Drawing.Point(1067, 18);
@@ -44,6 +46,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos Clave";
+            // 
+            // btnMonedas
+            // 
+            this.btnMonedas.Location = new System.Drawing.Point(7, 49);
+            this.btnMonedas.Name = "btnMonedas";
+            this.btnMonedas.Size = new System.Drawing.Size(209, 23);
+            this.btnMonedas.TabIndex = 1;
+            this.btnMonedas.Text = "Monedas";
+            this.btnMonedas.UseVisualStyleBackColor = true;
+            this.btnMonedas.Click += new System.EventHandler(this.btnMonedas_Click);
             // 
             // btnCuentas
             // 
@@ -55,15 +67,15 @@
             this.btnCuentas.UseVisualStyleBackColor = true;
             this.btnCuentas.Click += new System.EventHandler(this.btnCuentas_Click);
             // 
-            // btnMonedas
+            // btnTipoMovimiento
             // 
-            this.btnMonedas.Location = new System.Drawing.Point(7, 49);
-            this.btnMonedas.Name = "btnMonedas";
-            this.btnMonedas.Size = new System.Drawing.Size(209, 23);
-            this.btnMonedas.TabIndex = 1;
-            this.btnMonedas.Text = "Monedas";
-            this.btnMonedas.UseVisualStyleBackColor = true;
-            this.btnMonedas.Click += new System.EventHandler(this.btnMonedas_Click);
+            this.btnTipoMovimiento.Location = new System.Drawing.Point(7, 78);
+            this.btnTipoMovimiento.Name = "btnTipoMovimiento";
+            this.btnTipoMovimiento.Size = new System.Drawing.Size(209, 23);
+            this.btnTipoMovimiento.TabIndex = 2;
+            this.btnTipoMovimiento.Text = "Tipos de Movimiento";
+            this.btnTipoMovimiento.UseVisualStyleBackColor = true;
+            this.btnTipoMovimiento.Click += new System.EventHandler(this.btnTipoMovimiento_Click);
             // 
             // FrmIndex
             // 
@@ -84,6 +96,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCuentas;
         private System.Windows.Forms.Button btnMonedas;
+        private System.Windows.Forms.Button btnTipoMovimiento;
     }
 }
 
