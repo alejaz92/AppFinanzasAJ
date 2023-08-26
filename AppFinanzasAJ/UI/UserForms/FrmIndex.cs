@@ -44,5 +44,11 @@ namespace AppFinanzasAJ
             frmAdminClaseMovimiento frmCM = new frmAdminClaseMovimiento();
             frmCM.ShowDialog();
         }
+
+        private void btnRegMovimiento_Click(object sender, EventArgs e)
+        {
+            frmRegistrarMovimiento frmRM = new frmRegistrarMovimiento();
+            frmRM.ShowDialog();
+        }
     }
 }

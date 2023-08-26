@@ -87,6 +87,7 @@
             this.btnRegMovimiento.TabIndex = 1;
             this.btnRegMovimiento.Text = "Registrar Movimiento";
             this.btnRegMovimiento.UseVisualStyleBackColor = true;
+            this.btnRegMovimiento.Click += new System.EventHandler(this.btnRegMovimiento_Click);
             // 
             // FrmIndex
             // 

@@ -95,6 +95,12 @@
     <Compile Include="UI\UserForms\frmMonedaPrincipal.Designer.cs">
       <DependentUpon>frmMonedaPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForms\frmRegistrarMovimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmRegistrarMovimiento.Designer.cs">
+      <DependentUpon>frmRegistrarMovimiento.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\UserForms\frmAdminCuentas.resx">
       <DependentUpon>frmAdminCuentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +127,9 @@
     </Compile>
     <EmbeddedResource Include="UI\UserForms\frmMonedaPrincipal.resx">
       <DependentUpon>frmMonedaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmRegistrarMovimiento.resx">
+      <DependentUpon>frmRegistrarMovimiento.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
