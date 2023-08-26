@@ -70,7 +70,7 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lstMonedas);
             this.Name = "frmMonedaPrincipal";
-            this.Text = "frmMonedaPrincipal";
+            this.Text = "Seleccion Moneda Principal";
             this.Load += new System.EventHandler(this.frmMonedaPrincipal_Load);
             this.ResumeLayout(false);
 

@@ -43,38 +43,34 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 100);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(13, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 24);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(229, 87);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtNombre.Location = new System.Drawing.Point(125, 47);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(380, 29);
+            this.txtNombre.Size = new System.Drawing.Size(209, 20);
             this.txtNombre.TabIndex = 1;
             // 
             // txtSimbolo
             // 
             this.txtSimbolo.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.txtSimbolo.Location = new System.Drawing.Point(229, 135);
-            this.txtSimbolo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtSimbolo.Location = new System.Drawing.Point(125, 73);
             this.txtSimbolo.Name = "txtSimbolo";
-            this.txtSimbolo.Size = new System.Drawing.Size(380, 29);
+            this.txtSimbolo.Size = new System.Drawing.Size(209, 20);
             this.txtSimbolo.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 148);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(13, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 24);
+            this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Simbolo";
             // 
@@ -82,11 +78,9 @@
             // 
             this.grpTipo.Controls.Add(this.radCripto);
             this.grpTipo.Controls.Add(this.radFIAT);
-            this.grpTipo.Location = new System.Drawing.Point(29, 205);
-            this.grpTipo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.grpTipo.Location = new System.Drawing.Point(16, 111);
             this.grpTipo.Name = "grpTipo";
-            this.grpTipo.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.grpTipo.Size = new System.Drawing.Size(583, 89);
+            this.grpTipo.Size = new System.Drawing.Size(318, 48);
             this.grpTipo.TabIndex = 4;
             this.grpTipo.TabStop = false;
             this.grpTipo.Text = "Tipo de Moneda";
@@ -94,10 +88,9 @@
             // radCripto
             // 
             this.radCripto.AutoSize = true;
-            this.radCripto.Location = new System.Drawing.Point(336, 35);
-            this.radCripto.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radCripto.Location = new System.Drawing.Point(183, 19);
             this.radCripto.Name = "radCripto";
-            this.radCripto.Size = new System.Drawing.Size(97, 28);
+            this.radCripto.Size = new System.Drawing.Size(65, 17);
             this.radCripto.TabIndex = 1;
             this.radCripto.TabStop = true;
             this.radCripto.Text = "CRIPTO";
@@ -106,10 +99,9 @@
             // radFIAT
             // 
             this.radFIAT.AutoSize = true;
-            this.radFIAT.Location = new System.Drawing.Point(119, 35);
-            this.radFIAT.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radFIAT.Location = new System.Drawing.Point(65, 19);
             this.radFIAT.Name = "radFIAT";
-            this.radFIAT.Size = new System.Drawing.Size(69, 28);
+            this.radFIAT.Size = new System.Drawing.Size(48, 17);
             this.radFIAT.TabIndex = 0;
             this.radFIAT.TabStop = true;
             this.radFIAT.Text = "FIAT";
@@ -117,10 +109,9 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(275, 306);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnGuardar.Location = new System.Drawing.Point(150, 166);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(163, 59);
+            this.btnGuardar.Size = new System.Drawing.Size(89, 32);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -128,10 +119,9 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(449, 306);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCancelar.Location = new System.Drawing.Point(245, 166);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(163, 59);
+            this.btnCancelar.Size = new System.Drawing.Size(89, 32);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -139,9 +129,9 @@
             // 
             // frmEditMoneda
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 402);
+            this.ClientSize = new System.Drawing.Size(362, 218);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.grpTipo);
@@ -149,9 +139,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmEditMoneda";
-            this.Text = "frmEditMoneda";
+            this.Text = "Edicion de Moneda";
             this.Load += new System.EventHandler(this.frmEditMoneda_Load);
             this.grpTipo.ResumeLayout(false);
             this.grpTipo.PerformLayout();

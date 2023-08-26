@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClaseMovimiento = new System.Windows.Forms.Button();
             this.btnMonedas = new System.Windows.Forms.Button();
             this.btnCuentas = new System.Windows.Forms.Button();
-            this.btnTipoMovimiento = new System.Windows.Forms.Button();
+            this.btnRegMovimiento = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnTipoMovimiento);
+            this.groupBox1.Controls.Add(this.btnClaseMovimiento);
             this.groupBox1.Controls.Add(this.btnMonedas);
             this.groupBox1.Controls.Add(this.btnCuentas);
             this.groupBox1.Location = new System.Drawing.Point(1067, 18);
@@ -46,6 +47,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos Clave";
+            // 
+            // btnClaseMovimiento
+            // 
+            this.btnClaseMovimiento.Location = new System.Drawing.Point(7, 78);
+            this.btnClaseMovimiento.Name = "btnClaseMovimiento";
+            this.btnClaseMovimiento.Size = new System.Drawing.Size(209, 23);
+            this.btnClaseMovimiento.TabIndex = 2;
+            this.btnClaseMovimiento.Text = "Clases de Movimiento";
+            this.btnClaseMovimiento.UseVisualStyleBackColor = true;
+            this.btnClaseMovimiento.Click += new System.EventHandler(this.btnClaseMovimiento_Click);
             // 
             // btnMonedas
             // 
@@ -67,21 +78,22 @@
             this.btnCuentas.UseVisualStyleBackColor = true;
             this.btnCuentas.Click += new System.EventHandler(this.btnCuentas_Click);
             // 
-            // btnTipoMovimiento
+            // btnRegMovimiento
             // 
-            this.btnTipoMovimiento.Location = new System.Drawing.Point(7, 78);
-            this.btnTipoMovimiento.Name = "btnTipoMovimiento";
-            this.btnTipoMovimiento.Size = new System.Drawing.Size(209, 23);
-            this.btnTipoMovimiento.TabIndex = 2;
-            this.btnTipoMovimiento.Text = "Tipos de Movimiento";
-            this.btnTipoMovimiento.UseVisualStyleBackColor = true;
-            this.btnTipoMovimiento.Click += new System.EventHandler(this.btnTipoMovimiento_Click);
+            this.btnRegMovimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnRegMovimiento.Location = new System.Drawing.Point(31, 27);
+            this.btnRegMovimiento.Name = "btnRegMovimiento";
+            this.btnRegMovimiento.Size = new System.Drawing.Size(228, 63);
+            this.btnRegMovimiento.TabIndex = 1;
+            this.btnRegMovimiento.Text = "Registrar Movimiento";
+            this.btnRegMovimiento.UseVisualStyleBackColor = true;
             // 
             // FrmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1302, 633);
+            this.ClientSize = new System.Drawing.Size(1302, 575);
+            this.Controls.Add(this.btnRegMovimiento);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmIndex";
             this.Text = "App Finanzas Personales AJ";
@@ -96,7 +108,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCuentas;
         private System.Windows.Forms.Button btnMonedas;
-        private System.Windows.Forms.Button btnTipoMovimiento;
+        private System.Windows.Forms.Button btnClaseMovimiento;
+        private System.Windows.Forms.Button btnRegMovimiento;
     }
 }
 

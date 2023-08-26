@@ -69,13 +69,15 @@ namespace AppFinanzasAJ.UI.UserForms
 
                 lstCuentas.Items.Remove(nombreVar);
             }
-            else
-            {
-                MessageBox.Show("Debe colocar un nombre de cuenta para insertar", "Importante");
-            }
+
         }
 
         private void lstCuentas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAddCta_TextChanged(object sender, EventArgs e)
         {
 
         }

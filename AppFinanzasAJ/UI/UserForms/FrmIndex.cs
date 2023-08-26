@@ -39,11 +39,10 @@ namespace AppFinanzasAJ
         {
         }
 
-        private void btnTipoMovimiento_Click(object sender, EventArgs e)
+        private void btnClaseMovimiento_Click(object sender, EventArgs e)
         {
-            frmTipoMovimiento frmTM = new frmTipoMovimiento();
-            frmTM.ShowDialog();
-
+            frmAdminClaseMovimiento frmCM = new frmAdminClaseMovimiento();
+            frmCM.ShowDialog();
         }
     }
 }

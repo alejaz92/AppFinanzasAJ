@@ -14,6 +14,7 @@ namespace AppFinanzasAJ.Negocio
         public string NOMBRE;
         public bool ESFIAT;
         public bool ESPRINCIPAL;
+        public bool ESREFERNCIACOTIZ;
     }
 
     public class MonedaLogic

@@ -106,7 +106,7 @@
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.lstMonedas);
             this.Name = "frmAdminMonedas";
-            this.Text = "frmAdminMonedas";
+            this.Text = "Administracion de Monedas";
             this.Load += new System.EventHandler(this.frmAdminMonedas_Load);
             this.ResumeLayout(false);
 
