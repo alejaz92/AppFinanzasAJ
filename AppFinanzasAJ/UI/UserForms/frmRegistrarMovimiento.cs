@@ -1,4 +1,5 @@
 ﻿using AppFinanzasAJ.Negocio;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -167,24 +168,35 @@ namespace AppFinanzasAJ.UI.UserForms
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnInsertar_Click_1(object sender, EventArgs e)
         {
+            MovimientoLogic movimientoLogic = new MovimientoLogic();
 
+            if (radIngreso.Checked == true)
+            {
+                movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"), cboMoneda.Text, cboCtaIngreso.Text, cboClaseIngreso.Text, null, null, txtDetalle.Text, txtMonto.Text);
+            }
+            if (radEgreso.Checked == true)
+            {
+                movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"), cboMoneda.Text, null, null, this.cboCtaEgreso.Text, cboClaseEgreso.Text, txtDetalle.Text, txtMonto.Text);
+            }
+
+            if (radIntercambio.Checked == true)
+            {
+                movimientoLogic.insertMovimientoRegular("Intercambio", cboFecha.Value.ToString("yyyyMMdd"), cboMoneda.Text, cboCtaIngreso.Text, null, cboCtaEgreso.Text, null, txtDetalle.Text, txtMonto.Text);
+            }
+
+            MessageBox.Show("Registro insertado");
+
+            this.cboMoneda.Text = null;
+            this.cboClaseIngreso.Text = null;
+            this.cboCtaIngreso.Text = null;
+            this.cboClaseEgreso.Text = null;
+            this.cboCtaEgreso.Text = null;
+            this.txtDetalle.Text = null; 
+            this.txtMonto.Text = null;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboMoneda_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }

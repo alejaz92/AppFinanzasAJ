@@ -52,9 +52,11 @@
   <ItemGroup>
     <Compile Include="Data\Adapter.cs" />
     <Compile Include="Data\ClaseMovimientoAdapter.cs" />
+    <Compile Include="Data\MovimientoAdapter.cs" />
     <Compile Include="Data\MonedaAdapter.cs" />
     <Compile Include="Data\CuentaAdapter.cs" />
     <Compile Include="Negocio\ClaseMovimiento.cs" />
+    <Compile Include="Negocio\Movimiento.cs" />
     <Compile Include="Negocio\Moneda.cs" />
     <Compile Include="Negocio\Cuenta.cs" />
     <Compile Include="UI\UserForms\frmAdminCuentas.cs">

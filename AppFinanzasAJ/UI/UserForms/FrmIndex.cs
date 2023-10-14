@@ -50,5 +50,10 @@ namespace AppFinanzasAJ
             frmRegistrarMovimiento frmRM = new frmRegistrarMovimiento();
             frmRM.ShowDialog();
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
