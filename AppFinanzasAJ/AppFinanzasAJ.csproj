@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Data\Adapter.cs" />
     <Compile Include="Data\ClaseMovimientoAdapter.cs" />
+    <Compile Include="Data\ParamsBSFAdapter.cs" />
     <Compile Include="Data\MovimientoAdapter.cs" />
     <Compile Include="Data\MonedaAdapter.cs" />
     <Compile Include="Data\CuentaAdapter.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Negocio\Movimiento.cs" />
     <Compile Include="Negocio\Moneda.cs" />
     <Compile Include="Negocio\Cuenta.cs" />
+    <Compile Include="Negocio\paramsBSF.cs" />
     <Compile Include="UI\UserForms\frmAdminCuentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +99,12 @@
     <Compile Include="UI\UserForms\frmMonedaPrincipal.Designer.cs">
       <DependentUpon>frmMonedaPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForms\frmParamsBSF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmParamsBSF.Designer.cs">
+      <DependentUpon>frmParamsBSF.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserForms\frmRegistrarMovimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +137,9 @@
     </Compile>
     <EmbeddedResource Include="UI\UserForms\frmMonedaPrincipal.resx">
       <DependentUpon>frmMonedaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmParamsBSF.resx">
+      <DependentUpon>frmParamsBSF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmRegistrarMovimiento.resx">
       <DependentUpon>frmRegistrarMovimiento.cs</DependentUpon>

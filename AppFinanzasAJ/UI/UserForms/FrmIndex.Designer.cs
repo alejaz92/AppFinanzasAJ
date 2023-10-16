@@ -34,12 +34,15 @@
             this.btnCuentas = new System.Windows.Forms.Button();
             this.btnRegMovimiento = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAjustesBSantaFe = new System.Windows.Forms.Button();
+            this.btnRegMovimientoBSF = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAjustesBSantaFe);
             this.groupBox1.Controls.Add(this.btnClaseMovimiento);
             this.groupBox1.Controls.Add(this.btnMonedas);
             this.groupBox1.Controls.Add(this.btnCuentas);
@@ -93,6 +96,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnRegMovimientoBSF);
             this.groupBox2.Controls.Add(this.btnRegMovimiento);
             this.groupBox2.Location = new System.Drawing.Point(8, 8);
             this.groupBox2.Name = "groupBox2";
@@ -101,6 +105,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Movimientos";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // btnAjustesBSantaFe
+            // 
+            this.btnAjustesBSantaFe.Location = new System.Drawing.Point(6, 107);
+            this.btnAjustesBSantaFe.Name = "btnAjustesBSantaFe";
+            this.btnAjustesBSantaFe.Size = new System.Drawing.Size(209, 23);
+            this.btnAjustesBSantaFe.TabIndex = 3;
+            this.btnAjustesBSantaFe.Text = "Ajustes B. Santa Fe";
+            this.btnAjustesBSantaFe.UseVisualStyleBackColor = true;
+            // 
+            // btnRegMovimientoBSF
+            // 
+            this.btnRegMovimientoBSF.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnRegMovimientoBSF.Location = new System.Drawing.Point(7, 59);
+            this.btnRegMovimientoBSF.Name = "btnRegMovimientoBSF";
+            this.btnRegMovimientoBSF.Size = new System.Drawing.Size(160, 27);
+            this.btnRegMovimientoBSF.TabIndex = 2;
+            this.btnRegMovimientoBSF.Text = "Mov. B. Santa Fe";
+            this.btnRegMovimientoBSF.UseVisualStyleBackColor = true;
             // 
             // FrmIndex
             // 
@@ -126,6 +149,8 @@
         private System.Windows.Forms.Button btnClaseMovimiento;
         private System.Windows.Forms.Button btnRegMovimiento;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnAjustesBSantaFe;
+        private System.Windows.Forms.Button btnRegMovimientoBSF;
     }
 }
 
