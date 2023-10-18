@@ -27,5 +27,15 @@ namespace AppFinanzasAJ.Negocio
         {
             ParamsBSFData = new ParamsBSFAdapter();
         }
+
+        public List<paramsBSF> getValues()
+        {
+            return ParamsBSFData.GetValues();
+        }
+
+        public void updateValues(string montoVar, string porcentajeVar)
+        {
+            ParamsBSFData.updateParams(montoVar, porcentajeVar);
+        }
     }
 }

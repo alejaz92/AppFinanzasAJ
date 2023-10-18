@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAjustesBSantaFe = new System.Windows.Forms.Button();
             this.btnClaseMovimiento = new System.Windows.Forms.Button();
             this.btnMonedas = new System.Windows.Forms.Button();
             this.btnCuentas = new System.Windows.Forms.Button();
             this.btnRegMovimiento = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnAjustesBSantaFe = new System.Windows.Forms.Button();
             this.btnRegMovimientoBSF = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -46,18 +46,32 @@
             this.groupBox1.Controls.Add(this.btnClaseMovimiento);
             this.groupBox1.Controls.Add(this.btnMonedas);
             this.groupBox1.Controls.Add(this.btnCuentas);
-            this.groupBox1.Location = new System.Drawing.Point(1067, 18);
+            this.groupBox1.Location = new System.Drawing.Point(1956, 33);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(222, 187);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Size = new System.Drawing.Size(407, 345);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos Clave";
             // 
+            // btnAjustesBSantaFe
+            // 
+            this.btnAjustesBSantaFe.Location = new System.Drawing.Point(11, 198);
+            this.btnAjustesBSantaFe.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnAjustesBSantaFe.Name = "btnAjustesBSantaFe";
+            this.btnAjustesBSantaFe.Size = new System.Drawing.Size(383, 42);
+            this.btnAjustesBSantaFe.TabIndex = 3;
+            this.btnAjustesBSantaFe.Text = "Ajustes B. Santa Fe";
+            this.btnAjustesBSantaFe.UseVisualStyleBackColor = true;
+            this.btnAjustesBSantaFe.Click += new System.EventHandler(this.btnAjustesBSantaFe_Click);
+            // 
             // btnClaseMovimiento
             // 
-            this.btnClaseMovimiento.Location = new System.Drawing.Point(7, 78);
+            this.btnClaseMovimiento.Location = new System.Drawing.Point(13, 144);
+            this.btnClaseMovimiento.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnClaseMovimiento.Name = "btnClaseMovimiento";
-            this.btnClaseMovimiento.Size = new System.Drawing.Size(209, 23);
+            this.btnClaseMovimiento.Size = new System.Drawing.Size(383, 42);
             this.btnClaseMovimiento.TabIndex = 2;
             this.btnClaseMovimiento.Text = "Clases de Movimiento";
             this.btnClaseMovimiento.UseVisualStyleBackColor = true;
@@ -65,9 +79,10 @@
             // 
             // btnMonedas
             // 
-            this.btnMonedas.Location = new System.Drawing.Point(7, 49);
+            this.btnMonedas.Location = new System.Drawing.Point(13, 90);
+            this.btnMonedas.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnMonedas.Name = "btnMonedas";
-            this.btnMonedas.Size = new System.Drawing.Size(209, 23);
+            this.btnMonedas.Size = new System.Drawing.Size(383, 42);
             this.btnMonedas.TabIndex = 1;
             this.btnMonedas.Text = "Monedas";
             this.btnMonedas.UseVisualStyleBackColor = true;
@@ -75,9 +90,10 @@
             // 
             // btnCuentas
             // 
-            this.btnCuentas.Location = new System.Drawing.Point(7, 20);
+            this.btnCuentas.Location = new System.Drawing.Point(13, 37);
+            this.btnCuentas.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCuentas.Name = "btnCuentas";
-            this.btnCuentas.Size = new System.Drawing.Size(209, 23);
+            this.btnCuentas.Size = new System.Drawing.Size(383, 42);
             this.btnCuentas.TabIndex = 0;
             this.btnCuentas.Text = "Cuentas";
             this.btnCuentas.UseVisualStyleBackColor = true;
@@ -86,9 +102,10 @@
             // btnRegMovimiento
             // 
             this.btnRegMovimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnRegMovimiento.Location = new System.Drawing.Point(7, 20);
+            this.btnRegMovimiento.Location = new System.Drawing.Point(13, 37);
+            this.btnRegMovimiento.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnRegMovimiento.Name = "btnRegMovimiento";
-            this.btnRegMovimiento.Size = new System.Drawing.Size(160, 27);
+            this.btnRegMovimiento.Size = new System.Drawing.Size(293, 50);
             this.btnRegMovimiento.TabIndex = 1;
             this.btnRegMovimiento.Text = "Mov. Regular";
             this.btnRegMovimiento.UseVisualStyleBackColor = true;
@@ -98,40 +115,35 @@
             // 
             this.groupBox2.Controls.Add(this.btnRegMovimientoBSF);
             this.groupBox2.Controls.Add(this.btnRegMovimiento);
-            this.groupBox2.Location = new System.Drawing.Point(8, 8);
+            this.groupBox2.Location = new System.Drawing.Point(15, 15);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(183, 187);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Size = new System.Drawing.Size(336, 345);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Movimientos";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // btnAjustesBSantaFe
-            // 
-            this.btnAjustesBSantaFe.Location = new System.Drawing.Point(6, 107);
-            this.btnAjustesBSantaFe.Name = "btnAjustesBSantaFe";
-            this.btnAjustesBSantaFe.Size = new System.Drawing.Size(209, 23);
-            this.btnAjustesBSantaFe.TabIndex = 3;
-            this.btnAjustesBSantaFe.Text = "Ajustes B. Santa Fe";
-            this.btnAjustesBSantaFe.UseVisualStyleBackColor = true;
-            // 
             // btnRegMovimientoBSF
             // 
             this.btnRegMovimientoBSF.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnRegMovimientoBSF.Location = new System.Drawing.Point(7, 59);
+            this.btnRegMovimientoBSF.Location = new System.Drawing.Point(13, 109);
+            this.btnRegMovimientoBSF.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnRegMovimientoBSF.Name = "btnRegMovimientoBSF";
-            this.btnRegMovimientoBSF.Size = new System.Drawing.Size(160, 27);
+            this.btnRegMovimientoBSF.Size = new System.Drawing.Size(293, 50);
             this.btnRegMovimientoBSF.TabIndex = 2;
             this.btnRegMovimientoBSF.Text = "Mov. B. Santa Fe";
             this.btnRegMovimientoBSF.UseVisualStyleBackColor = true;
             // 
             // FrmIndex
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1302, 575);
+            this.ClientSize = new System.Drawing.Size(2387, 1062);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FrmIndex";
             this.Text = "App Finanzas Personales AJ";
             this.Load += new System.EventHandler(this.FrmIndex_Load);

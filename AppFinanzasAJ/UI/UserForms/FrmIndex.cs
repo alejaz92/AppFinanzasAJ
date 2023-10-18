@@ -55,5 +55,11 @@ namespace AppFinanzasAJ
         {
 
         }
+
+        private void btnAjustesBSantaFe_Click(object sender, EventArgs e)
+        {
+            frmParamsBSF frm = new frmParamsBSF();
+            frm.ShowDialog();
+        }
     }
 }

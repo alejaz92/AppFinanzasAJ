@@ -37,55 +37,62 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(67, 109);
+            this.btnGuardar.Location = new System.Drawing.Point(123, 201);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(159, 39);
+            this.btnGuardar.Size = new System.Drawing.Size(292, 72);
             this.btnGuardar.TabIndex = 0;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblMonto
             // 
             this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(12, 34);
+            this.lblMonto.Location = new System.Drawing.Point(22, 63);
+            this.lblMonto.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMonto.Name = "lblMonto";
-            this.lblMonto.Size = new System.Drawing.Size(119, 13);
+            this.lblMonto.Size = new System.Drawing.Size(221, 25);
             this.lblMonto.TabIndex = 1;
             this.lblMonto.Text = "Monto Maximo Mensual";
             // 
             // txtMonto
             // 
-            this.txtMonto.Location = new System.Drawing.Point(138, 26);
+            this.txtMonto.Location = new System.Drawing.Point(253, 48);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(141, 20);
+            this.txtMonto.Size = new System.Drawing.Size(255, 29);
             this.txtMonto.TabIndex = 2;
             // 
             // txtPorcentaje
             // 
-            this.txtPorcentaje.Location = new System.Drawing.Point(138, 63);
+            this.txtPorcentaje.Location = new System.Drawing.Point(253, 116);
+            this.txtPorcentaje.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtPorcentaje.Name = "txtPorcentaje";
-            this.txtPorcentaje.Size = new System.Drawing.Size(141, 20);
+            this.txtPorcentaje.Size = new System.Drawing.Size(255, 29);
             this.txtPorcentaje.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 71);
+            this.label1.Location = new System.Drawing.Point(22, 131);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 13);
+            this.label1.Size = new System.Drawing.Size(207, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Porcentaje Devolucion";
             // 
             // frmParamsBSF
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 160);
+            this.ClientSize = new System.Drawing.Size(552, 295);
             this.Controls.Add(this.txtPorcentaje);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMonto);
             this.Controls.Add(this.lblMonto);
             this.Controls.Add(this.btnGuardar);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmParamsBSF";
             this.Text = "frmParamsBSF";
             this.Load += new System.EventHandler(this.frmParamsBSF_Load);
