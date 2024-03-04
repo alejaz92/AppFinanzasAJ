@@ -99,7 +99,7 @@
             this.cboClaseEgreso.Location = new System.Drawing.Point(96, 47);
             this.cboClaseEgreso.Name = "cboClaseEgreso";
             this.cboClaseEgreso.Size = new System.Drawing.Size(243, 21);
-            this.cboClaseEgreso.TabIndex = 15;
+            this.cboClaseEgreso.TabIndex = 8;
             // 
             // label7
             // 
@@ -117,7 +117,7 @@
             this.cboCtaEgreso.Location = new System.Drawing.Point(96, 16);
             this.cboCtaEgreso.Name = "cboCtaEgreso";
             this.cboCtaEgreso.Size = new System.Drawing.Size(243, 21);
-            this.cboCtaEgreso.TabIndex = 9;
+            this.cboCtaEgreso.TabIndex = 7;
             this.cboCtaEgreso.SelectedIndexChanged += new System.EventHandler(this.cboCtaEgreso_SelectedIndexChanged);
             // 
             // label4
@@ -134,7 +134,7 @@
             this.txtDetalle.Location = new System.Drawing.Point(106, 272);
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(242, 20);
-            this.txtDetalle.TabIndex = 16;
+            this.txtDetalle.TabIndex = 9;
             // 
             // label8
             // 
@@ -165,7 +165,7 @@
             this.cboClaseIngreso.Location = new System.Drawing.Point(96, 39);
             this.cboClaseIngreso.Name = "cboClaseIngreso";
             this.cboClaseIngreso.Size = new System.Drawing.Size(243, 21);
-            this.cboClaseIngreso.TabIndex = 13;
+            this.cboClaseIngreso.TabIndex = 6;
             // 
             // label6
             // 
@@ -183,7 +183,7 @@
             this.cboCtaIngreso.Location = new System.Drawing.Point(96, 12);
             this.cboCtaIngreso.Name = "cboCtaIngreso";
             this.cboCtaIngreso.Size = new System.Drawing.Size(243, 21);
-            this.cboCtaIngreso.TabIndex = 7;
+            this.cboCtaIngreso.TabIndex = 5;
             this.cboCtaIngreso.SelectedIndexChanged += new System.EventHandler(this.cboCtaIngreso_SelectedIndexChanged);
             // 
             // label3
@@ -200,7 +200,7 @@
             this.txtMonto.Location = new System.Drawing.Point(106, 308);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(242, 20);
-            this.txtMonto.TabIndex = 11;
+            this.txtMonto.TabIndex = 10;
             this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
             // 
             // label5
@@ -218,7 +218,7 @@
             this.cboMoneda.Location = new System.Drawing.Point(105, 98);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Size = new System.Drawing.Size(243, 21);
-            this.cboMoneda.TabIndex = 5;
+            this.cboMoneda.TabIndex = 4;
             // 
             // label2
             // 
@@ -297,10 +297,10 @@
             // btnCerrar
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(227, 378);
+            this.btnCerrar.Location = new System.Drawing.Point(255, 378);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(130, 48);
-            this.btnCerrar.TabIndex = 8;
+            this.btnCerrar.TabIndex = 12;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
@@ -309,10 +309,10 @@
             // 
             this.btnInsertar.Enabled = false;
             this.btnInsertar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertar.Location = new System.Drawing.Point(91, 378);
+            this.btnInsertar.Location = new System.Drawing.Point(119, 378);
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(130, 48);
-            this.btnInsertar.TabIndex = 9;
+            this.btnInsertar.TabIndex = 11;
             this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = true;
             this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click_1);

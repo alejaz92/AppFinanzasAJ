@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using AppFinanzasAJ.Negocio;
@@ -50,6 +51,11 @@ namespace AppFinanzasAJ.Data
             return ListaMovimiento;
         }
 
+        //public int getTotalDevBSF()
+        //{
+
+        //}
+
         public void insertMovimiento(string idMovimiento ,string tipoMovimiento, string fechaMovimiento, string monedaMovimiento, string ctaMovimiento, string claseMovimiento,
             string detalleMovimiento, string montoMovimiento)
         {
@@ -90,6 +96,39 @@ namespace AppFinanzasAJ.Data
             }
 
 
+        }
+
+        public decimal getTotalDevBSF(string dateFrom, string dateTo)
+        {
+            try
+            {
+                decimal total;
+                this.OpenConnection();
+                SqlCommand cmdMovimientos = null;
+
+                string sqlQuery = "SELECT COALESCE(SUM(monto), 0) totalDev FROM [dbo].[Fact_Movimiento]" +
+                    "WHERE tipoMovimiento = 'devBSF' AND MONTH(fecha) = MONTH(GETDATE()) AND YEAR(FECHA) = " +
+                    "YEAR(GETDATE())";
+
+                cmdMovimientos = new SqlCommand(sqlQuery, SqlConn);
+
+                SqlDataReader reader = cmdMovimientos.ExecuteReader();
+
+               
+                total = (int)reader["totalDev"];                
+           
+                reader.Close();
+
+                return total;
+
+                
+                
+            }
+            catch (Exception Ex)
+            {
+                Exception Excepcion = new Exception("Error al recuperar saldo restante BSF", Ex);
+                throw Excepcion;
+            }
         }
     }
        

@@ -61,5 +61,11 @@ namespace AppFinanzasAJ
             frmParamsBSF frm = new frmParamsBSF();
             frm.ShowDialog();
         }
+
+        private void btnRegMovimientoBSF_Click(object sender, EventArgs e)
+        {
+            frmRegistrarMovBSF frmRM = new frmRegistrarMovBSF();
+            frmRM.ShowDialog();
+        }
     }
 }

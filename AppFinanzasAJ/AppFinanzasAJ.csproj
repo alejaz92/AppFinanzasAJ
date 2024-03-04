@@ -105,6 +105,12 @@
     <Compile Include="UI\UserForms\frmParamsBSF.Designer.cs">
       <DependentUpon>frmParamsBSF.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForms\frmRegistrarMovBSF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmRegistrarMovBSF.Designer.cs">
+      <DependentUpon>frmRegistrarMovBSF.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserForms\frmRegistrarMovimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmParamsBSF.resx">
       <DependentUpon>frmParamsBSF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmRegistrarMovBSF.resx">
+      <DependentUpon>frmRegistrarMovBSF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmRegistrarMovimiento.resx">
       <DependentUpon>frmRegistrarMovimiento.cs</DependentUpon>

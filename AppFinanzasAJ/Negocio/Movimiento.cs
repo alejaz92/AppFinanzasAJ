@@ -60,6 +60,21 @@ namespace AppFinanzasAJ.Negocio
 
         }
 
+        //public void insertMovBSF()
+        //{
+        //    //consulta devoluciones actuales
+
+        //    decimal devActual = MovimientoData.getTotalDevBSF();
+
+        //    //consulta montoMaximo
+            
+
+        //    paramsBSFLogic paramsBSFLogic = new paramsBSFLogic();
+
+        //    /*decimal montoTotal = paramsBSFLogic */
+
+        //}
+
 
     }
 }
