@@ -37,6 +37,14 @@ namespace AppFinanzasAJ
 
         private void FrmIndex_Load(object sender, EventArgs e)
         {
+            //chequeo cotizacion
+            //chequear si ya se cargo en el dia
+
+  
+
+            CotizacionMonedaLogic cotizacionMonedaLogic = new CotizacionMonedaLogic();
+
+            cotizacionMonedaLogic.updateCotizacionesGral();
         }
 
         private void btnClaseMovimiento_Click(object sender, EventArgs e)

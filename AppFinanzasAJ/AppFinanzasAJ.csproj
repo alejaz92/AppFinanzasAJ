@@ -36,6 +36,9 @@
     <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -52,11 +55,13 @@
   <ItemGroup>
     <Compile Include="Data\Adapter.cs" />
     <Compile Include="Data\ClaseMovimientoAdapter.cs" />
+    <Compile Include="Data\CotizacionMonedaAdapter .cs" />
     <Compile Include="Data\ParamsBSFAdapter.cs" />
     <Compile Include="Data\MovimientoAdapter.cs" />
     <Compile Include="Data\MonedaAdapter.cs" />
     <Compile Include="Data\CuentaAdapter.cs" />
     <Compile Include="Negocio\ClaseMovimiento.cs" />
+    <Compile Include="Negocio\CotizacionMoneda.cs" />
     <Compile Include="Negocio\Movimiento.cs" />
     <Compile Include="Negocio\Moneda.cs" />
     <Compile Include="Negocio\Cuenta.cs" />
@@ -153,6 +158,7 @@
     <EmbeddedResource Include="UI\UserForms\frmRegistrarMovimiento.resx">
       <DependentUpon>frmRegistrarMovimiento.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

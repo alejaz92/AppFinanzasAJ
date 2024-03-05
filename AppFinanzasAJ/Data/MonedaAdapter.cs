@@ -50,6 +50,7 @@ namespace AppFinanzasAJ.Data
             return ListaMonedas;
         }
 
+
         public List<Moneda> GetMonedasPrincipal()
         {
             List<Moneda> ListaMonedas = new List<Moneda>();
@@ -258,6 +259,47 @@ namespace AppFinanzasAJ.Data
             }
 
 
+        }
+
+        public List<Moneda> GetPares()
+        {
+            List<Moneda> ListaMonedas = new List<Moneda>();
+            try
+            {
+                OpenConnection();
+                string consulta_select = "SELECT DISTINCT idMoneda, simbolo FROM Dim_Moneda;";
+
+                SqlCommand cmdMonedas = null;
+
+                cmdMonedas = new SqlCommand(consulta_select, SqlConn);
+
+                SqlDataReader reader = cmdMonedas.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Moneda moneda = new Moneda();
+                    moneda.IDMONEDA = (int)reader["idMoneda"];
+                    moneda.SIMBOLO = (string)reader["simbolo"];
+                    ListaMonedas.Add(moneda);
+                }
+
+                reader.Close();
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                ; Exception Excepcion = new Exception("Error al recuperar las monedas", Ex);
+                throw Excepcion;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return ListaMonedas;
         }
 
     }

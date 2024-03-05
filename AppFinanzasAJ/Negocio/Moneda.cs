@@ -41,6 +41,8 @@ namespace AppFinanzasAJ.Negocio
             return MonedaData.GetMonedasPrincipal();
         }
 
+
+
         public List<Moneda> GetMonedasEdit(string nombreVar)
         {
             return MonedaData.GetMonedasEdit(nombreVar);
@@ -66,5 +68,9 @@ namespace AppFinanzasAJ.Negocio
             MonedaData.updatetMonedaPrincipal(nombreVar);
         }
 
+        public List<Moneda> GetPares()
+        {
+            return MonedaData.GetPares();
+        }
     }
 }
