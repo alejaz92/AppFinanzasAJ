@@ -75,5 +75,17 @@ namespace AppFinanzasAJ
             frmRegistrarMovBSF frmRM = new frmRegistrarMovBSF();
             frmRM.ShowDialog();
         }
+
+        private void btnTarjetas_Click(object sender, EventArgs e)
+        {
+            frmAdminTarjetas frmAdminTarjetas = new frmAdminTarjetas();
+            frmAdminTarjetas.ShowDialog();
+        }
+
+        private void btnMovTarjeta_Click(object sender, EventArgs e)
+        {
+            frmRegistrarMovTarjeta frmRegistrarMovTarjeta = new frmRegistrarMovTarjeta();
+            frmRegistrarMovTarjeta.ShowDialog();
+        }
     }
 }

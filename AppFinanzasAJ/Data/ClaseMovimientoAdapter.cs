@@ -17,7 +17,7 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT DESCRIPCION, INGEGR FROM Dim_ClaseMovimiento";
+                string consulta_select = "SELECT DESCRIPCION, INGEGR FROM Dim_ClaseMovimiento ORDER BY DESCRIPCION";
 
                 SqlCommand cmdClasesMovimiento = null;
 

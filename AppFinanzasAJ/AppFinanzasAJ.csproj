@@ -56,12 +56,16 @@
     <Compile Include="Data\Adapter.cs" />
     <Compile Include="Data\ClaseMovimientoAdapter.cs" />
     <Compile Include="Data\CotizacionMonedaAdapter .cs" />
+    <Compile Include="Data\MovTarjetaAdapter.cs" />
+    <Compile Include="Data\TarjetaAdapter.cs" />
     <Compile Include="Data\ParamsBSFAdapter.cs" />
     <Compile Include="Data\MovimientoAdapter.cs" />
     <Compile Include="Data\MonedaAdapter.cs" />
     <Compile Include="Data\CuentaAdapter.cs" />
     <Compile Include="Negocio\ClaseMovimiento.cs" />
     <Compile Include="Negocio\CotizacionMoneda.cs" />
+    <Compile Include="Negocio\MovTarjeta.cs" />
+    <Compile Include="Negocio\Tarjeta.cs" />
     <Compile Include="Negocio\Movimiento.cs" />
     <Compile Include="Negocio\Moneda.cs" />
     <Compile Include="Negocio\Cuenta.cs" />
@@ -83,6 +87,12 @@
     </Compile>
     <Compile Include="UI\UserForms\frmAdminClaseMovimiento.Designer.cs">
       <DependentUpon>frmAdminClaseMovimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserForms\frmAdminTarjetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmAdminTarjetas.Designer.cs">
+      <DependentUpon>frmAdminTarjetas.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserForms\frmEditMoneda.cs">
       <SubType>Form</SubType>
@@ -122,6 +132,12 @@
     <Compile Include="UI\UserForms\frmRegistrarMovimiento.Designer.cs">
       <DependentUpon>frmRegistrarMovimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForms\frmRegistrarMovTarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmRegistrarMovTarjeta.Designer.cs">
+      <DependentUpon>frmRegistrarMovTarjeta.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\UserForms\frmAdminCuentas.resx">
       <DependentUpon>frmAdminCuentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmAdminClaseMovimiento.resx">
       <DependentUpon>frmAdminClaseMovimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmAdminTarjetas.resx">
+      <DependentUpon>frmAdminTarjetas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmEditMoneda.resx">
       <DependentUpon>frmEditMoneda.cs</DependentUpon>
@@ -157,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmRegistrarMovimiento.resx">
       <DependentUpon>frmRegistrarMovimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmRegistrarMovTarjeta.resx">
+      <DependentUpon>frmRegistrarMovTarjeta.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
