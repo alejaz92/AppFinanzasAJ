@@ -125,9 +125,9 @@ namespace AppFinanzasAJ.UI.UserForms
         {
 
             //Cargar monedas
-            MonedaLogic monedalogic = new MonedaLogic();
+            ActivoLogic monedalogic = new ActivoLogic();
 
-            List<Moneda> listaMonedas = monedalogic.GetMonedas();
+            List<Activo> listaMonedas = monedalogic.GetActivos("Moneda");
 
             foreach (var moneda in listaMonedas)
             {

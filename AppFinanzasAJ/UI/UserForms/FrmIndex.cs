@@ -28,9 +28,9 @@ namespace AppFinanzasAJ
             frmAC.ShowDialog();
         }
 
-        private void btnMonedas_Click(object sender, EventArgs e)
+        private void btnActivos_Click(object sender, EventArgs e)
         {
-            frmAdminMonedas frmAM = new frmAdminMonedas();
+            frmAdminActivos frmAM = new frmAdminActivos();
 
             frmAM.ShowDialog();
         }
@@ -42,9 +42,9 @@ namespace AppFinanzasAJ
 
   
 
-            CotizacionMonedaLogic cotizacionMonedaLogic = new CotizacionMonedaLogic();
+            CotizacionActivoLogic cotizacionActivoLogic = new CotizacionActivoLogic();
 
-            cotizacionMonedaLogic.updateCotizacionesGral();
+            cotizacionActivoLogic.updateCotizacionesGral();
         }
 
         private void btnClaseMovimiento_Click(object sender, EventArgs e)
@@ -86,6 +86,11 @@ namespace AppFinanzasAJ
         {
             frmRegistrarMovTarjeta frmRegistrarMovTarjeta = new frmRegistrarMovTarjeta();
             frmRegistrarMovTarjeta.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

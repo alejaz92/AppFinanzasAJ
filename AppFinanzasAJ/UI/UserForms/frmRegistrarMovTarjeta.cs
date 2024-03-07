@@ -30,13 +30,16 @@ namespace AppFinanzasAJ.UI.UserForms
             cboAnio1.Value = DateTime.Now.Year;
             cboAnio2.Value = DateTime.Now.Year;
 
+            cboMes1.Value = DateTime.Now.Month + 1;
+            cboMes2.Value = DateTime.Now.Month + 1;
+
             cboAnio2.Enabled = false;
             cboMes2.Enabled = false;   
 
             //Cargar monedas
-            MonedaLogic monedalogic = new MonedaLogic();
+            ActivoLogic monedalogic = new ActivoLogic();
 
-            List<Moneda> listaMonedas = monedalogic.GetMonedas();
+            List<Activo> listaMonedas = monedalogic.GetActivos("Moneda");
 
             foreach (var moneda in listaMonedas)
             {
@@ -82,12 +85,15 @@ namespace AppFinanzasAJ.UI.UserForms
 
         private void radRecurrente_CheckedChanged(object sender, EventArgs e)
         {
+            cboCuotas.Enabled = false;
+            cboCuotas.Value = 1;
             updateUltimaCuota();
             checkEnabled();
         }
 
         private void radUnico_CheckedChanged(object sender, EventArgs e)
         {
+            cboCuotas.Enabled = true;
             checkEnabled();
         }
 
@@ -107,11 +113,12 @@ namespace AppFinanzasAJ.UI.UserForms
                 cboAnio2.Value = anio2;
                 cboMes2.Value = mes2;
             }
-            else
+            else if (radRecurrente.Checked) 
             {
                 cboAnio2.Value = 0;
                 cboMes2.Value = 0;
             }
+
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -143,6 +150,17 @@ namespace AppFinanzasAJ.UI.UserForms
             }
 
             movTarjetaLogic.insertMovimiento(cboFecha.Value.ToString("yyyyMMdd"), txtDetalle.Text, cboTarjeta.Text, cboClaseMov.Text, cboMoneda.Text, txtMonto.Text, cuotas, fecha1, fecha2);
+
+            MessageBox.Show("Registro insertado");
+
+            radUnico.Checked = true;
+            cboMoneda.Text = null;
+            cboTarjeta.Text = null;
+            cboClaseMov.Text = null;
+            txtDetalle.Text = null;
+            txtMonto.Text = null;
+            cboCuotas.Value = 1;
+
 
         }
 

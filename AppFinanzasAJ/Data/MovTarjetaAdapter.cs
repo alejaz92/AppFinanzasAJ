@@ -25,8 +25,8 @@ namespace AppFinanzasAJ.Data
                 string sqlClase = "(SELECT DISTINCT idClaseMovimiento FROM Dim_ClaseMovimiento WHERE descripcion = '" + claseMovimiento + "')";
 
 
-                string sqlQuery = "INSERT INTO Fact_Tarjetas (fechaMov, detalle, idTarjeta, idClaseMovimiento, idMoneda, montoTotal, cuotas, mesPrimerCuota, mesUltimaCuota, repite) "
-                    + "VALUES ('@FECHAMOV', '@DETALLE', @IDTARJETA, @IDCLASEMOVIMIENTO, @IDMONEDA, @MONTOTOTAL, @CUOTAS, '@FECHA1', '@FECHA2', '@REPITE')";
+                string sqlQuery = "INSERT INTO Fact_Tarjetas (fechaMov, detalle, idTarjeta, idClaseMovimiento, idMoneda, montoTotal, cuotas, mesPrimerCuota, mesUltimaCuota, repite, montoCuota) "
+                    + "VALUES ('@FECHAMOV', '@DETALLE', @IDTARJETA, @IDCLASEMOVIMIENTO, @IDMONEDA, @MONTOTOTAL, @CUOTAS, '@FECHA1', '@FECHA2', '@REPITE', @MONTOTOTAL / @CUOTAS)";
 
                 sqlQuery = sqlQuery.Replace("@FECHAMOV", fechaMov);
                 sqlQuery = sqlQuery.Replace("@DETALLE", detalle);
