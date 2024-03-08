@@ -129,6 +129,7 @@ namespace AppFinanzasAJ.UI.UserForms
             string cuotas;
             string fecha1;
             string fecha2;
+            string repite;
 
             string mes1 = Convert.ToString(cboMes1.Value);
             string anio1 = Convert.ToString(cboAnio1.Value);
@@ -142,14 +143,16 @@ namespace AppFinanzasAJ.UI.UserForms
                 string mes2 = Convert.ToString(cboMes2.Value);
                 string anio2 = Convert.ToString(cboAnio2.Value);
                 fecha2 = anio2 + "-" + mes2 + "-01";
+                repite = "NO";
             }
             else
             {
-                cuotas = "";
+                cuotas = "1";
                 fecha2 = "";
+                repite = "SI";
             }
 
-            movTarjetaLogic.insertMovimiento(cboFecha.Value.ToString("yyyyMMdd"), txtDetalle.Text, cboTarjeta.Text, cboClaseMov.Text, cboMoneda.Text, txtMonto.Text, cuotas, fecha1, fecha2);
+            movTarjetaLogic.insertMovimiento(cboFecha.Value.ToString("yyyyMMdd"), txtDetalle.Text, cboTarjeta.Text, cboClaseMov.Text, cboMoneda.Text, txtMonto.Text, cuotas, fecha1, fecha2, repite);
 
             MessageBox.Show("Registro insertado");
 

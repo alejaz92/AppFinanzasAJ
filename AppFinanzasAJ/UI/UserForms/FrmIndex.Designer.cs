@@ -141,6 +141,7 @@
             this.btnPagoTarjeta.TabIndex = 3;
             this.btnPagoTarjeta.Text = "Pago Tarjeta";
             this.btnPagoTarjeta.UseVisualStyleBackColor = true;
+            this.btnPagoTarjeta.Click += new System.EventHandler(this.btnPagoTarjeta_Click);
             // 
             // btnMovTarjeta
             // 

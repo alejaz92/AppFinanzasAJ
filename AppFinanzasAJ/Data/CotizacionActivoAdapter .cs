@@ -25,7 +25,7 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT COUNT(*) CONTADOR FROM Cotizacion_Activo WHERE CAST(fechaHora AS DATE) = CAST(GETDATE() AS DATE);";
+                string consulta_select = "SELECT COUNT(*) CONTADOR FROM Cotizacion_Activo WHERE CAST(fechaHora AS DATE) = CAST(DATEADD(HOUR, -3,GETDATE()) AS DATE);";
 
                 SqlCommand cmdContador = null;
 
@@ -62,8 +62,7 @@ namespace AppFinanzasAJ.Data
                 ;
             }
             finally
-            {
-                
+            {                
                 this.CloseConnection();
             }
             return checkDatosDia;
@@ -73,11 +72,13 @@ namespace AppFinanzasAJ.Data
         {
             string cotiz;
             string url;
-            if (par == "USDARS")
+            if (par == "USDARSB")
             {
-                url = $"https://dolarapi.com/v1/dolares/blue";
-
-       
+                url = $"https://dolarapi.com/v1/dolares/blue";       
+            }
+            else if (par == "USDARST")
+            {
+                url = $"https://dolarapi.com/v1/dolares/tarjeta";
             }
             else
             {
@@ -106,7 +107,7 @@ namespace AppFinanzasAJ.Data
                     }
                     else
                     {
-                        if (par == "USDARS")
+                        if (par == "USDARST" | par == "USDARSB")
                         {
 
                             decimal cot1 = (Convert.ToDecimal(data["venta"]));
@@ -115,7 +116,7 @@ namespace AppFinanzasAJ.Data
                         }
                         else 
                         {
-                            string check = data["Information"].ToString();
+                            string check = Convert.ToString(data["Information"]);
 
                             if (!check.Contains("limit is 25"))
                             {
@@ -158,18 +159,34 @@ namespace AppFinanzasAJ.Data
         {
             try
             {
+
                 string valorCotiz = checkCotizacion(par);
+                string tipo;
 
                 if (valorCotiz != null)
                 {
                     this.OpenConnection();
                     SqlCommand insertSQL = null;
+                    
+                    if (par == "USDARST")
+                    {
+                        tipo = "TARJETA";
+                    }
+                    else if (par == "USDARSB")
+                    {
+                        tipo = "BLUE";
+                    }
+                    else
+                    {
+                        tipo = "NA";
+                    }
 
-                    string sqlQuery = "INSERT INTO Cotizacion_Activo (idActivoBase, idActivoComp, fechaHora, valor) VALUES ('@ID1', '@ID2', GETDATE(), @VALOR)";
+                    string sqlQuery = "INSERT INTO Cotizacion_Activo (idActivoBase, idActivoComp, fechaHora, tipo, valor) VALUES ('@ID1', '@ID2', DATEADD(HOUR, -3,GETDATE()), '@TIPO', @VALOR)";
 
                     sqlQuery = sqlQuery.Replace("@ID1", idMon1);
                     sqlQuery = sqlQuery.Replace("@ID2", idMon2);
-                    sqlQuery = sqlQuery.Replace("@VALOR", valorCotiz);
+                    sqlQuery = sqlQuery.Replace("@TIPO", tipo);
+                    sqlQuery = sqlQuery.Replace("@VALOR", valorCotiz.Replace(",","."));
 
          
 

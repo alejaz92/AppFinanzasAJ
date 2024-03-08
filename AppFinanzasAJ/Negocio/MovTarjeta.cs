@@ -37,12 +37,8 @@ namespace AppFinanzasAJ.Negocio
         }
 
         public void insertMovimiento(string fechaMov, string detalle, string tarjeta, string claseMovimiento, string monedaMovimiento,
-           string montototal, string cuotas, string fecha1, string fecha2)
+           string montototal, string cuotas, string fecha1, string fecha2, string repite)
         {
-            string repite;
-            if (fecha2 == null)
-            { repite = "SI"; }
-            else { repite = "NO"; }
 
             MovTarjetaData.insertMovimiento(fechaMov, detalle, tarjeta, claseMovimiento, monedaMovimiento, montototal, cuotas, fecha1, fecha2, repite);
         }

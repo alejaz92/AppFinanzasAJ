@@ -44,13 +44,24 @@ namespace AppFinanzasAJ.Negocio
 
                 Activo mon1 = listaActivos.First();
 
+
+
                 foreach(Activo mon2 in listaActivos )
                 {
                     if (mon1.IDACTIVO != mon2.IDACTIVO)
                     {
                         string par = mon1.SIMBOLO + mon2.SIMBOLO;
 
-                        CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par);
+                        if (par == "USDARS")
+                        {
+                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "B");
+                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "T");
+                        }
+                        else
+                        {
+                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par);
+                        }
+                        
                     }
                 }
 

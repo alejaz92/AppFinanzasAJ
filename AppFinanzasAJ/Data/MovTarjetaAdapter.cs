@@ -52,8 +52,50 @@ namespace AppFinanzasAJ.Data
                 throw Excepcion;
             }
 
+            
+        }
+
+        public List<MovTarjeta> GetMovsTarj(string tarjeta)
+        {
+            List<MovTarjeta> ListaMovTarj = new List<MovTarjeta>();
+            try
+            {
+                OpenConnection();
+                string consulta_select = "SELECT detalle,  FROM Fact_Tarjetas T ;";
+
+                SqlCommand cmdTipoActivo = null;
+
+                cmdTipoActivo = new SqlCommand(consulta_select, SqlConn);
+
+                SqlDataReader reader = cmdTipoActivo.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    TipoActivo newTipoActivo = new TipoActivo();
+                    newTipoActivo.NOMBRE = (string)reader["NOMBRE"];
+                    //ListaTiposActivo.Add(newTipoActivo);
+                }
+
+                reader.Close();
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                ; Exception Excepcion = new Exception("Error al recuperar los tipos de activos", Ex);
+                throw Excepcion;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return ListaTiposActivo;
+
 
         }
+
     }
-       
+
 }

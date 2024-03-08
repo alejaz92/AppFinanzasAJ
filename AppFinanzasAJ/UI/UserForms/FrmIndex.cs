@@ -92,5 +92,11 @@ namespace AppFinanzasAJ
         {
             Close();
         }
+
+        private void btnPagoTarjeta_Click(object sender, EventArgs e)
+        {
+            frmPagoTarjeta frmPag = new frmPagoTarjeta();
+            frmPag.ShowDialog();
+        }
     }
 }

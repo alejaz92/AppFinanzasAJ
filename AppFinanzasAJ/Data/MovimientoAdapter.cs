@@ -107,8 +107,8 @@ namespace AppFinanzasAJ.Data
                 SqlCommand cmdMovimientos = null;
 
                 string sqlQuery = "SELECT COALESCE(SUM(monto), 0) totalDev FROM [dbo].[Fact_Movimiento]" +
-                    "WHERE tipoMovimiento = 'devBSF' AND MONTH(fecha) = MONTH(GETDATE()) AND YEAR(FECHA) = " +
-                    "YEAR(GETDATE())";
+                    "WHERE tipoMovimiento = 'devBSF' AND MONTH(fecha) = MONTH(DATEADD(HOUR, -3,GETDATE())) AND YEAR(FECHA) = " +
+                    "YEAR(DATEADD(HOUR, -3,GETDATE()))";
 
                 cmdMovimientos = new SqlCommand(sqlQuery, SqlConn);
 
