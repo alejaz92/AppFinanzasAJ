@@ -55,25 +55,42 @@ namespace AppFinanzasAJ.Data
             
         }
 
-        public List<MovTarjeta> GetMovsTarj(string tarjeta)
+        public List<MovTarjeta> GetMovsTarj(string fecha, string tarjeta)
         {
             List<MovTarjeta> ListaMovTarj = new List<MovTarjeta>();
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT detalle,  FROM Fact_Tarjetas T ;";
+                string consulta_select = "SELECT T.fechaMov,CM.descripcion ,T.detalle, A.nombre,CASE WHEN "
+                    + "T.repite = 'SI' THEN 'Recurrente' ELSE CAST(DATEDIFF(MONTH, T.MESPRIMERCUOTA, '@FECHA')+ 1 AS"
+                    + " VARCHAR) + '/' + cast(T.cuotas as varchar) END Cuota,T.montoCuota, CASE WHEN A.NOMBRE = "
+                    + "'Peso Argentino' THEN T.montoCuota ELSE (T.montoCuota * CA.VALOR)  END valPesos FROM "
+                    + "[dbo].[Fact_Tarjetas] T INNER JOIN [dbo].[Dim_Activo] A ON T.idActivo = A.idActivo INNER "
+                    + "JOIN [dbo].[Cotizacion_Activo] CA ON CA.idActivoComp = (SELECT idActivo FROM Dim_Activo "
+                    + "WHERE simbolo = 'ARS') AND CA. TIPO = 'TARJETA' AND CA.fechaHora = (SELECT MAX(fechaHora) "
+                    + "FROM Cotizacion_Activo) INNER JOIN Dim_ClaseMovimiento CM ON CM.idClaseMovimiento = T.idClaseMovimiento INNER JOIN [dbo].[Dim_Tarjeta] TA ON T.idTarjeta = TA.idTarjeta "
+                    + "WHERE  (T.mesUltimaCuota >= '@FECHA' OR T.repite = 'SI') AND T.mesPrimerCuota <= '@FECHA' AND TA.nombre = '@TARJETA';";
 
-                SqlCommand cmdTipoActivo = null;
+                consulta_select = consulta_select.Replace("@TARJETA", tarjeta);
+                consulta_select = consulta_select.Replace("@FECHA", fecha);
 
-                cmdTipoActivo = new SqlCommand(consulta_select, SqlConn);
+                SqlCommand cmdMovTarjeta = null;
+                cmdMovTarjeta = new SqlCommand(consulta_select, SqlConn);
 
-                SqlDataReader reader = cmdTipoActivo.ExecuteReader();
+                SqlDataReader reader = cmdMovTarjeta.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    TipoActivo newTipoActivo = new TipoActivo();
-                    newTipoActivo.NOMBRE = (string)reader["NOMBRE"];
-                    //ListaTiposActivo.Add(newTipoActivo);
+                    MovTarjeta newMovTarjeta = new MovTarjeta();
+                    newMovTarjeta.FECHAMOV = (DateTime)reader["FECHAMOV"];
+                    newMovTarjeta.DETALLE = (string)reader["DETALLE"];
+                    newMovTarjeta.NOMBREMON = (string)reader["NOMBRE"];
+                    newMovTarjeta.CUOTATEXTO = (string)reader["CUOTA"];
+                    newMovTarjeta.MONTOCUOTA = (decimal)reader["MONTOCUOTA"];
+                    newMovTarjeta.VALORPESOS = (decimal)reader["VALPESOS"];
+                    newMovTarjeta.TIPOMOV = (string)reader["DESCRIPCION"];
+
+                    ListaMovTarj.Add(newMovTarjeta);
                 }
 
                 reader.Close();
@@ -84,14 +101,14 @@ namespace AppFinanzasAJ.Data
 
             catch (Exception Ex)
             {
-                ; Exception Excepcion = new Exception("Error al recuperar los tipos de activos", Ex);
+                ; Exception Excepcion = new Exception("Error al recuperar los movimientos de tarjeta", Ex);
                 throw Excepcion;
             }
             finally
             {
                 this.CloseConnection();
             }
-            return ListaTiposActivo;
+            return ListaMovTarj;
 
 
         }

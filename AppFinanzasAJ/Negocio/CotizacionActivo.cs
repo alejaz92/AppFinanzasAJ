@@ -59,21 +59,24 @@ namespace AppFinanzasAJ.Negocio
                         }
                         else
                         {
+                            par = mon2.SIMBOLO + mon1.SIMBOLO;
                             CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par);
                         }
                         
                     }
                 }
 
-
-
             }
 
-            //CotizacionMonedaData.updateCotizaciones();
+           
+
+        }
+        public decimal GetCotizDolar()
+        {
+            return CotizacionMonedaData.getCotizDolarTarjeta();
         }
 
 
 
-      
     }
 }

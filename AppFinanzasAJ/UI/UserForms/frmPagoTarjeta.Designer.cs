@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboTarjeta = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cboFecha = new System.Windows.Forms.DateTimePicker();
@@ -49,17 +49,17 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.cboMesPago = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
+            this.lstErogaciones = new System.Windows.Forms.DataGridView();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoMov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montoCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valPesos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstErogaciones)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(376, 61);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(401, 428);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // cboTarjeta
             // 
@@ -118,6 +118,7 @@
             this.radDolar.TabStop = true;
             this.radDolar.Text = "Pesos + Dolar";
             this.radDolar.UseVisualStyleBackColor = true;
+            this.radDolar.CheckedChanged += new System.EventHandler(this.radDolar_CheckedChanged);
             // 
             // radPesos
             // 
@@ -129,6 +130,7 @@
             this.radPesos.TabStop = true;
             this.radPesos.Text = "Pesos";
             this.radPesos.UseVisualStyleBackColor = true;
+            this.radPesos.CheckedChanged += new System.EventHandler(this.radPesos_CheckedChanged);
             // 
             // cboCuenta
             // 
@@ -162,8 +164,10 @@
             this.txtPesos.Location = new System.Drawing.Point(98, 292);
             this.txtPesos.Margin = new System.Windows.Forms.Padding(4);
             this.txtPesos.Name = "txtPesos";
+            this.txtPesos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtPesos.Size = new System.Drawing.Size(247, 22);
             this.txtPesos.TabIndex = 11;
+            this.txtPesos.TextChanged += new System.EventHandler(this.txtPesos_TextChanged);
             // 
             // label5
             // 
@@ -185,6 +189,7 @@
             this.txtDolar.Name = "txtDolar";
             this.txtDolar.Size = new System.Drawing.Size(247, 22);
             this.txtDolar.TabIndex = 13;
+            this.txtDolar.TextChanged += new System.EventHandler(this.txtDolar_TextChanged);
             // 
             // label6
             // 
@@ -221,7 +226,7 @@
             // btnInsertar
             // 
             this.btnInsertar.Enabled = false;
-            this.btnInsertar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsertar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsertar.Location = new System.Drawing.Point(18, 446);
             this.btnInsertar.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertar.Name = "btnInsertar";
@@ -229,10 +234,11 @@
             this.btnInsertar.TabIndex = 16;
             this.btnInsertar.Text = "Registrar";
             this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.Location = new System.Drawing.Point(199, 446);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
@@ -261,11 +267,88 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "Mes Pago";
             // 
+            // lstErogaciones
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lstErogaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.lstErogaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lstErogaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fecha,
+            this.tipoMov,
+            this.detalle,
+            this.nombre,
+            this.cuota,
+            this.montoCuota,
+            this.valPesos});
+            this.lstErogaciones.Location = new System.Drawing.Point(376, 60);
+            this.lstErogaciones.Name = "lstErogaciones";
+            this.lstErogaciones.RowHeadersWidth = 51;
+            this.lstErogaciones.RowTemplate.Height = 24;
+            this.lstErogaciones.Size = new System.Drawing.Size(947, 429);
+            this.lstErogaciones.TabIndex = 20;
+            this.lstErogaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // fecha
+            // 
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.MinimumWidth = 6;
+            this.fecha.Name = "fecha";
+            this.fecha.Width = 80;
+            // 
+            // tipoMov
+            // 
+            this.tipoMov.HeaderText = "Tipo Mov.";
+            this.tipoMov.MinimumWidth = 6;
+            this.tipoMov.Name = "tipoMov";
+            this.tipoMov.Width = 125;
+            // 
+            // detalle
+            // 
+            this.detalle.HeaderText = "Detalle";
+            this.detalle.MinimumWidth = 6;
+            this.detalle.Name = "detalle";
+            this.detalle.Width = 125;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Moneda";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.Width = 125;
+            // 
+            // cuota
+            // 
+            this.cuota.HeaderText = "Cuota";
+            this.cuota.MinimumWidth = 6;
+            this.cuota.Name = "cuota";
+            this.cuota.Width = 75;
+            // 
+            // montoCuota
+            // 
+            this.montoCuota.HeaderText = "Monto Cuota";
+            this.montoCuota.MinimumWidth = 6;
+            this.montoCuota.Name = "montoCuota";
+            this.montoCuota.Width = 60;
+            // 
+            // valPesos
+            // 
+            this.valPesos.HeaderText = "Valor Pesos";
+            this.valPesos.MinimumWidth = 6;
+            this.valPesos.Name = "valPesos";
+            this.valPesos.Width = 60;
+            // 
             // frmPagoTarjeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 519);
+            this.ClientSize = new System.Drawing.Size(1358, 519);
+            this.Controls.Add(this.lstErogaciones);
             this.Controls.Add(this.cboMesPago);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnInsertar);
@@ -284,20 +367,18 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboTarjeta);
-            this.Controls.Add(this.listView1);
             this.Name = "frmPagoTarjeta";
             this.Text = "Registrar Pago de Tarjeta";
             this.Load += new System.EventHandler(this.frmPagoTarjeta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstErogaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ComboBox cboTarjeta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker cboFecha;
@@ -318,5 +399,13 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.DateTimePicker cboMesPago;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView lstErogaciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoMov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montoCuota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valPesos;
     }
 }

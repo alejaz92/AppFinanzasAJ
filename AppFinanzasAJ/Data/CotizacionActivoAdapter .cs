@@ -85,7 +85,7 @@ namespace AppFinanzasAJ.Data
                 string apiKey = "FDYDOY4B5LA56344";
                 string currencyPair = par;
 
-                url = $"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency={currencyPair.Substring(0, 3)}&to_currency={currencyPair.Substring(3)}&apikey={apiKey}";
+                url = $"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency={currencyPair.Substring(0,3)}&to_currency={currencyPair.Substring(3)}&apikey={apiKey}";
 
                 
 
@@ -120,7 +120,9 @@ namespace AppFinanzasAJ.Data
 
                             if (!check.Contains("limit is 25"))
                             {
-                                cotiz = Convert.ToString(Convert.ToDecimal(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]));
+
+                               decimal  cotizDec = Convert.ToDecimal(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]);
+                                cotiz = Convert.ToString(1 / cotizDec);
                             }
                             else
                             {
@@ -212,6 +214,48 @@ namespace AppFinanzasAJ.Data
             }
         }
 
+        public decimal getCotizDolarTarjeta()
+        {
+            decimal cotizDolar = 0;
+            try
+            {
+                
+                OpenConnection();
+                string consulta_select = "SELECT VALOR FROM Cotizacion_Activo CA INNER JOIN Dim_Activo A1 "
+                    + " ON CA.IDACTIVOBASE = A1.IDACTIVO INNER JOIN Dim_Activo A2 ON CA.IDACTIVOCOMP = "
+                    + "A2.IDACTIVO WHERE A1.SIMBOLO = 'USD' AND A2.SIMBOLO = 'ARS' AND CA.TIPO = 'TARJETA' "
+                    + " AND FECHAHORA = (SELECT MAX(FECHAHORA) FROM Cotizacion_Activo)";
+
+                SqlCommand cmdCotizacion = null;
+
+                cmdCotizacion = new SqlCommand(consulta_select, SqlConn);
+
+                SqlDataReader reader = cmdCotizacion.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cotizDolar = (decimal)reader["VALOR"];
+                }
+
+                reader.Close();
+                
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                ; Exception Excepcion = new Exception("Error al recuperar las cotizaciones", Ex);
+                throw Excepcion;
+                ;
+            }
+            finally
+            {
+                
+                this.CloseConnection();
+            }
+            return cotizDolar;
+        }
        
     }
        

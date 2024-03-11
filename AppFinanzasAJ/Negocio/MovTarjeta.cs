@@ -19,7 +19,13 @@ namespace AppFinanzasAJ.Negocio
         public int CUOTAS;
         public DateTime MESPRIMERCUOTA;
         public DateTime MESULTIMACUOTA;
-        public string REPITE;       
+        public string REPITE;
+        public string NOMBREMON;
+        public decimal MONTOCUOTA;
+        public string CUOTATEXTO;
+        public decimal VALORPESOS;
+        public string TIPOMOV;
+        
     }
 
     public class MovTarjetaLogic
@@ -41,6 +47,11 @@ namespace AppFinanzasAJ.Negocio
         {
 
             MovTarjetaData.insertMovimiento(fechaMov, detalle, tarjeta, claseMovimiento, monedaMovimiento, montototal, cuotas, fecha1, fecha2, repite);
+        }
+
+        public List<MovTarjeta> getMovsTarjetaLista(string fecha, string tarjeta)
+        {
+            return MovTarjetaData.GetMovsTarj(fecha, tarjeta);
         }
     }
 }
