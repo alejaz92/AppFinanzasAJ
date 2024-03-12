@@ -225,6 +225,12 @@ namespace AppFinanzasAJ.UI.UserForms
                         "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov);
 
 
+                //registrar el pago
+
+                PagoTarjetaLogic pagoTarjetaLogic = new PagoTarjetaLogic();
+
+                pagoTarjetaLogic.insertPago(cboTarjeta.Text, cboMesPago.Value.ToString("yyyy-MM") + "-01");
+
                 MessageBox.Show("Pago registrado");
                 Close();
             }

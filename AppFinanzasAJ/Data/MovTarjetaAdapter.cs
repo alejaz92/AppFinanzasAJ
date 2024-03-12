@@ -69,7 +69,9 @@ namespace AppFinanzasAJ.Data
                     + "JOIN [dbo].[Cotizacion_Activo] CA ON CA.idActivoComp = (SELECT idActivo FROM Dim_Activo "
                     + "WHERE simbolo = 'ARS') AND CA. TIPO = 'TARJETA' AND CA.fechaHora = (SELECT MAX(fechaHora) "
                     + "FROM Cotizacion_Activo) INNER JOIN Dim_ClaseMovimiento CM ON CM.idClaseMovimiento = T.idClaseMovimiento INNER JOIN [dbo].[Dim_Tarjeta] TA ON T.idTarjeta = TA.idTarjeta "
-                    + "WHERE  (T.mesUltimaCuota >= '@FECHA' OR T.repite = 'SI') AND T.mesPrimerCuota <= '@FECHA' AND TA.nombre = '@TARJETA';";
+                    + " LEFT JOIN Pago_Tarjeta PT ON PT.idTarjeta = T.idTarjeta AND PT.fechaMes = '@FECHA' WHERE  "
+                    + "(T.mesUltimaCuota >= '@FECHA' OR T.repite = 'SI') AND T.mesPrimerCuota <= '@FECHA' AND "
+                    +" TA.nombre = '@TARJETA' AND PT.idTarjeta IS NULL;";
 
                 consulta_select = consulta_select.Replace("@TARJETA", tarjeta);
                 consulta_select = consulta_select.Replace("@FECHA", fecha);

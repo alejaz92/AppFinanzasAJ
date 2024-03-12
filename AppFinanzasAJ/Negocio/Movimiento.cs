@@ -17,6 +17,9 @@ namespace AppFinanzasAJ.Negocio
         public int IDCLASEMOVIMIENTO;
         public string COMENTARIO;
         public decimal MONTO;
+        public string MONEDATEXT;
+        public string CLASEMOVTEXT;
+        public string CUENTATEXT;
     }
 
     public class MovimientoLogic
@@ -59,6 +62,11 @@ namespace AppFinanzasAJ.Negocio
                 montoMovimiento);
             }
 
+        }
+
+        public List<Movimiento> getTopMovimientos()
+        {
+            return MovimientoData.getTopMovimientos();
         }
 
         //public void insertMovBSF()

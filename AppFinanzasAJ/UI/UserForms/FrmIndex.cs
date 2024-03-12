@@ -35,6 +35,22 @@ namespace AppFinanzasAJ
             frmAM.ShowDialog();
         }
 
+        private void loadTabla ()
+        {
+            MovimientoLogic movimientoLogic = new MovimientoLogic();
+
+            List<Movimiento> listaMovimientos = movimientoLogic.getTopMovimientos();
+
+            dgUltMovs.Rows.Clear();
+
+            foreach (Movimiento mov in listaMovimientos)
+            {
+                dgUltMovs.Rows.Add(mov.FECHA.ToString("yyyy/MM/dd"), mov.TIPOMOVIMIENTO,mov.CLASEMOVTEXT, mov.COMENTARIO, mov.CUENTATEXT, mov.MONEDATEXT, mov.MONTO);
+            }
+
+        }
+
+
         private void FrmIndex_Load(object sender, EventArgs e)
         {
             //chequeo cotizacion
@@ -45,6 +61,7 @@ namespace AppFinanzasAJ
             CotizacionActivoLogic cotizacionActivoLogic = new CotizacionActivoLogic();
 
             cotizacionActivoLogic.updateCotizacionesGral();
+            //loadTabla();
         }
 
         private void btnClaseMovimiento_Click(object sender, EventArgs e)
@@ -59,10 +76,7 @@ namespace AppFinanzasAJ
             frmRM.ShowDialog();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnAjustesBSantaFe_Click(object sender, EventArgs e)
         {
@@ -97,6 +111,11 @@ namespace AppFinanzasAJ
         {
             frmPagoTarjeta frmPag = new frmPagoTarjeta();
             frmPag.ShowDialog();
+        }
+
+        private void FrmIndex_Activated(object sender, EventArgs e)
+        {
+            loadTabla();
         }
     }
 }

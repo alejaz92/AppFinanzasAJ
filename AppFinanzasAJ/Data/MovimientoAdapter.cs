@@ -12,6 +12,58 @@ namespace AppFinanzasAJ.Data
 {
     public class MovimientoAdapter : Adapter
     {
+        public List<Movimiento> getTopMovimientos()
+        {
+            List<Movimiento> listaMovimientos = new List<Movimiento>();
+
+            try
+            {
+                OpenConnection();
+                string consulta_select = "SELECT  TOP 20 MO.fecha, MO.tipoMovimiento TIPO,CM.descripcion CLASEMOV "
+                    + ", MO.comentario , "
+                    + "C.nombre CUENTA, A.nombre MONEDA, CAST(MO.monto AS decimal (18,2)) MONTO FROM [dbo].[Fact_Movimiento] "
+                    + "MO "
+                    + "INNER JOIN [dbo].[Dim_ClaseMovimiento] CM ON CM.idClaseMovimiento = MO.idClaseMovimiento "
+                    + "INNER JOIN Dim_Activo A ON A.idActivo = MO.idActivo INNER JOIN Dim_Cuenta C ON C.idCuenta = "
+                    + "MO.idCuenta ORDER BY fecha DESC , idMovimiento DESC";
+
+                SqlCommand cmdMovimientos = null;
+
+                cmdMovimientos = new SqlCommand(consulta_select, SqlConn);
+
+                SqlDataReader reader = cmdMovimientos.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Movimiento newMovimiento = new Movimiento();
+                    newMovimiento.FECHA = (DateTime)reader["FECHA"];
+                    newMovimiento.TIPOMOVIMIENTO = (string)reader["TIPO"];
+                    newMovimiento.CLASEMOVTEXT = (string)reader["CLASEMOV"];
+                    newMovimiento.COMENTARIO = (string)reader["COMENTARIO"];
+                    newMovimiento.CUENTATEXT = (string)reader["CUENTA"];
+                    newMovimiento.MONEDATEXT = (string)reader["MONEDA"];
+                    newMovimiento.MONTO = (decimal)reader["MONTO"];
+                    listaMovimientos.Add(newMovimiento);
+                }
+
+                reader.Close();
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                ; Exception Excepcion = new Exception("Error al recuperar los movimientos", Ex);
+                throw Excepcion;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return listaMovimientos;
+        }
+
         public List<Movimiento> GetNextID()
         {
             List<Movimiento> ListaMovimiento = new List<Movimiento>();
@@ -66,11 +118,11 @@ namespace AppFinanzasAJ.Data
 
 
                 string sqlCuenta = "(SELECT DISTINCT idCuenta FROM Dim_Cuenta WHERE nombre = '" + ctaMovimiento + "')";
-                string sqlMoneda = "(SELECT DISTINCT idMoneda FROM Dim_Moneda WHERE nombre = '" + monedaMovimiento + "')";
+                string sqlMoneda = "(SELECT DISTINCT idActivo FROM Dim_Activo WHERE nombre = '" + monedaMovimiento + "')";
                 string sqlClase = "(SELECT DISTINCT idClaseMovimiento FROM Dim_ClaseMovimiento WHERE descripcion = '" + claseMovimiento + "')";
 
 
-                string sqlQuery = "INSERT INTO Fact_Movimiento (idMovimiento, idCuenta, idMoneda, fecha, tipoMovimiento, idClaseMovimiento, comentario, monto) "
+                string sqlQuery = "INSERT INTO Fact_Movimiento (idMovimiento, idCuenta, idActivo, fecha, tipoMovimiento, idClaseMovimiento, comentario, monto) "
                     + "VALUES ('@IDMOVIMIENTO', @IDCUENTA, @IDMONEDA, '@FECHA', '@IDTIPOMOVIMIENTO', @IDCLASEMOVIMIENTO, '@COMENTARIO', @MONTO)";
 
                 sqlQuery = sqlQuery.Replace("@IDMOVIMIENTO", idMovimiento);

@@ -40,9 +40,19 @@
             this.btnMovTarjeta = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
+            this.dgUltMovs = new System.Windows.Forms.DataGridView();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoMov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.claseMov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUltMovs)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -51,11 +61,11 @@
             this.groupBox1.Controls.Add(this.btnClaseMovimiento);
             this.groupBox1.Controls.Add(this.btnActivos);
             this.groupBox1.Controls.Add(this.btnCuentas);
-            this.groupBox1.Location = new System.Drawing.Point(864, 10);
+            this.groupBox1.Location = new System.Drawing.Point(11, 297);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(296, 230);
+            this.groupBox1.Size = new System.Drawing.Size(244, 202);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos Clave";
@@ -65,7 +75,7 @@
             this.btnTarjetas.Location = new System.Drawing.Point(9, 132);
             this.btnTarjetas.Margin = new System.Windows.Forms.Padding(4);
             this.btnTarjetas.Name = "btnTarjetas";
-            this.btnTarjetas.Size = new System.Drawing.Size(279, 28);
+            this.btnTarjetas.Size = new System.Drawing.Size(228, 28);
             this.btnTarjetas.TabIndex = 3;
             this.btnTarjetas.Text = "Tarjetas";
             this.btnTarjetas.UseVisualStyleBackColor = true;
@@ -76,7 +86,7 @@
             this.btnClaseMovimiento.Location = new System.Drawing.Point(9, 96);
             this.btnClaseMovimiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnClaseMovimiento.Name = "btnClaseMovimiento";
-            this.btnClaseMovimiento.Size = new System.Drawing.Size(279, 28);
+            this.btnClaseMovimiento.Size = new System.Drawing.Size(228, 28);
             this.btnClaseMovimiento.TabIndex = 2;
             this.btnClaseMovimiento.Text = "Clases de Movimiento";
             this.btnClaseMovimiento.UseVisualStyleBackColor = true;
@@ -87,7 +97,7 @@
             this.btnActivos.Location = new System.Drawing.Point(9, 60);
             this.btnActivos.Margin = new System.Windows.Forms.Padding(4);
             this.btnActivos.Name = "btnActivos";
-            this.btnActivos.Size = new System.Drawing.Size(279, 28);
+            this.btnActivos.Size = new System.Drawing.Size(228, 28);
             this.btnActivos.TabIndex = 1;
             this.btnActivos.Text = "Activos";
             this.btnActivos.UseVisualStyleBackColor = true;
@@ -98,7 +108,7 @@
             this.btnCuentas.Location = new System.Drawing.Point(9, 25);
             this.btnCuentas.Margin = new System.Windows.Forms.Padding(4);
             this.btnCuentas.Name = "btnCuentas";
-            this.btnCuentas.Size = new System.Drawing.Size(279, 28);
+            this.btnCuentas.Size = new System.Drawing.Size(228, 28);
             this.btnCuentas.TabIndex = 0;
             this.btnCuentas.Text = "Cuentas";
             this.btnCuentas.UseVisualStyleBackColor = true;
@@ -125,16 +135,15 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(244, 417);
+            this.groupBox2.Size = new System.Drawing.Size(244, 279);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Movimientos";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // btnPagoTarjeta
             // 
             this.btnPagoTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnPagoTarjeta.Location = new System.Drawing.Point(9, 376);
+            this.btnPagoTarjeta.Location = new System.Drawing.Point(9, 234);
             this.btnPagoTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.btnPagoTarjeta.Name = "btnPagoTarjeta";
             this.btnPagoTarjeta.Size = new System.Drawing.Size(213, 33);
@@ -160,7 +169,7 @@
             this.btnSalir.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSalir.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSalir.Location = new System.Drawing.Point(939, 412);
+            this.btnSalir.Location = new System.Drawing.Point(20, 561);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(213, 33);
@@ -169,22 +178,120 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dgUltMovs
+            // 
+            this.dgUltMovs.AllowUserToAddRows = false;
+            this.dgUltMovs.AllowUserToDeleteRows = false;
+            this.dgUltMovs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgUltMovs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fecha,
+            this.tipoMov,
+            this.claseMov,
+            this.detalle,
+            this.cuenta,
+            this.moneda,
+            this.monto});
+            this.dgUltMovs.Location = new System.Drawing.Point(263, 35);
+            this.dgUltMovs.MultiSelect = false;
+            this.dgUltMovs.Name = "dgUltMovs";
+            this.dgUltMovs.ReadOnly = true;
+            this.dgUltMovs.RowHeadersWidth = 51;
+            this.dgUltMovs.RowTemplate.Height = 24;
+            this.dgUltMovs.RowTemplate.ReadOnly = true;
+            this.dgUltMovs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgUltMovs.ShowCellErrors = false;
+            this.dgUltMovs.ShowCellToolTips = false;
+            this.dgUltMovs.ShowEditingIcon = false;
+            this.dgUltMovs.ShowRowErrors = false;
+            this.dgUltMovs.Size = new System.Drawing.Size(1086, 559);
+            this.dgUltMovs.TabIndex = 5;
+            // 
+            // fecha
+            // 
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.MinimumWidth = 6;
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            this.fecha.Width = 70;
+            // 
+            // tipoMov
+            // 
+            this.tipoMov.HeaderText = "Tipo Mov.";
+            this.tipoMov.MinimumWidth = 6;
+            this.tipoMov.Name = "tipoMov";
+            this.tipoMov.ReadOnly = true;
+            this.tipoMov.Width = 70;
+            // 
+            // claseMov
+            // 
+            this.claseMov.HeaderText = "Clase Mov.";
+            this.claseMov.MinimumWidth = 6;
+            this.claseMov.Name = "claseMov";
+            this.claseMov.ReadOnly = true;
+            this.claseMov.Width = 150;
+            // 
+            // detalle
+            // 
+            this.detalle.HeaderText = "Detalle";
+            this.detalle.MinimumWidth = 6;
+            this.detalle.Name = "detalle";
+            this.detalle.ReadOnly = true;
+            this.detalle.Width = 200;
+            // 
+            // cuenta
+            // 
+            this.cuenta.HeaderText = "Cuenta";
+            this.cuenta.MinimumWidth = 6;
+            this.cuenta.Name = "cuenta";
+            this.cuenta.ReadOnly = true;
+            this.cuenta.Width = 125;
+            // 
+            // moneda
+            // 
+            this.moneda.HeaderText = "Moneda";
+            this.moneda.MinimumWidth = 6;
+            this.moneda.Name = "moneda";
+            this.moneda.ReadOnly = true;
+            this.moneda.Width = 90;
+            // 
+            // monto
+            // 
+            this.monto.HeaderText = "Monto";
+            this.monto.MinimumWidth = 6;
+            this.monto.Name = "monto";
+            this.monto.ReadOnly = true;
+            this.monto.Width = 80;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(263, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Ultimos Movimientos";
+            // 
             // FrmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 458);
+            this.ClientSize = new System.Drawing.Size(1361, 607);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgUltMovs);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmIndex";
             this.Text = "App Finanzas Personales AJ";
+            this.Activated += new System.EventHandler(this.FrmIndex_Activated);
             this.Load += new System.EventHandler(this.FrmIndex_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUltMovs)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -201,6 +308,15 @@
         private System.Windows.Forms.Button btnPagoTarjeta;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.DataGridView dgUltMovs;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoMov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn claseMov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cuenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monto;
     }
 }
 
