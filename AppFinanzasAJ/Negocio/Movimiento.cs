@@ -32,7 +32,8 @@ namespace AppFinanzasAJ.Negocio
         {
             MovimientoData = new MovimientoAdapter();
         }
-        public void insertMovimientoRegular(string tipoMovimiento, string fechaMovimiento, string monedaMovimiento, string ctaIngresoMovimiento, string claseIngresoMovimiento,
+        public void insertMovimientoRegular(string tipoMovimiento, string fechaMovimiento, string monedaMovimiento, 
+            string ctaIngresoMovimiento, string claseIngresoMovimiento,
             string ctaEgresoMovimiento, string claseEgresoMovimiento, string detalleMovimiento, string montoMovimiento)
         {
             var idMovimiento = MovimientoData.GetNextID()[0].IDMOVIMIENTO.ToString();

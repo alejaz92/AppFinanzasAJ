@@ -29,6 +29,19 @@ namespace AppFinanzasAJ.UI.UserForms
             Close();
         }
 
+        private void checkEnabled()
+        {
+            if (cboTarjeta.Text != string.Empty && cboMesPago.Text != string.Empty && cboFecha.Text != string.Empty && 
+                cboCuenta.Text != string.Empty && txtPesos.Text != string.Empty && Convert.ToDecimal(txtGtosTarj.Text) >= 0)
+            {
+                this.btnInsertar.Enabled = true;
+            }
+            else
+            {
+                this.btnInsertar.Enabled = false;
+            }
+        }
+
         private void frmPagoTarjeta_Load(object sender, EventArgs e)
         {
 
@@ -66,6 +79,7 @@ namespace AppFinanzasAJ.UI.UserForms
             {
                 refreshList();
             }
+            checkEnabled();
         }
 
         
@@ -76,6 +90,7 @@ namespace AppFinanzasAJ.UI.UserForms
             {
                 refreshList();
             }
+            checkEnabled();
         }
 
         public void refreshList()
@@ -109,12 +124,13 @@ namespace AppFinanzasAJ.UI.UserForms
         {
             txtDolar.Enabled = false;
             txtDolar.Text = string.Empty;
-
+            checkEnabled();
         }
 
         private void radDolar_CheckedChanged(object sender, EventArgs e)
         {
             txtDolar.Enabled = true;
+            checkEnabled();
         }
 
         private void checkResto()
@@ -144,31 +160,88 @@ namespace AppFinanzasAJ.UI.UserForms
         private void txtPesos_TextChanged(object sender, EventArgs e)
         {
             checkResto();
+            checkEnabled();
         }
 
         private void txtDolar_TextChanged(object sender, EventArgs e)
         {
             checkResto();
+            checkEnabled();
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            if (Convert.ToDecimal(txtGtosTarj) >= 0)
+            if (Convert.ToDecimal(txtGtosTarj.Text) >= 0)
             {
-                
+                MovimientoLogic movimientoLogic = new MovimientoLogic();
 
-                for (int i = 0; i < lstErogaciones.Rows.Count; i++)
+                string tipoMovimiento = "Egreso";
+                string fechaMovimiento = cboMesPago.Value.ToString("yyyy-MM") + "-01";
+                string monedaMovimiento;
+                string ctaEgresoMov;
+                string claseEgreso;
+                string detalleMov;
+                string montoMov;
+                ctaEgresoMov = cboCuenta.Text;
+
+                for (int i = 0; i < lstErogaciones.Rows.Count -1; i++)
                 {
-                    MovimientoLogic movimientoLogic = new MovimientoLogic();
+                    
 
-                    //movimientoLogic.insertMovimientoRegular();
+                    if (radDolar.Checked && lstErogaciones.Rows[i].Cells[3].Value.ToString() == "Dolar Estadounidense")
+                    {
+                        monedaMovimiento = "Dolar Estadounidense";
+                        montoMov = lstErogaciones.Rows[i].Cells[5].Value.ToString();
+                    }
+                    else
+                    {
+                        monedaMovimiento = "Peso Argentino";
+                        montoMov = lstErogaciones.Rows[i].Cells[6].Value.ToString();
+                    }
+
+                    
+                    claseEgreso = lstErogaciones.Rows[i].Cells[1].Value.ToString();
+
+
+                    detalleMov = "(Tarjeta | " + lstErogaciones.Rows[i].Cells[4].Value.ToString() + ") " + lstErogaciones.Rows[i].Cells[2].Value.ToString();
+
+
+                    movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento, 
+                        "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov);
+                        
                 }
 
+                // gastos tarjeta
+
+                fechaMovimiento = cboFecha.Value.ToString("yyyy-MM-dd");
+
+                monedaMovimiento = "Peso Argentino";
+                claseEgreso = "Gastos Tarjeta";
+
+                detalleMov = "Gastos Tarjeta - " + cboTarjeta.Text;
+                montoMov = txtGtosTarj.Text;
+
+                movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento,
+                        "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov);
+
+
+                MessageBox.Show("Pago registrado");
+                Close();
             }
             else
             {
                 MessageBox.Show("Debe colocar un monto mayor", "Importante");
             }
+        }
+
+        private void cboFecha_ValueChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
+        }
+
+        private void cboCuenta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
         }
     }
 }

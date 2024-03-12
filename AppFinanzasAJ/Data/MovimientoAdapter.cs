@@ -80,7 +80,7 @@ namespace AppFinanzasAJ.Data
                 sqlQuery = sqlQuery.Replace("@IDTIPOMOVIMIENTO", tipoMovimiento);
                 sqlQuery = sqlQuery.Replace("@IDCLASEMOVIMIENTO", sqlClase);
                 sqlQuery = sqlQuery.Replace("@COMENTARIO", detalleMovimiento);
-                sqlQuery = sqlQuery.Replace("@MONTO", montoMovimiento);
+                sqlQuery = sqlQuery.Replace("@MONTO", montoMovimiento.Replace(",", "."));
 
 
 

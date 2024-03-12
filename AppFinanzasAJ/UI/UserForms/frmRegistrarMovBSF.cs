@@ -58,5 +58,10 @@ namespace AppFinanzasAJ.UI.UserForms
         {
 
         }
+
+        private void frmRegistrarMovBSF_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
