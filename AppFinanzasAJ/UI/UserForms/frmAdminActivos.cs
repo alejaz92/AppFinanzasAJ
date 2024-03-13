@@ -122,7 +122,7 @@ namespace AppFinanzasAJ.UI.UserForms
         private void btnMonedaRef_Click(object sender, EventArgs e)
         {
             frmMonedaRef frmActivoRef = new frmMonedaRef();
-            frmActivoRef.Show();
+            frmActivoRef.ShowDialog();
         }
 
         private void cboTipoAct_SelectedIndexChanged(object sender, EventArgs e)

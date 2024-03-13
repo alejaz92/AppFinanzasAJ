@@ -98,8 +98,10 @@ namespace AppFinanzasAJ
 
         private void btnMovTarjeta_Click(object sender, EventArgs e)
         {
-            frmRegistrarMovTarjeta frmRegistrarMovTarjeta = new frmRegistrarMovTarjeta();
-            frmRegistrarMovTarjeta.ShowDialog();
+
+
+            frmGestTarjeta frmGestTarjeta = new frmGestTarjeta();
+            frmGestTarjeta.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -107,15 +109,11 @@ namespace AppFinanzasAJ
             Close();
         }
 
-        private void btnPagoTarjeta_Click(object sender, EventArgs e)
-        {
-            frmPagoTarjeta frmPag = new frmPagoTarjeta();
-            frmPag.ShowDialog();
-        }
 
         private void FrmIndex_Activated(object sender, EventArgs e)
         {
             loadTabla();
         }
+
     }
 }

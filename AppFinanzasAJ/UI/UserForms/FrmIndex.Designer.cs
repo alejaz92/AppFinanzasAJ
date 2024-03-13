@@ -36,7 +36,6 @@
             this.btnCuentas = new System.Windows.Forms.Button();
             this.btnRegMovimiento = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnPagoTarjeta = new System.Windows.Forms.Button();
             this.btnMovTarjeta = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
@@ -128,7 +127,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnPagoTarjeta);
             this.groupBox2.Controls.Add(this.btnMovTarjeta);
             this.groupBox2.Controls.Add(this.btnRegMovimiento);
             this.groupBox2.Location = new System.Drawing.Point(11, 10);
@@ -139,18 +137,6 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Movimientos";
-            // 
-            // btnPagoTarjeta
-            // 
-            this.btnPagoTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnPagoTarjeta.Location = new System.Drawing.Point(9, 234);
-            this.btnPagoTarjeta.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPagoTarjeta.Name = "btnPagoTarjeta";
-            this.btnPagoTarjeta.Size = new System.Drawing.Size(213, 33);
-            this.btnPagoTarjeta.TabIndex = 3;
-            this.btnPagoTarjeta.Text = "Pago Tarjeta";
-            this.btnPagoTarjeta.UseVisualStyleBackColor = true;
-            this.btnPagoTarjeta.Click += new System.EventHandler(this.btnPagoTarjeta_Click);
             // 
             // btnMovTarjeta
             // 
@@ -305,7 +291,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnTarjetas;
         private System.Windows.Forms.Button btnMovTarjeta;
-        private System.Windows.Forms.Button btnPagoTarjeta;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridView dgUltMovs;

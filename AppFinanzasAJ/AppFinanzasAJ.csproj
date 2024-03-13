@@ -104,6 +104,12 @@
     <Compile Include="UI\UserForms\frmEditActivo.Designer.cs">
       <DependentUpon>frmEditActivo.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForms\frmGestTarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmGestTarjeta.Designer.cs">
+      <DependentUpon>frmGestTarjeta.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserForms\FrmIndex.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,12 @@
     </Compile>
     <Compile Include="UI\UserForms\frmParamsBSF.Designer.cs">
       <DependentUpon>frmParamsBSF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserForms\frmRecurrente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmRecurrente.Designer.cs">
+      <DependentUpon>frmRecurrente.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserForms\frmRegistrarMovBSF.cs">
       <SubType>Form</SubType>
@@ -174,6 +186,9 @@
       <DependentUpon>frmEditActivo.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmGestTarjeta.resx">
+      <DependentUpon>frmGestTarjeta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\FrmIndex.resx">
       <DependentUpon>FrmIndex.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -201,6 +216,9 @@
     <EmbeddedResource Include="UI\UserForms\frmParamsBSF.resx">
       <DependentUpon>frmParamsBSF.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmRecurrente.resx">
+      <DependentUpon>frmRecurrente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmRegistrarMovBSF.resx">
       <DependentUpon>frmRegistrarMovBSF.cs</DependentUpon>

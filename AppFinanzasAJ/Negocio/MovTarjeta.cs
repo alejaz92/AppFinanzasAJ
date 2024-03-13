@@ -25,6 +25,8 @@ namespace AppFinanzasAJ.Negocio
         public string CUOTATEXTO;
         public decimal VALORPESOS;
         public string TIPOMOV;
+        public string NOMBRETARJ;
+        public string ULTCUOTATEXTO;
         
     }
 
@@ -52,6 +54,23 @@ namespace AppFinanzasAJ.Negocio
         public List<MovTarjeta> getMovsTarjetaLista(string fecha, string tarjeta)
         {
             return MovTarjetaData.GetMovsTarj(fecha, tarjeta);
+        }
+
+        public List<MovTarjeta> getMovsTarjetaGrid()
+        {
+            return MovTarjetaData.getMovsTarjGrid();
+        }
+
+        public void cerrarRecurrente(string fecha, string detalle)
+        {
+            MovTarjetaData.cerrarRecurrente(fecha, detalle);
+        }
+
+        public void actualizarRecurrente(string fecha, string detalle, string montoNuevo, string fechaNueva)
+        {
+
+            MovTarjetaData.actualizarRecurrente(fecha, detalle, montoNuevo, fechaNueva);
+            MovTarjetaData.cerrarRecurrente(fecha, detalle);
         }
     }
 }
