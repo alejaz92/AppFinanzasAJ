@@ -20,6 +20,7 @@ namespace AppFinanzasAJ.Negocio
         public string MONEDATEXT;
         public string CLASEMOVTEXT;
         public string CUENTATEXT;
+
     }
 
     public class MovimientoLogic
@@ -69,6 +70,15 @@ namespace AppFinanzasAJ.Negocio
             return MovimientoData.getTopMovimientos();
         }
 
+        public string getTotalEnPesos()
+        {
+            return MovimientoData.getTotalEnPesos();
+        }
+        public string getTotalEnDolares()
+        {
+            return MovimientoData.getTotalEnDolares();
+        }
+
         //public void insertMovBSF()
         //{
         //    //consulta devoluciones actuales
@@ -76,7 +86,7 @@ namespace AppFinanzasAJ.Negocio
         //    decimal devActual = MovimientoData.getTotalDevBSF();
 
         //    //consulta montoMaximo
-            
+
 
         //    paramsBSFLogic paramsBSFLogic = new paramsBSFLogic();
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboTarjeta = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cboFecha = new System.Windows.Forms.DateTimePicker();
@@ -271,14 +271,17 @@
             // 
             // lstErogaciones
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lstErogaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.lstErogaciones.AllowUserToAddRows = false;
+            this.lstErogaciones.AllowUserToDeleteRows = false;
+            this.lstErogaciones.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lstErogaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.lstErogaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lstErogaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fecha,
@@ -289,9 +292,15 @@
             this.montoCuota,
             this.valPesos});
             this.lstErogaciones.Location = new System.Drawing.Point(376, 60);
+            this.lstErogaciones.MultiSelect = false;
             this.lstErogaciones.Name = "lstErogaciones";
+            this.lstErogaciones.ReadOnly = true;
             this.lstErogaciones.RowHeadersWidth = 51;
             this.lstErogaciones.RowTemplate.Height = 24;
+            this.lstErogaciones.ShowCellErrors = false;
+            this.lstErogaciones.ShowCellToolTips = false;
+            this.lstErogaciones.ShowEditingIcon = false;
+            this.lstErogaciones.ShowRowErrors = false;
             this.lstErogaciones.Size = new System.Drawing.Size(947, 429);
             this.lstErogaciones.TabIndex = 20;
             this.lstErogaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -301,6 +310,7 @@
             this.fecha.HeaderText = "Fecha";
             this.fecha.MinimumWidth = 6;
             this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
             this.fecha.Width = 80;
             // 
             // tipoMov
@@ -308,6 +318,7 @@
             this.tipoMov.HeaderText = "Tipo Mov.";
             this.tipoMov.MinimumWidth = 6;
             this.tipoMov.Name = "tipoMov";
+            this.tipoMov.ReadOnly = true;
             this.tipoMov.Width = 125;
             // 
             // detalle
@@ -315,6 +326,7 @@
             this.detalle.HeaderText = "Detalle";
             this.detalle.MinimumWidth = 6;
             this.detalle.Name = "detalle";
+            this.detalle.ReadOnly = true;
             this.detalle.Width = 125;
             // 
             // nombre
@@ -322,6 +334,7 @@
             this.nombre.HeaderText = "Moneda";
             this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             this.nombre.Width = 125;
             // 
             // cuota
@@ -329,6 +342,7 @@
             this.cuota.HeaderText = "Cuota";
             this.cuota.MinimumWidth = 6;
             this.cuota.Name = "cuota";
+            this.cuota.ReadOnly = true;
             this.cuota.Width = 75;
             // 
             // montoCuota
@@ -336,6 +350,7 @@
             this.montoCuota.HeaderText = "Monto Cuota";
             this.montoCuota.MinimumWidth = 6;
             this.montoCuota.Name = "montoCuota";
+            this.montoCuota.ReadOnly = true;
             this.montoCuota.Width = 60;
             // 
             // valPesos
@@ -343,6 +358,7 @@
             this.valPesos.HeaderText = "Valor Pesos";
             this.valPesos.MinimumWidth = 6;
             this.valPesos.Name = "valPesos";
+            this.valPesos.ReadOnly = true;
             this.valPesos.Width = 60;
             // 
             // frmPagoTarjeta

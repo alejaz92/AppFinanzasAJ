@@ -11,13 +11,15 @@ namespace AppFinanzasAJ.Data
 {
     public class CuentaAdapter : Adapter
     {
-        public List<Cuenta> Getcuentas()
+        public List<Cuenta> Getcuentas(string tipoCta)
         {
             List<Cuenta> ListaCuentas = new List<Cuenta>();
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT NOMBRE FROM Dim_Cuenta;";
+                string consulta_select = "SELECT NOMBRE FROM Dim_Cuenta WHERE tipo = '@TIPO';";
+
+                consulta_select = consulta_select.Replace("@TIPO", tipoCta);
 
                 SqlCommand cmdCuentas = null;
 
@@ -50,16 +52,17 @@ namespace AppFinanzasAJ.Data
             return ListaCuentas;
         }
 
-        public void insertCuenta(string nombreVar)
+        public void insertCuenta(string nombreVar, string tipoVar)
         {
             try
             {
                 this.OpenConnection();
                 SqlCommand insertSQL = null;
 
-                string sqlQuery = "INSERT INTO Dim_Cuenta (nombre) VALUES ('@NOMBRE')";
+                string sqlQuery = "INSERT INTO Dim_Cuenta (nombre, tipo) VALUES ('@NOMBRE', '@TIPO')";
 
                 sqlQuery = sqlQuery.Replace("@NOMBRE", nombreVar);
+                sqlQuery = sqlQuery.Replace("@TIPO", tipoVar);
 
                 insertSQL = new SqlCommand(sqlQuery, SqlConn);
 

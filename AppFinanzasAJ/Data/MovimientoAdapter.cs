@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -150,6 +151,95 @@ namespace AppFinanzasAJ.Data
 
         }
 
+        public string getTotalEnPesos()
+        {
+            string total;
+            try
+            {
+                
+                this.OpenConnection();
+                SqlCommand cmdMovimientos = null;
+
+                string sqlQuery = "SELECT   CAST(SUM( CASE WHEN A.simbolo = 'ARS' THEN  MONTO ELSE MONTO * VALORCOTIZ END ) AS DECIMAL(18,2))  tot" +
+                    " FROM [dbo].[Fact_Movimiento] FM INNER JOIN [dbo].[Dim_Activo] A ON FM.idActivo = A.idActivo" +
+                    " LEFT JOIN ( SELECT 1 ID, VALOR VALORCOTIZ FROM [dbo].[Cotizacion_Activo] WHERE tipo = 'BLUE'" +
+                    " AND CAST(fechaHora AS DATE) = CAST((SELECT MAX(fechaHora) FROM Cotizacion_Activo) AS DATE) ) T1 " +
+                    " ON T1.ID = 1";
+
+                cmdMovimientos = new SqlCommand(sqlQuery, SqlConn);
+
+                SqlDataReader reader = cmdMovimientos.ExecuteReader();
+                decimal tot = 0;
+
+                while (reader.Read())
+                {
+                    tot = (decimal)reader["tot"];
+                   
+                }
+                
+                total = tot.ToString("N", new CultureInfo("es-AR"));
+
+                reader.Close();
+
+                
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Exception Excepcion = new Exception("Error al recuperar saldo en Pesos", Ex);
+                throw Excepcion;
+            }
+            
+            return total;
+        }
+
+
+        public string getTotalEnDolares()
+        {
+            string total;
+            try
+            {
+
+                this.OpenConnection();
+                SqlCommand cmdMovimientos = null;
+
+                string sqlQuery = "SELECT   CAST(SUM( CASE WHEN A.simbolo = 'USD' THEN  MONTO ELSE MONTO / VALORCOTIZ END ) AS DECIMAL(18,2))  tot" +
+                    " FROM [dbo].[Fact_Movimiento] FM INNER JOIN [dbo].[Dim_Activo] A ON FM.idActivo = A.idActivo" +
+                    " LEFT JOIN ( SELECT 1 ID, VALOR VALORCOTIZ FROM [dbo].[Cotizacion_Activo] WHERE tipo = 'BLUE'" +
+                    " AND CAST(fechaHora AS DATE) = CAST((SELECT MAX(fechaHora) FROM Cotizacion_Activo) AS DATE) ) T1 " +
+                    " ON T1.ID = 1";
+
+                cmdMovimientos = new SqlCommand(sqlQuery, SqlConn);
+
+                SqlDataReader reader = cmdMovimientos.ExecuteReader();
+                decimal tot = 0;
+
+                while (reader.Read())
+                {
+                    tot = (decimal)reader["tot"];
+
+                }
+
+                total = tot.ToString("N", new CultureInfo("es-AR"));
+
+                reader.Close();
+
+
+
+
+
+            }
+            catch (Exception Ex)
+            {
+                Exception Excepcion = new Exception("Error al recuperar saldo en Pesos", Ex);
+                throw Excepcion;
+            }
+
+            return total;
+        }
+
         public decimal getTotalDevBSF(string dateFrom, string dateTo)
         {
             try
@@ -157,6 +247,7 @@ namespace AppFinanzasAJ.Data
                 decimal total;
                 this.OpenConnection();
                 SqlCommand cmdMovimientos = null;
+
 
                 string sqlQuery = "SELECT COALESCE(SUM(monto), 0) totalDev FROM [dbo].[Fact_Movimiento]" +
                     "WHERE tipoMovimiento = 'devBSF' AND MONTH(fecha) = MONTH(DATEADD(HOUR, -3,GETDATE())) AND YEAR(FECHA) = " +

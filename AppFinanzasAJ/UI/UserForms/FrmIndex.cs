@@ -115,5 +115,10 @@ namespace AppFinanzasAJ
             loadTabla();
         }
 
+        private void btnSaldos_Click(object sender, EventArgs e)
+        {
+            frmSaldosGeneral frmSaldosGeneral = new frmSaldosGeneral();
+            frmSaldosGeneral.ShowDialog();
+        }
     }
 }

@@ -29,6 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpUltima = new System.Windows.Forms.GroupBox();
+            this.cboAnio2 = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboMes2 = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboAnio1 = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboMes1 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboCuotas = new System.Windows.Forms.NumericUpDown();
             this.cboClaseMov = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboTarjeta = new System.Windows.Forms.ComboBox();
@@ -44,29 +56,17 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radRecurrente = new System.Windows.Forms.RadioButton();
             this.radUnico = new System.Windows.Forms.RadioButton();
-            this.cboCuotas = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cboMes1 = new System.Windows.Forms.NumericUpDown();
-            this.cboAnio1 = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.grpUltima = new System.Windows.Forms.GroupBox();
-            this.cboAnio2 = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cboMes2 = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCuotas)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboMes1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboAnio1)).BeginInit();
             this.grpUltima.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboAnio2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboMes2)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboAnio1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboMes1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCuotas)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -96,6 +96,192 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo Movimiento";
+            // 
+            // grpUltima
+            // 
+            this.grpUltima.Controls.Add(this.cboAnio2);
+            this.grpUltima.Controls.Add(this.label10);
+            this.grpUltima.Controls.Add(this.cboMes2);
+            this.grpUltima.Controls.Add(this.label11);
+            this.grpUltima.Location = new System.Drawing.Point(24, 400);
+            this.grpUltima.Name = "grpUltima";
+            this.grpUltima.Size = new System.Drawing.Size(437, 58);
+            this.grpUltima.TabIndex = 26;
+            this.grpUltima.TabStop = false;
+            this.grpUltima.Text = "Ultima Cuota";
+            // 
+            // cboAnio2
+            // 
+            this.cboAnio2.Location = new System.Drawing.Point(302, 27);
+            this.cboAnio2.Maximum = new decimal(new int[] {
+            2300,
+            0,
+            0,
+            0});
+            this.cboAnio2.Name = "cboAnio2";
+            this.cboAnio2.Size = new System.Drawing.Size(115, 22);
+            this.cboAnio2.TabIndex = 24;
+            this.cboAnio2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cboAnio2.Value = new decimal(new int[] {
+            2024,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(250, 29);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 16);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Año";
+            // 
+            // cboMes2
+            // 
+            this.cboMes2.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.cboMes2.Location = new System.Drawing.Point(59, 27);
+            this.cboMes2.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.cboMes2.Name = "cboMes2";
+            this.cboMes2.Size = new System.Drawing.Size(115, 22);
+            this.cboMes2.TabIndex = 23;
+            this.cboMes2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(7, 29);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(33, 16);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Mes";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cboAnio1);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.cboMes1);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Location = new System.Drawing.Point(24, 336);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(437, 58);
+            this.groupBox3.TabIndex = 22;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Primer Cuota";
+            // 
+            // cboAnio1
+            // 
+            this.cboAnio1.Location = new System.Drawing.Point(302, 27);
+            this.cboAnio1.Maximum = new decimal(new int[] {
+            2030,
+            0,
+            0,
+            0});
+            this.cboAnio1.Minimum = new decimal(new int[] {
+            2022,
+            0,
+            0,
+            0});
+            this.cboAnio1.Name = "cboAnio1";
+            this.cboAnio1.Size = new System.Drawing.Size(115, 22);
+            this.cboAnio1.TabIndex = 24;
+            this.cboAnio1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cboAnio1.Value = new decimal(new int[] {
+            2024,
+            0,
+            0,
+            0});
+            this.cboAnio1.ValueChanged += new System.EventHandler(this.cboAnio1_ValueChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(250, 29);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(31, 16);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Año";
+            // 
+            // cboMes1
+            // 
+            this.cboMes1.Location = new System.Drawing.Point(59, 27);
+            this.cboMes1.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.cboMes1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.cboMes1.Name = "cboMes1";
+            this.cboMes1.Size = new System.Drawing.Size(115, 22);
+            this.cboMes1.TabIndex = 23;
+            this.cboMes1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.cboMes1.ValueChanged += new System.EventHandler(this.cboMes1_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 29);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 16);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Mes";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 302);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 16);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Cuotas";
+            // 
+            // cboCuotas
+            // 
+            this.cboCuotas.Location = new System.Drawing.Point(141, 296);
+            this.cboCuotas.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.cboCuotas.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.cboCuotas.Name = "cboCuotas";
+            this.cboCuotas.Size = new System.Drawing.Size(320, 22);
+            this.cboCuotas.TabIndex = 20;
+            this.cboCuotas.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.cboCuotas.ValueChanged += new System.EventHandler(this.cboCuotas_ValueChanged);
             // 
             // cboClaseMov
             // 
@@ -253,192 +439,6 @@
             this.radUnico.UseVisualStyleBackColor = true;
             this.radUnico.CheckedChanged += new System.EventHandler(this.radUnico_CheckedChanged);
             // 
-            // cboCuotas
-            // 
-            this.cboCuotas.Location = new System.Drawing.Point(141, 296);
-            this.cboCuotas.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.cboCuotas.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.cboCuotas.Name = "cboCuotas";
-            this.cboCuotas.Size = new System.Drawing.Size(320, 22);
-            this.cboCuotas.TabIndex = 20;
-            this.cboCuotas.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.cboCuotas.ValueChanged += new System.EventHandler(this.cboCuotas_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 302);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 16);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Cuotas";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.cboAnio1);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.cboMes1);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Location = new System.Drawing.Point(24, 336);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(437, 58);
-            this.groupBox3.TabIndex = 22;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Primer Cuota";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 29);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 16);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Mes";
-            // 
-            // cboMes1
-            // 
-            this.cboMes1.Location = new System.Drawing.Point(59, 27);
-            this.cboMes1.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.cboMes1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.cboMes1.Name = "cboMes1";
-            this.cboMes1.Size = new System.Drawing.Size(115, 22);
-            this.cboMes1.TabIndex = 23;
-            this.cboMes1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.cboMes1.ValueChanged += new System.EventHandler(this.cboMes1_ValueChanged);
-            // 
-            // cboAnio1
-            // 
-            this.cboAnio1.Location = new System.Drawing.Point(302, 27);
-            this.cboAnio1.Maximum = new decimal(new int[] {
-            2030,
-            0,
-            0,
-            0});
-            this.cboAnio1.Minimum = new decimal(new int[] {
-            2022,
-            0,
-            0,
-            0});
-            this.cboAnio1.Name = "cboAnio1";
-            this.cboAnio1.Size = new System.Drawing.Size(115, 22);
-            this.cboAnio1.TabIndex = 24;
-            this.cboAnio1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.cboAnio1.Value = new decimal(new int[] {
-            2024,
-            0,
-            0,
-            0});
-            this.cboAnio1.ValueChanged += new System.EventHandler(this.cboAnio1_ValueChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(250, 29);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 16);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Año";
-            // 
-            // grpUltima
-            // 
-            this.grpUltima.Controls.Add(this.cboAnio2);
-            this.grpUltima.Controls.Add(this.label10);
-            this.grpUltima.Controls.Add(this.cboMes2);
-            this.grpUltima.Controls.Add(this.label11);
-            this.grpUltima.Location = new System.Drawing.Point(24, 400);
-            this.grpUltima.Name = "grpUltima";
-            this.grpUltima.Size = new System.Drawing.Size(437, 58);
-            this.grpUltima.TabIndex = 26;
-            this.grpUltima.TabStop = false;
-            this.grpUltima.Text = "Ultima Cuota";
-            // 
-            // cboAnio2
-            // 
-            this.cboAnio2.Location = new System.Drawing.Point(302, 27);
-            this.cboAnio2.Maximum = new decimal(new int[] {
-            2300,
-            0,
-            0,
-            0});
-            this.cboAnio2.Name = "cboAnio2";
-            this.cboAnio2.Size = new System.Drawing.Size(115, 22);
-            this.cboAnio2.TabIndex = 24;
-            this.cboAnio2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.cboAnio2.Value = new decimal(new int[] {
-            2024,
-            0,
-            0,
-            0});
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(250, 29);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 16);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Año";
-            // 
-            // cboMes2
-            // 
-            this.cboMes2.Increment = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.cboMes2.Location = new System.Drawing.Point(59, 27);
-            this.cboMes2.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.cboMes2.Name = "cboMes2";
-            this.cboMes2.Size = new System.Drawing.Size(115, 22);
-            this.cboMes2.TabIndex = 23;
-            this.cboMes2.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 29);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(33, 16);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Mes";
-            // 
             // btnInsertar
             // 
             this.btnInsertar.Enabled = false;
@@ -477,17 +477,17 @@
             this.Load += new System.EventHandler(this.frmRegistrarMovTarjeta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCuotas)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboMes1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboAnio1)).EndInit();
             this.grpUltima.ResumeLayout(false);
             this.grpUltima.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboAnio2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboMes2)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboAnio1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboMes1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCuotas)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }

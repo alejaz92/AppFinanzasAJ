@@ -61,7 +61,7 @@ namespace AppFinanzasAJ.UI.UserForms
             }
 
             CuentaLogic cuentaLogic = new CuentaLogic();
-            List<Cuenta> listaCuentas = cuentaLogic.GetCuentas();
+            List<Cuenta> listaCuentas = cuentaLogic.GetCuentas("Dinero");
 
             foreach (Cuenta cuenta in listaCuentas)
             {

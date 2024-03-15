@@ -48,10 +48,13 @@
             this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnSaldos = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgUltMovs)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -60,11 +63,11 @@
             this.groupBox1.Controls.Add(this.btnClaseMovimiento);
             this.groupBox1.Controls.Add(this.btnActivos);
             this.groupBox1.Controls.Add(this.btnCuentas);
-            this.groupBox1.Location = new System.Drawing.Point(11, 297);
+            this.groupBox1.Location = new System.Drawing.Point(11, 379);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(244, 202);
+            this.groupBox1.Size = new System.Drawing.Size(244, 174);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos Clave";
@@ -133,7 +136,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(244, 279);
+            this.groupBox2.Size = new System.Drawing.Size(244, 243);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Movimientos";
@@ -189,7 +192,7 @@
             this.dgUltMovs.ShowCellToolTips = false;
             this.dgUltMovs.ShowEditingIcon = false;
             this.dgUltMovs.ShowRowErrors = false;
-            this.dgUltMovs.Size = new System.Drawing.Size(1086, 559);
+            this.dgUltMovs.Size = new System.Drawing.Size(1105, 559);
             this.dgUltMovs.TabIndex = 5;
             // 
             // fecha
@@ -246,7 +249,7 @@
             this.monto.MinimumWidth = 6;
             this.monto.Name = "monto";
             this.monto.ReadOnly = true;
-            this.monto.Width = 80;
+            this.monto.Width = 75;
             // 
             // label1
             // 
@@ -257,11 +260,34 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Ultimos Movimientos";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSaldos);
+            this.groupBox3.Location = new System.Drawing.Point(11, 261);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(237, 111);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Saldos";
+            // 
+            // btnSaldos
+            // 
+            this.btnSaldos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSaldos.Location = new System.Drawing.Point(9, 22);
+            this.btnSaldos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSaldos.Name = "btnSaldos";
+            this.btnSaldos.Size = new System.Drawing.Size(213, 33);
+            this.btnSaldos.TabIndex = 3;
+            this.btnSaldos.Text = "Saldos";
+            this.btnSaldos.UseVisualStyleBackColor = true;
+            this.btnSaldos.Click += new System.EventHandler(this.btnSaldos_Click);
+            // 
             // FrmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 607);
+            this.ClientSize = new System.Drawing.Size(1380, 607);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgUltMovs);
             this.Controls.Add(this.btnSalir);
@@ -276,6 +302,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgUltMovs)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,6 +329,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnSaldos;
     }
 }
 
