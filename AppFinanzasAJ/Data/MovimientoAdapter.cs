@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AppFinanzasAJ.Negocio;
 
 
@@ -20,13 +21,13 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT  TOP 20 MO.fecha, MO.tipoMovimiento TIPO,CM.descripcion CLASEMOV "
+                string consulta_select = "SELECT  TOP 20 F.fecha, MO.tipoMovimiento TIPO,CM.descripcion CLASEMOV "
                     + ", MO.comentario , "
                     + "C.nombre CUENTA, A.nombre MONEDA, CAST(MO.monto AS decimal (18,2)) MONTO FROM [dbo].[Fact_Movimiento] "
                     + "MO "
                     + "INNER JOIN [dbo].[Dim_ClaseMovimiento] CM ON CM.idClaseMovimiento = MO.idClaseMovimiento "
                     + "INNER JOIN Dim_Activo A ON A.idActivo = MO.idActivo INNER JOIN Dim_Cuenta C ON C.idCuenta = "
-                    + "MO.idCuenta ORDER BY fecha DESC , idMovimiento DESC";
+                    + "MO.idCuenta INNER JOIN Dim_Tiempo F ON MO.IDFECHA = F.IDFECHA ORDER BY MO.IDfecha DESC , idMovimiento DESC";
 
                 SqlCommand cmdMovimientos = null;
 
@@ -121,15 +122,15 @@ namespace AppFinanzasAJ.Data
                 string sqlCuenta = "(SELECT DISTINCT idCuenta FROM Dim_Cuenta WHERE nombre = '" + ctaMovimiento + "')";
                 string sqlMoneda = "(SELECT DISTINCT idActivo FROM Dim_Activo WHERE nombre = '" + monedaMovimiento + "')";
                 string sqlClase = "(SELECT DISTINCT idClaseMovimiento FROM Dim_ClaseMovimiento WHERE descripcion = '" + claseMovimiento + "')";
-
+                string sqlFecha = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fechaMovimiento + "')";
 
                 string sqlQuery = "INSERT INTO Fact_Movimiento (idMovimiento, idCuenta, idActivo, fecha, tipoMovimiento, idClaseMovimiento, comentario, monto) "
-                    + "VALUES ('@IDMOVIMIENTO', @IDCUENTA, @IDMONEDA, '@FECHA', '@IDTIPOMOVIMIENTO', @IDCLASEMOVIMIENTO, '@COMENTARIO', @MONTO)";
+                    + "VALUES ('@IDMOVIMIENTO', @IDCUENTA, @IDMONEDA, @FECHA, '@IDTIPOMOVIMIENTO', @IDCLASEMOVIMIENTO, '@COMENTARIO', @MONTO)";
 
                 sqlQuery = sqlQuery.Replace("@IDMOVIMIENTO", idMovimiento);
                 sqlQuery = sqlQuery.Replace("@IDCUENTA", sqlCuenta);
                 sqlQuery = sqlQuery.Replace("@IDMONEDA", sqlMoneda);
-                sqlQuery = sqlQuery.Replace("@FECHA", fechaMovimiento);
+                sqlQuery = sqlQuery.Replace("@FECHA", sqlFecha);
                 sqlQuery = sqlQuery.Replace("@IDTIPOMOVIMIENTO", tipoMovimiento);
                 sqlQuery = sqlQuery.Replace("@IDCLASEMOVIMIENTO", sqlClase);
                 sqlQuery = sqlQuery.Replace("@COMENTARIO", detalleMovimiento);
@@ -163,7 +164,7 @@ namespace AppFinanzasAJ.Data
                 string sqlQuery = "SELECT   CAST(SUM( CASE WHEN A.simbolo = 'ARS' THEN  MONTO ELSE MONTO * VALORCOTIZ END ) AS DECIMAL(18,2))  tot" +
                     " FROM [dbo].[Fact_Movimiento] FM INNER JOIN [dbo].[Dim_Activo] A ON FM.idActivo = A.idActivo" +
                     " LEFT JOIN ( SELECT 1 ID, VALOR VALORCOTIZ FROM [dbo].[Cotizacion_Activo] WHERE tipo = 'BLUE'" +
-                    " AND CAST(fechaHora AS DATE) = CAST((SELECT MAX(fechaHora) FROM Cotizacion_Activo) AS DATE) ) T1 " +
+                    " AND IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo) ) T1 " +
                     " ON T1.ID = 1";
 
                 cmdMovimientos = new SqlCommand(sqlQuery, SqlConn);
@@ -208,7 +209,7 @@ namespace AppFinanzasAJ.Data
                 string sqlQuery = "SELECT   CAST(SUM( CASE WHEN A.simbolo = 'USD' THEN  MONTO ELSE MONTO / VALORCOTIZ END ) AS DECIMAL(18,2))  tot" +
                     " FROM [dbo].[Fact_Movimiento] FM INNER JOIN [dbo].[Dim_Activo] A ON FM.idActivo = A.idActivo" +
                     " LEFT JOIN ( SELECT 1 ID, VALOR VALORCOTIZ FROM [dbo].[Cotizacion_Activo] WHERE tipo = 'BLUE'" +
-                    " AND CAST(fechaHora AS DATE) = CAST((SELECT MAX(fechaHora) FROM Cotizacion_Activo) AS DATE) ) T1 " +
+                    " AND IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo)) T1 " +
                     " ON T1.ID = 1";
 
                 cmdMovimientos = new SqlCommand(sqlQuery, SqlConn);

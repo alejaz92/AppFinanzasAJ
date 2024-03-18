@@ -25,7 +25,7 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT COUNT(*) CONTADOR FROM Cotizacion_Activo WHERE CAST(fechaHora AS DATE) = CAST(DATEADD(HOUR, -3,GETDATE()) AS DATE);";
+                string consulta_select = "SELECT COUNT(*) CONTADOR FROM Cotizacion_Activo WHERE IDFECHA = CAST(FORMAT(DATEADD(HOUR, -3,GETDATE()), 'yyyyMMdd') AS INTEGER);";
 
                 SqlCommand cmdContador = null;
 
@@ -183,7 +183,7 @@ namespace AppFinanzasAJ.Data
                         tipo = "NA";
                     }
 
-                    string sqlQuery = "INSERT INTO Cotizacion_Activo (idActivoBase, idActivoComp, fechaHora, tipo, valor) VALUES ('@ID1', '@ID2', DATEADD(HOUR, -3,GETDATE()), '@TIPO', @VALOR)";
+                    string sqlQuery = "INSERT INTO Cotizacion_Activo (idActivoBase, idActivoComp, idFecha, tipo, valor) VALUES ('@ID1', '@ID2', CAST(FORMAT(DATEADD(HOUR, -3,GETDATE()), 'yyyyMMdd') AS INTEGER), '@TIPO', @VALOR)";
 
                     sqlQuery = sqlQuery.Replace("@ID1", idMon1);
                     sqlQuery = sqlQuery.Replace("@ID2", idMon2);
@@ -224,7 +224,7 @@ namespace AppFinanzasAJ.Data
                 string consulta_select = "SELECT VALOR FROM Cotizacion_Activo CA INNER JOIN Dim_Activo A1 "
                     + " ON CA.IDACTIVOBASE = A1.IDACTIVO INNER JOIN Dim_Activo A2 ON CA.IDACTIVOCOMP = "
                     + "A2.IDACTIVO WHERE A1.SIMBOLO = 'USD' AND A2.SIMBOLO = 'ARS' AND CA.TIPO = 'TARJETA' "
-                    + " AND FECHAHORA = (SELECT MAX(FECHAHORA) FROM Cotizacion_Activo)";
+                    + " AND IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo)";
 
                 SqlCommand cmdCotizacion = null;
 

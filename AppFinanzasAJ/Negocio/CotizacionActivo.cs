@@ -11,7 +11,7 @@ namespace AppFinanzasAJ.Negocio
     {
         public int IDACTIVOBASE;
         public int IDACTIVOCOMP;
-        public DateTime FECHAHORA;
+        public int FECHA;
         public decimal VALOR;
 
 

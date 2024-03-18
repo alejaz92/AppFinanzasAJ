@@ -12,6 +12,7 @@ namespace AppFinanzasAJ.Negocio
         public int IDMOVIMIENTO;
         public int IDCUENTA;
         public int IDMONEDA;
+        public int IDFECHA;
         public DateTime FECHA;
         public string TIPOMOVIMIENTO;
         public int IDCLASEMOVIMIENTO;
