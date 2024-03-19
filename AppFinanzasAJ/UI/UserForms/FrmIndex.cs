@@ -120,5 +120,11 @@ namespace AppFinanzasAJ
             frmSaldosGeneral frmSaldosGeneral = new frmSaldosGeneral();
             frmSaldosGeneral.ShowDialog();
         }
+
+        private void btnInversiones_Click(object sender, EventArgs e)
+        {
+            frmAdminInversiones frmAInv = new frmAdminInversiones();
+            frmAInv.ShowDialog();
+        }
     }
 }

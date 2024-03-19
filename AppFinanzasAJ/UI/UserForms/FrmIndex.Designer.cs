@@ -50,6 +50,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSaldos = new System.Windows.Forms.Button();
+            this.btnInversiones = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -130,6 +131,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnInversiones);
             this.groupBox2.Controls.Add(this.btnMovTarjeta);
             this.groupBox2.Controls.Add(this.btnRegMovimiento);
             this.groupBox2.Location = new System.Drawing.Point(11, 10);
@@ -282,6 +284,18 @@
             this.btnSaldos.UseVisualStyleBackColor = true;
             this.btnSaldos.Click += new System.EventHandler(this.btnSaldos_Click);
             // 
+            // btnInversiones
+            // 
+            this.btnInversiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnInversiones.Location = new System.Drawing.Point(8, 107);
+            this.btnInversiones.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInversiones.Name = "btnInversiones";
+            this.btnInversiones.Size = new System.Drawing.Size(213, 33);
+            this.btnInversiones.TabIndex = 3;
+            this.btnInversiones.Text = "Inversiones";
+            this.btnInversiones.UseVisualStyleBackColor = true;
+            this.btnInversiones.Click += new System.EventHandler(this.btnInversiones_Click);
+            // 
             // FrmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -331,6 +345,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnSaldos;
+        private System.Windows.Forms.Button btnInversiones;
     }
 }
 

@@ -92,6 +92,12 @@
     <Compile Include="UI\UserForms\frmAdminClaseMovimiento.Designer.cs">
       <DependentUpon>frmAdminClaseMovimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForms\frmAdminInversiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmAdminInversiones.Designer.cs">
+      <DependentUpon>frmAdminInversiones.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserForms\frmAdminTarjetas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     <EmbeddedResource Include="UI\UserForms\frmAdminClaseMovimiento.resx">
       <DependentUpon>frmAdminClaseMovimiento.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmAdminInversiones.resx">
+      <DependentUpon>frmAdminInversiones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmAdminTarjetas.resx">
       <DependentUpon>frmAdminTarjetas.cs</DependentUpon>
