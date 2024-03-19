@@ -18,11 +18,13 @@ namespace AppFinanzasAJ.Data
                 this.OpenConnection();
                 SqlCommand insertSQL = null;
 
-                string sqlQuery = "INSERT INTO Pago_Tarjeta (idTarjeta, fechaMes) VALUES (@TARJETA, '@FECHA')";
+                string sqlFecha = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fecha + "')";
+
+                string sqlQuery = "INSERT INTO Pago_Tarjeta (idTarjeta, fechaMes) VALUES (@TARJETA, @FECHA)";
 
 
                 sqlQuery = sqlQuery.Replace("@TARJETA", "(SELECT idTarjeta FROM Dim_Tarjeta WHERE nombre = '" + tarjeta + "')");
-                sqlQuery = sqlQuery.Replace("@FECHA", fecha);
+                sqlQuery = sqlQuery.Replace("@FECHA", sqlFecha);
 
                 insertSQL = new SqlCommand(sqlQuery, SqlConn);
 

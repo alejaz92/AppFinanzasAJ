@@ -23,20 +23,22 @@ namespace AppFinanzasAJ.Data
                 string sqlTarjeta  = "(SELECT DISTINCT idTarjeta FROM Dim_Tarjeta WHERE nombre = '" + tarjeta + "')";
                 string sqlMoneda = "(SELECT DISTINCT idActivo FROM Dim_Activo WHERE nombre = '" + monedaMovimiento + "')";
                 string sqlClase = "(SELECT DISTINCT idClaseMovimiento FROM Dim_ClaseMovimiento WHERE descripcion = '" + claseMovimiento + "')";
-
+                string sqlFechaMov = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fechaMov + "')";
+                string sqlFecha1 = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fecha1 + "')";
+                string sqlFecha2 = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fecha2 + "')";
 
                 string sqlQuery = "INSERT INTO Fact_Tarjetas (fechaMov, detalle, idTarjeta, idClaseMovimiento, idActivo, montoTotal, cuotas, mesPrimerCuota, mesUltimaCuota, repite, montoCuota) "
-                    + "VALUES ('@FECHAMOV', '@DETALLE', @IDTARJETA, @IDCLASEMOVIMIENTO, @IDMONEDA, @MONTOTOTAL, @CUOTAS, '@FECHA1', '@FECHA2', '@REPITE', @MONTOTOTAL / @CUOTAS)";
+                    + "VALUES (@FECHAMOV, '@DETALLE', @IDTARJETA, @IDCLASEMOVIMIENTO, @IDMONEDA, @MONTOTOTAL, @CUOTAS, '@FECHA1', '@FECHA2', '@REPITE', @MONTOTOTAL / @CUOTAS)";
 
-                sqlQuery = sqlQuery.Replace("@FECHAMOV", fechaMov);
+                sqlQuery = sqlQuery.Replace("@FECHAMOV", sqlFechaMov);
                 sqlQuery = sqlQuery.Replace("@DETALLE", detalle);
                 sqlQuery = sqlQuery.Replace("@IDTARJETA", sqlTarjeta);
                 sqlQuery = sqlQuery.Replace("@IDCLASEMOVIMIENTO", sqlClase);
                 sqlQuery = sqlQuery.Replace("@IDMONEDA", sqlMoneda);
                 sqlQuery = sqlQuery.Replace("@MONTOTOTAL", montototal);
                 sqlQuery = sqlQuery.Replace("@CUOTAS", cuotas);
-                sqlQuery = sqlQuery.Replace("@FECHA1", fecha1);
-                sqlQuery = sqlQuery.Replace("@FECHA2", fecha2);
+                sqlQuery = sqlQuery.Replace("@FECHA1", sqlFecha1);
+                sqlQuery = sqlQuery.Replace("@FECHA2", sqlFecha2);
                 sqlQuery = sqlQuery.Replace("@REPITE", repite);
 
 
@@ -63,13 +65,15 @@ namespace AppFinanzasAJ.Data
                 this.OpenConnection();
                 SqlCommand insertSQL = null;
 
+                string sqlFechaMov = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fechaMov + "')";
+
                 string sqlQuery = "INSERT INTO Fact_Tarjetas (FECHAMOV, DETALLE, IDTARJETA, IDCLASEMOVIMIENTO, "
                     + " IDACTIVO, MONTOTOTAL, CUOTAS, MESPRIMERCUOTA, MESULTIMACUOTA, REPITE, MONTOCUOTA) " +
-                    "SELECT '@FECHANUEVA', DETALLE, IDTARJETA, IDCLASEMOVIMIENTO, IDACTIVO, @MONTONUEVO, 1, " +
-                    "DATEADD(MONTH, 1, CAST(LEFT(@FECHANUEVA, 7) + '01' AS DATETIME)), '1900-01-01' , REPITE, @MONTONUEVO FROM " +
-                    "Fact_Tarjetas WHERE FECHAMOV = '@FECHAMOV' AND DETALLE = '@DETALLE' AND REPITE = 'SI';";
+                    "SELECT CAST(FORMAT(@FECHANUEVA, 'yyyyMMdd') as int), DETALLE, IDTARJETA, IDCLASEMOVIMIENTO, IDACTIVO, @MONTONUEVO, 1, " +
+                    "CAST(FORMAT(DATEADD(MONTH, 1, CAST(LEFT(@FECHANUEVA, 7) + '01' AS DATETIME)), 'yyyyMMdd') AS INT), 0 , REPITE, @MONTONUEVO FROM " +
+                    "Fact_Tarjetas WHERE FECHAMOV = @FECHAMOV AND DETALLE = '@DETALLE' AND REPITE = 'SI';";
 
-                sqlQuery = sqlQuery.Replace("@FECHAMOV", fechaMov);
+                sqlQuery = sqlQuery.Replace("@FECHAMOV", sqlFechaMov);
                 sqlQuery = sqlQuery.Replace("@DETALLE", detalle);
                 sqlQuery = sqlQuery.Replace("@MONTONUEVO", montoNuevo.Replace(",", "."));
                 sqlQuery = sqlQuery.Replace("@FECHANUEVA", fechaNueva);
@@ -96,7 +100,7 @@ namespace AppFinanzasAJ.Data
                 this.OpenConnection();
                 SqlCommand insertSQL = null;
 
-                string sqlQuery = "UPDATE Fact_Tarjetas SET repite = 'Cerrado' WHERE FECHAMOV = '@FECHAMOV' AND DETALLE = '@DETALLE' AND REPITE = 'SI';";
+                string sqlQuery = "UPDATE Fact_Tarjetas SET repite = 'Cerrado' WHERE FECHAMOV = CAST(FORMAT(@FECHAMOV, 'yyyyMMdd') AS INT) AND DETALLE = '@DETALLE' AND REPITE = 'SI';";
 
                 sqlQuery = sqlQuery.Replace("@FECHAMOV", fechaMov);
                 sqlQuery = sqlQuery.Replace("@DETALLE", detalle);
@@ -123,13 +127,15 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT fechaMov, T.nombre NOMBRETARJ, CM.descripcion TIPOMOV, FT.detalle, CASE WHEN FT.repite"
+                string consulta_select = "SELECT T1.FECHA FECHAMOV, T.nombre NOMBRETARJ, CM.descripcion TIPOMOV, FT.detalle, CASE WHEN FT.repite"
                     +"= 'SI' THEN 'Recurrente' ELSE CAST(FT.cuotas AS varchar) END CUOTATEXTO ,A.nombre NOMBREMON, FT.montoTotal,"
-                    +"FT.mesPrimerCuota, CASE WHEN repite = 'SI' THEN 'NA' ELSE CAST( FT.mesUltimaCuota AS VARCHAR) "
+                    +"T2.FECHA MESPRIMERCUOTA, CASE WHEN repite = 'SI' THEN 'NA' ELSE CAST( T3.FECHA AS VARCHAR) "
                     + "END ULTCUOTATEXTO, FT.montoCuota FROM [dbo].[Fact_Tarjetas] FT INNER JOIN Dim_Tarjeta T ON "
                     + "T.idTarjeta = FT.idTarjeta INNER JOIN Dim_ClaseMovimiento CM ON CM.idClaseMovimiento = "
-                    +"ft.idClaseMovimiento INNER JOIN Dim_Activo A ON A.idActivo = FT.idActivo WHERE FT.repite = "
-                    +"'SI' OR DATEADD(month ,1, FT.mesUltimaCuota) >= GETDATE();";
+                    +"ft.idClaseMovimiento INNER JOIN Dim_Activo A ON A.idActivo = FT.idActivo INNER JOIN Dim_Tiempo T1 ON " +
+                    "T1.IDFECHA = FT.FECHAMOV INNER JOIN Dim_Tiempo T2 ON T2.IDFECHA = FT.MESPRIMERCUOTA INNER JOIN " +
+                    "Dim_Tiempo T3 ON T3.IDFECHA = FT.MESULTIMACUOTA WHERE FT.repite = "
+                    + "'SI' OR DATEADD(month ,1, T3.FECHA) >= GETDATE();";
 
 
 
@@ -180,16 +186,18 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT T.fechaMov,CM.descripcion ,T.detalle, A.nombre,CASE WHEN "
-                    + "T.repite = 'SI' THEN 'Recurrente' ELSE CAST(DATEDIFF(MONTH, T.MESPRIMERCUOTA, '@FECHA')+ 1 AS"
+                string consulta_select = "SELECT T1.FECHA FECHAMOV,CM.descripcion ,T.detalle, A.nombre,CASE WHEN "
+                    + "T.repite = 'SI' THEN 'Recurrente' ELSE CAST(DATEDIFF(MONTH, T1.FECHA, '@FECHA')+ 1 AS"
                     + " VARCHAR) + '/' + cast(T.cuotas as varchar) END Cuota,T.montoCuota, CASE WHEN A.NOMBRE = "
                     + "'Peso Argentino' THEN T.montoCuota ELSE (T.montoCuota * CA.VALOR)  END valPesos FROM "
                     + "[dbo].[Fact_Tarjetas] T INNER JOIN [dbo].[Dim_Activo] A ON T.idActivo = A.idActivo INNER "
                     + "JOIN [dbo].[Cotizacion_Activo] CA ON CA.idActivoComp = (SELECT idActivo FROM Dim_Activo "
-                    + "WHERE simbolo = 'ARS') AND CA. TIPO = 'TARJETA' AND CA.fechaHora = (SELECT MAX(fechaHora) "
+                    + "WHERE simbolo = 'ARS') AND CA. TIPO = 'TARJETA' AND CA.IDFECHA = (SELECT MAX(IDFECHA) "
                     + "FROM Cotizacion_Activo) INNER JOIN Dim_ClaseMovimiento CM ON CM.idClaseMovimiento = T.idClaseMovimiento INNER JOIN [dbo].[Dim_Tarjeta] TA ON T.idTarjeta = TA.idTarjeta "
-                    + " LEFT JOIN Pago_Tarjeta PT ON PT.idTarjeta = T.idTarjeta AND PT.fechaMes = '@FECHA' WHERE  "
-                    + "(T.mesUltimaCuota >= '@FECHA' OR T.repite = 'SI') AND T.mesPrimerCuota <= '@FECHA' AND "
+                    + " LEFT JOIN Pago_Tarjeta PT ON PT.idTarjeta = T.idTarjeta AND FORMAT(PT.fechaMes, 'yyyy-MM-dd') = '@FECHA' INNER JOIN Dim_Tiempo T1 ON " +
+                    "  T1.IDFECHA = T.FECHAMOV INNER JOIN Dim_Tiempo T2 ON T2.IDFECHA = T.MESPRIMERCUOTA INNER JOIN " +
+                    "   Dim_Tiempo T3 ON T3.IDFECHA = T.MESULTIMACUOTA WHERE  "
+                    + "(T3.FECHA >= '@FECHA' OR T.repite = 'SI') AND T2.FECHA <= '@FECHA' AND "
                     +" TA.nombre = '@TARJETA' AND PT.idTarjeta IS NULL;";
 
                 consulta_select = consulta_select.Replace("@TARJETA", tarjeta);
