@@ -10,7 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using AppFinanzasAJ.Negocio;
+using HtmlAgilityPack;
 using Newtonsoft.Json.Linq;
+using ScrapySharp.Extensions;
 
 
 namespace AppFinanzasAJ.Data
@@ -68,7 +70,38 @@ namespace AppFinanzasAJ.Data
             return checkDatosDia;
         }
         
-        public string checkCotizacion(string par)
+        public string checkCotizacionBolsa(string simbolo, string tipo)
+        {
+            string cotiz = "0";
+
+            if (tipo == "FCI")
+            {
+                HtmlWeb oWeb = new HtmlWeb();
+                HtmlDocument doc = oWeb.Load("https://bullmarketbrokers.com/Information/FundData?ticker=" + simbolo);
+
+                //HtmlNode Body = doc.DocumentNode.CssSelect("body").First();
+                //string sBody = Body.InnerHtml;
+
+                
+
+
+                var nodo1 = doc.DocumentNode.CssSelect(".table-hover").Last();
+
+                var nodo2 = nodo1.CssSelect("tr").First();
+
+                var nodo3 = nodo2.CssSelect("td").Last();
+
+
+                cotiz = nodo3.InnerHtml;
+
+                cotiz = cotiz.Replace(",", ".");
+
+                
+            }
+
+            return cotiz;
+        }
+        public string checkCotizacion(string par, int contCotiz)
         {
             string cotiz;
             string url;
@@ -82,7 +115,21 @@ namespace AppFinanzasAJ.Data
             }
             else
             {
-                string apiKey = "FDYDOY4B5LA56344";
+                string apiKey;
+                if (contCotiz <= 25)
+                {
+                    apiKey = "VMFI7FT36ZW14QLB";
+                }
+                else if (contCotiz <= 50)
+                {
+                    apiKey = "FDYDOY4B5LA56344";
+                }
+                else
+                {
+                    apiKey = "CUKHS041RB7MRZSV";
+                }
+
+                
                 string currencyPair = par;
 
                 url = $"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency={currencyPair.Substring(0,3)}&to_currency={currencyPair.Substring(3)}&apikey={apiKey}";
@@ -157,19 +204,27 @@ namespace AppFinanzasAJ.Data
 
         }
 
-        public void insertCotizaciones(string idMon1, string idMon2, string par)
+        public void insertCotizaciones(string idMon1, string idMon2, string par, int contCotiz, string tipoActivo)
         {
             try
             {
-
-                string valorCotiz = checkCotizacion(par);
+                string valorCotiz;
+                if(tipoActivo == "FCI")
+                {
+                    valorCotiz = checkCotizacionBolsa(par, tipoActivo);
+                }
+                else
+                {
+                    valorCotiz = checkCotizacion(par, contCotiz);
+                }
+                
                 string tipo;
 
                 if (valorCotiz != null)
                 {
                     this.OpenConnection();
                     SqlCommand insertSQL = null;
-                    
+
                     if (par == "USDARST")
                     {
                         tipo = "TARJETA";
@@ -188,9 +243,20 @@ namespace AppFinanzasAJ.Data
                     sqlQuery = sqlQuery.Replace("@ID1", idMon1);
                     sqlQuery = sqlQuery.Replace("@ID2", idMon2);
                     sqlQuery = sqlQuery.Replace("@TIPO", tipo);
-                    sqlQuery = sqlQuery.Replace("@VALOR", valorCotiz.Replace(",","."));
 
-         
+                    if (tipoActivo != "FCI")
+                    {
+                        sqlQuery = sqlQuery.Replace("@VALOR", valorCotiz.Replace(",", "."));
+                    }
+                    else
+                    {
+                        string sqlValor = valorCotiz + "/ (SELECT VALOR FROM Cotizacion_Activo WHERE TIPO = 'BLUE' AND " +
+                            "IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo WHERE TIPO = 'BLUE'))";
+                        sqlQuery = sqlQuery.Replace("@VALOR", sqlValor);
+                    }
+                    
+
+
 
                     insertSQL = new SqlCommand(sqlQuery, SqlConn);
 

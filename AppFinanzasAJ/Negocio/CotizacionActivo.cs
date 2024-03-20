@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using HtmlAgilityPack;
+
 namespace AppFinanzasAJ.Negocio
 {
     public class CotizacionActivo
@@ -44,24 +46,35 @@ namespace AppFinanzasAJ.Negocio
 
                 Activo mon1 = listaActivos.First();
 
-
+                int contCotiz = 0;
 
                 foreach(Activo mon2 in listaActivos )
                 {
                     if (mon1.IDACTIVO != mon2.IDACTIVO)
                     {
+
                         string par = mon1.SIMBOLO + mon2.SIMBOLO;
 
-                        if (par == "USDARS")
+                        if (mon2.TIPOACTIVO != "FCI")
                         {
-                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "B");
-                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "T");
+                            if (par == "USDARS")
+                            {
+                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "B", 0,mon2.TIPOACTIVO );
+                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "T", 0, mon2.TIPOACTIVO);
+                            }
+                            else
+                            {
+                                contCotiz++;
+                                par = mon2.SIMBOLO + mon1.SIMBOLO;
+                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
+                            }
                         }
                         else
                         {
-                            par = mon2.SIMBOLO + mon1.SIMBOLO;
-                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par);
+                            par = mon2.SIMBOLO;
+                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
                         }
+                        
                         
                     }
                 }
@@ -76,7 +89,7 @@ namespace AppFinanzasAJ.Negocio
             return CotizacionMonedaData.getCotizDolarTarjeta();
         }
 
-
+ 
 
     }
 }

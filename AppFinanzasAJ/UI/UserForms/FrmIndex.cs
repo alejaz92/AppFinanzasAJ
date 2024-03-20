@@ -61,6 +61,7 @@ namespace AppFinanzasAJ
             CotizacionActivoLogic cotizacionActivoLogic = new CotizacionActivoLogic();
 
             cotizacionActivoLogic.updateCotizacionesGral();
+
             //loadTabla();
         }
 

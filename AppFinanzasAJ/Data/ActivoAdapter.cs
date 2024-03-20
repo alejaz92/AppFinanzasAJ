@@ -321,7 +321,8 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT idActivo, simbolo FROM Dim_Activo ORDER BY ESREFERENCIA DESC;";
+                string consulta_select = "SELECT idActivo, simbolo, TA.nombre TIPOACTIVO FROM Dim_Activo A INNER JOIN Dim_Tipo_Activo " +
+                    "TA ON TA.idTipoActivo = A.idtipoactivo ORDER BY ESREFERENCIA DESC;";
 
                 SqlCommand cmdActivos = null;
 
@@ -335,6 +336,7 @@ namespace AppFinanzasAJ.Data
                     Activo activo = new Activo();
                     activo.IDACTIVO = (int)reader["idActivo"];
                     activo.SIMBOLO = (string)reader["simbolo"];
+                    activo.TIPOACTIVO = (string)reader["TIPOACTIVO"];
                     ListaActivos.Add(activo);
                 }
 

@@ -15,6 +15,7 @@ namespace AppFinanzasAJ.Negocio
         public string NOMBRE;
         public bool ESPRINCIPAL;
         public bool ESREFERENCIACOTIZ;
+        public string TIPOACTIVO;
     }
 
     public class ActivoLogic
