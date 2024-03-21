@@ -70,7 +70,7 @@ namespace AppFinanzasAJ.Data
             return checkDatosDia;
         }
         
-        public string checkCotizacionBolsa(string simbolo, string tipo)
+        public string checkCotizacionScrap(string simbolo, string tipo)
         {
             string cotiz = "0";
 
@@ -82,8 +82,8 @@ namespace AppFinanzasAJ.Data
                 //HtmlNode Body = doc.DocumentNode.CssSelect("body").First();
                 //string sBody = Body.InnerHtml;
 
-                
-
+                //Console.WriteLine("https://bullmarketbrokers.com/Information/FundData?ticker=" + simbolo);
+       
 
                 var nodo1 = doc.DocumentNode.CssSelect(".table-hover").Last();
 
@@ -98,6 +98,34 @@ namespace AppFinanzasAJ.Data
 
                 
             }
+            else if (tipo == "Bonos")
+            {
+                HtmlWeb oWeb = new HtmlWeb();
+                HtmlDocument doc = oWeb.Load("https://www.allaria.com.ar/Bono/Especie/" + simbolo);
+
+                HtmlNode Body = doc.DocumentNode.CssSelect("body").First();
+                //string sBody = Body.InnerHtml;
+
+                var nodo1 = doc.DocumentNode.CssSelect(".float-left").First();
+                cotiz = nodo1.InnerHtml;
+                char delimiter = ',';
+                string[] substrings  = cotiz.Split(delimiter);
+                cotiz = substrings[0].Replace("$", "").Replace(".", "");
+            }
+            else if (tipo == "CEDEAR" || tipo == "Accion Argentina")
+            {
+                HtmlWeb oWeb = new HtmlWeb();
+                HtmlDocument doc = oWeb.Load("https://www.cohen.com.ar/Bursatil/Especie/" + simbolo);
+
+                //HtmlNode Body = doc.DocumentNode.CssSelect("body").First();
+                //string sBody = Body.InnerHtml;
+
+                var nodo1 = doc.DocumentNode.CssSelect(".tdCotizEspecie").First();
+                cotiz = nodo1.InnerHtml;
+                cotiz = cotiz.Replace(".", "").Replace("$", "").Replace(" ", "");
+                cotiz = cotiz.Replace(",", ".");
+            }
+
 
             return cotiz;
         }
@@ -112,6 +140,10 @@ namespace AppFinanzasAJ.Data
             else if (par == "USDARST")
             {
                 url = $"https://dolarapi.com/v1/dolares/tarjeta";
+            }
+            else if (par == "USDARSBO")
+            {
+                url = $"https://dolarapi.com/v1/dolares/bolsa";
             }
             else
             {
@@ -154,7 +186,7 @@ namespace AppFinanzasAJ.Data
                     }
                     else
                     {
-                        if (par == "USDARST" | par == "USDARSB")
+                        if (par == "USDARST" | par == "USDARSB" | par == "USDARSBO")
                         {
 
                             decimal cot1 = (Convert.ToDecimal(data["venta"]));
@@ -209,13 +241,13 @@ namespace AppFinanzasAJ.Data
             try
             {
                 string valorCotiz;
-                if(tipoActivo == "FCI")
+                if(tipoActivo == "Moneda" || tipoActivo == "Criptomoneda")
                 {
-                    valorCotiz = checkCotizacionBolsa(par, tipoActivo);
+                    valorCotiz = checkCotizacion(par, contCotiz);                    
                 }
                 else
                 {
-                    valorCotiz = checkCotizacion(par, contCotiz);
+                    valorCotiz = checkCotizacionScrap(par, tipoActivo);
                 }
                 
                 string tipo;
@@ -233,6 +265,10 @@ namespace AppFinanzasAJ.Data
                     {
                         tipo = "BLUE";
                     }
+                    else if (par == "USDARSBO")
+                    {
+                        tipo = "BOLSA";
+                    }
                     else
                     {
                         tipo = "NA";
@@ -244,15 +280,17 @@ namespace AppFinanzasAJ.Data
                     sqlQuery = sqlQuery.Replace("@ID2", idMon2);
                     sqlQuery = sqlQuery.Replace("@TIPO", tipo);
 
-                    if (tipoActivo != "FCI")
+                    if (tipoActivo == "FCI" || tipoActivo == "Bonos" || tipoActivo == "CEDEAR" || 
+                        tipoActivo == "Accion Argentina")
                     {
-                        sqlQuery = sqlQuery.Replace("@VALOR", valorCotiz.Replace(",", "."));
+                        string sqlValor = valorCotiz + "/ (SELECT VALOR FROM Cotizacion_Activo WHERE TIPO = 'BLUE' AND " +
+                            "IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo WHERE TIPO = 'BOLSA'))";
+                        sqlQuery = sqlQuery.Replace("@VALOR", sqlValor);
+                        
                     }
                     else
                     {
-                        string sqlValor = valorCotiz + "/ (SELECT VALOR FROM Cotizacion_Activo WHERE TIPO = 'BLUE' AND " +
-                            "IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo WHERE TIPO = 'BLUE'))";
-                        sqlQuery = sqlQuery.Replace("@VALOR", sqlValor);
+                        sqlQuery = sqlQuery.Replace("@VALOR", valorCotiz.Replace(",", "."));
                     }
                     
 

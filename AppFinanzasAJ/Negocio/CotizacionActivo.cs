@@ -55,25 +55,29 @@ namespace AppFinanzasAJ.Negocio
 
                         string par = mon1.SIMBOLO + mon2.SIMBOLO;
 
-                        if (mon2.TIPOACTIVO != "FCI")
-                        {
-                            if (par == "USDARS")
-                            {
-                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "B", 0,mon2.TIPOACTIVO );
-                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "T", 0, mon2.TIPOACTIVO);
-                            }
-                            else
-                            {
-                                contCotiz++;
-                                par = mon2.SIMBOLO + mon1.SIMBOLO;
-                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
-                            }
-                        }
-                        else
+                        if (mon2.TIPOACTIVO != "Moneda" && mon2.TIPOACTIVO != "Criptomoneda")
                         {
                             par = mon2.SIMBOLO;
                             CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
+                            
                         }
+
+                        else
+                        {
+                            if (par == "USDARS")
+                            {
+                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "B", 0, mon2.TIPOACTIVO);
+                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "BO", 0, mon2.TIPOACTIVO);
+                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "T", 0, mon2.TIPOACTIVO);
+                            }
+                            else 
+                            {
+                                contCotiz++;
+                                par = mon2.SIMBOLO + mon1.SIMBOLO;
+                               CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
+                            }
+                        }
+
                         
                         
                     }

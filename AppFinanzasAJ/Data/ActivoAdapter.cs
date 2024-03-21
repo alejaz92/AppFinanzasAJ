@@ -322,7 +322,7 @@ namespace AppFinanzasAJ.Data
             {
                 OpenConnection();
                 string consulta_select = "SELECT idActivo, simbolo, TA.nombre TIPOACTIVO FROM Dim_Activo A INNER JOIN Dim_Tipo_Activo " +
-                    "TA ON TA.idTipoActivo = A.idtipoactivo ORDER BY ESREFERENCIA DESC;";
+                    "TA ON TA.idTipoActivo = A.idtipoactivo ORDER BY ESREFERENCIA DESC, IDACTIVO ASC;";
 
                 SqlCommand cmdActivos = null;
 
