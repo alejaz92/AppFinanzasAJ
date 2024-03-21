@@ -64,7 +64,7 @@
             this.Controls.Add(this.btnTransformacion);
             this.Controls.Add(this.btnCerrar);
             this.Name = "frmAdminInversiones";
-            this.Text = "frmAdminInversiones";
+            this.Text = "Gestion de Inversiones";
             this.ResumeLayout(false);
 
         }

@@ -24,7 +24,8 @@ namespace AppFinanzasAJ.UI.UserForms
 
         private void btnTransformacion_Click(object sender, EventArgs e)
         {
-
+            frmRegistrarTransformacion frmRegistrarTransformacion = new frmRegistrarTransformacion();
+            frmRegistrarTransformacion.ShowDialog();
         }
     }
 }
