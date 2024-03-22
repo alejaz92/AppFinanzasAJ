@@ -243,7 +243,14 @@ namespace AppFinanzasAJ.Data
                 string valorCotiz;
                 if(tipoActivo == "Moneda" || tipoActivo == "Criptomoneda")
                 {
-                    valorCotiz = checkCotizacion(par, contCotiz);                    
+                    if(par == "USDUSDT" || par == "USDDAI")
+                    {
+                        valorCotiz = "1";
+                    }
+                    else
+                    {
+                        valorCotiz = checkCotizacion(par, contCotiz);
+                    }                                  
                 }
                 else
                 {

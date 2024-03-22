@@ -31,33 +31,33 @@
             this.btnInsertar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.radBolsa = new System.Windows.Forms.RadioButton();
+            this.radCrypto = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cboActivoEgreso = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.cboCtaEgreso = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cboCtaIngreso = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtMontoEgreso = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboActivoIngreso = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboCtaIngreso = new System.Windows.Forms.ComboBox();
+            this.txtMontoIngreso = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.cboFecha = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radEgreso = new System.Windows.Forms.RadioButton();
             this.radIngreso = new System.Windows.Forms.RadioButton();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.radBolsa = new System.Windows.Forms.RadioButton();
-            this.radCrypto = new System.Windows.Forms.RadioButton();
-            this.cboActivoEgreso = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cboActivoIngreso = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnInsertar
@@ -102,6 +102,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo Movimiento";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.radBolsa);
+            this.groupBox5.Controls.Add(this.radCrypto);
+            this.groupBox5.Location = new System.Drawing.Point(625, 46);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(300, 57);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Tipo Inversion";
+            // 
+            // radBolsa
+            // 
+            this.radBolsa.AutoSize = true;
+            this.radBolsa.Location = new System.Drawing.Point(189, 23);
+            this.radBolsa.Margin = new System.Windows.Forms.Padding(4);
+            this.radBolsa.Name = "radBolsa";
+            this.radBolsa.Size = new System.Drawing.Size(63, 20);
+            this.radBolsa.TabIndex = 1;
+            this.radBolsa.TabStop = true;
+            this.radBolsa.Text = "Bolsa";
+            this.radBolsa.UseVisualStyleBackColor = true;
+            this.radBolsa.CheckedChanged += new System.EventHandler(this.radBolsa_CheckedChanged);
+            // 
+            // radCrypto
+            // 
+            this.radCrypto.AutoSize = true;
+            this.radCrypto.Location = new System.Drawing.Point(8, 23);
+            this.radCrypto.Margin = new System.Windows.Forms.Padding(4);
+            this.radCrypto.Name = "radCrypto";
+            this.radCrypto.Size = new System.Drawing.Size(67, 20);
+            this.radCrypto.TabIndex = 0;
+            this.radCrypto.TabStop = true;
+            this.radCrypto.Text = "Crypto";
+            this.radCrypto.UseVisualStyleBackColor = true;
+            this.radCrypto.CheckedChanged += new System.EventHandler(this.radCrypto_CheckedChanged);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cboActivoEgreso);
@@ -118,6 +157,26 @@
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Egreso";
+            // 
+            // cboActivoEgreso
+            // 
+            this.cboActivoEgreso.FormattingEnabled = true;
+            this.cboActivoEgreso.Location = new System.Drawing.Point(126, 58);
+            this.cboActivoEgreso.Margin = new System.Windows.Forms.Padding(4);
+            this.cboActivoEgreso.Name = "cboActivoEgreso";
+            this.cboActivoEgreso.Size = new System.Drawing.Size(323, 24);
+            this.cboActivoEgreso.TabIndex = 11;
+            this.cboActivoEgreso.SelectedIndexChanged += new System.EventHandler(this.cboActivoEgreso_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 68);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 16);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Activo Egreso";
             // 
             // cboCtaEgreso
             // 
@@ -139,42 +198,6 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Cuenta Egreso";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.cboActivoIngreso);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.cboCtaIngreso);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(553, 131);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(460, 120);
-            this.groupBox3.TabIndex = 14;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ingreso";
-            // 
-            // cboCtaIngreso
-            // 
-            this.cboCtaIngreso.FormattingEnabled = true;
-            this.cboCtaIngreso.Location = new System.Drawing.Point(128, 15);
-            this.cboCtaIngreso.Margin = new System.Windows.Forms.Padding(4);
-            this.cboCtaIngreso.Name = "cboCtaIngreso";
-            this.cboCtaIngreso.Size = new System.Drawing.Size(323, 24);
-            this.cboCtaIngreso.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 25);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Cuenta Ingreso";
-            // 
             // txtMontoEgreso
             // 
             this.txtMontoEgreso.Location = new System.Drawing.Point(126, 100);
@@ -182,6 +205,7 @@
             this.txtMontoEgreso.Name = "txtMontoEgreso";
             this.txtMontoEgreso.Size = new System.Drawing.Size(321, 22);
             this.txtMontoEgreso.TabIndex = 10;
+            this.txtMontoEgreso.TextChanged += new System.EventHandler(this.txtMontoEgreso_TextChanged);
             // 
             // label5
             // 
@@ -193,6 +217,82 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Monto Egreso";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cboActivoIngreso);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.cboCtaIngreso);
+            this.groupBox3.Controls.Add(this.txtMontoIngreso);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Location = new System.Drawing.Point(553, 131);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(460, 120);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Ingreso";
+            // 
+            // cboActivoIngreso
+            // 
+            this.cboActivoIngreso.FormattingEnabled = true;
+            this.cboActivoIngreso.Location = new System.Drawing.Point(128, 48);
+            this.cboActivoIngreso.Margin = new System.Windows.Forms.Padding(4);
+            this.cboActivoIngreso.Name = "cboActivoIngreso";
+            this.cboActivoIngreso.Size = new System.Drawing.Size(323, 24);
+            this.cboActivoIngreso.TabIndex = 15;
+            this.cboActivoIngreso.SelectedIndexChanged += new System.EventHandler(this.cboActivoIngreso_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 58);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 16);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Activo Ingreso";
+            // 
+            // cboCtaIngreso
+            // 
+            this.cboCtaIngreso.FormattingEnabled = true;
+            this.cboCtaIngreso.Location = new System.Drawing.Point(128, 15);
+            this.cboCtaIngreso.Margin = new System.Windows.Forms.Padding(4);
+            this.cboCtaIngreso.Name = "cboCtaIngreso";
+            this.cboCtaIngreso.Size = new System.Drawing.Size(323, 24);
+            this.cboCtaIngreso.TabIndex = 5;
+            this.cboCtaIngreso.SelectedIndexChanged += new System.EventHandler(this.cboCtaIngreso_SelectedIndexChanged);
+            // 
+            // txtMontoIngreso
+            // 
+            this.txtMontoIngreso.Location = new System.Drawing.Point(128, 90);
+            this.txtMontoIngreso.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMontoIngreso.Name = "txtMontoIngreso";
+            this.txtMontoIngreso.Size = new System.Drawing.Size(321, 22);
+            this.txtMontoIngreso.TabIndex = 13;
+            this.txtMontoIngreso.TextChanged += new System.EventHandler(this.txtMontoIngreso_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 25);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Cuenta Ingreso";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 96);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 16);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Monto Ingreso";
+            // 
             // cboFecha
             // 
             this.cboFecha.Location = new System.Drawing.Point(151, 88);
@@ -200,6 +300,7 @@
             this.cboFecha.Name = "cboFecha";
             this.cboFecha.Size = new System.Drawing.Size(323, 22);
             this.cboFecha.TabIndex = 3;
+            this.cboFecha.ValueChanged += new System.EventHandler(this.cboFecha_ValueChanged);
             // 
             // label1
             // 
@@ -250,101 +351,6 @@
             this.radIngreso.UseVisualStyleBackColor = true;
             this.radIngreso.CheckedChanged += new System.EventHandler(this.radIngreso_CheckedChanged);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.radBolsa);
-            this.groupBox5.Controls.Add(this.radCrypto);
-            this.groupBox5.Location = new System.Drawing.Point(625, 46);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox5.Size = new System.Drawing.Size(300, 57);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Tipo Inversion";
-            // 
-            // radBolsa
-            // 
-            this.radBolsa.AutoSize = true;
-            this.radBolsa.Location = new System.Drawing.Point(189, 23);
-            this.radBolsa.Margin = new System.Windows.Forms.Padding(4);
-            this.radBolsa.Name = "radBolsa";
-            this.radBolsa.Size = new System.Drawing.Size(63, 20);
-            this.radBolsa.TabIndex = 1;
-            this.radBolsa.TabStop = true;
-            this.radBolsa.Text = "Bolsa";
-            this.radBolsa.UseVisualStyleBackColor = true;
-            this.radBolsa.CheckedChanged += new System.EventHandler(this.radBolsa_CheckedChanged);
-            // 
-            // radCrypto
-            // 
-            this.radCrypto.AutoSize = true;
-            this.radCrypto.Location = new System.Drawing.Point(8, 23);
-            this.radCrypto.Margin = new System.Windows.Forms.Padding(4);
-            this.radCrypto.Name = "radCrypto";
-            this.radCrypto.Size = new System.Drawing.Size(67, 20);
-            this.radCrypto.TabIndex = 0;
-            this.radCrypto.TabStop = true;
-            this.radCrypto.Text = "Crypto";
-            this.radCrypto.UseVisualStyleBackColor = true;
-            this.radCrypto.CheckedChanged += new System.EventHandler(this.radCrypto_CheckedChanged);
-            // 
-            // cboActivoEgreso
-            // 
-            this.cboActivoEgreso.FormattingEnabled = true;
-            this.cboActivoEgreso.Location = new System.Drawing.Point(126, 58);
-            this.cboActivoEgreso.Margin = new System.Windows.Forms.Padding(4);
-            this.cboActivoEgreso.Name = "cboActivoEgreso";
-            this.cboActivoEgreso.Size = new System.Drawing.Size(323, 24);
-            this.cboActivoEgreso.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 68);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 16);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Activo Egreso";
-            // 
-            // cboActivoIngreso
-            // 
-            this.cboActivoIngreso.FormattingEnabled = true;
-            this.cboActivoIngreso.Location = new System.Drawing.Point(128, 48);
-            this.cboActivoIngreso.Margin = new System.Windows.Forms.Padding(4);
-            this.cboActivoIngreso.Name = "cboActivoIngreso";
-            this.cboActivoIngreso.Size = new System.Drawing.Size(323, 24);
-            this.cboActivoIngreso.TabIndex = 15;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 58);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 16);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Activo Ingreso";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(128, 90);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(321, 22);
-            this.textBox1.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 96);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 16);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Monto Ingreso";
-            // 
             // frmRegistrarTransformacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -358,14 +364,14 @@
             this.Load += new System.EventHandler(this.frmRegistrarTransformacion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -395,7 +401,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboActivoIngreso;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMontoIngreso;
         private System.Windows.Forms.Label label6;
     }
 }

@@ -100,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\InversionAdapter.cs" />
     <Compile Include="Data\PagoTarjetaAdapter.cs" />
     <Compile Include="Data\TipoActivoAdapter.cs" />
     <Compile Include="Data\Adapter.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Data\MovimientoAdapter.cs" />
     <Compile Include="Data\ActivoAdapter.cs" />
     <Compile Include="Data\CuentaAdapter.cs" />
+    <Compile Include="Negocio\Inversion.cs" />
     <Compile Include="Negocio\PagoTarjeta.cs" />
     <Compile Include="Negocio\TipoActivo.cs" />
     <Compile Include="Negocio\ClaseMovimiento.cs" />

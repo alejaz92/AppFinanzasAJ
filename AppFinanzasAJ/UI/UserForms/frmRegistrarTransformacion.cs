@@ -161,21 +161,25 @@ namespace AppFinanzasAJ.UI.UserForms
         private void radIngreso_CheckedChanged(object sender, EventArgs e)
         {
             updateCombos();
+            checkEnabled();
         }
 
         private void radEgreso_CheckedChanged(object sender, EventArgs e)
         {
             updateCombos();
+            checkEnabled();
         }
 
         private void radCrypto_CheckedChanged(object sender, EventArgs e)
         {
             updateCombos();
+            checkEnabled();
         }
 
         private void radBolsa_CheckedChanged(object sender, EventArgs e)
         {
             updateCombos();
+            checkEnabled();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -185,12 +189,97 @@ namespace AppFinanzasAJ.UI.UserForms
 
         private void cboCtaEgreso_SelectedIndexChanged(object sender, EventArgs e)
         {
-                                                                                                                                                                                                                                                                                                                                                                 
+            checkEnabled();                                                                                                                                                                                                                                                                                                                                                  
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            
+            if (radCrypto.Checked)
+            {
+                if (radIngreso.Checked)
+                {
+                    // insertar activos en tabla inversiones y restar activos dinero de fact movimientos
+
+                    MovimientoLogic movimientoLogic = new MovimientoLogic();
+                    movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"),
+                        cboActivoEgreso.Text, "", "", cboCtaEgreso.Text, "Inversiones", "Compra de criptomoneda", 
+                        txtMontoEgreso.Text);
+
+
+
+                    // FALTA VER COMO INSERTAR EL PRECIO
+                    InversionLogic inversionLogic = new InversionLogic();
+                    inversionLogic.insertInversion(cboFecha.Value.ToString("yyyyMMdd"), "Ingreso", cboActivoIngreso.Text,
+                        cboCtaIngreso.Text, txtMontoIngreso.Text, "poner precio");
+               
+
+
+
+                }
+                else
+                {
+                    // insertar activos en tabla movimientos y restar activos dinero de fact inversiones
+
+                    MovimientoLogic movimientoLogic = new MovimientoLogic();
+                    movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"),
+                        cboActivoIngreso.Text,cboCtaIngreso.Text, , cboCtaEgreso.Text, "Inversiones", "Compra de criptomoneda",
+                        txtMontoEgreso.Text);
+                }
+            }
+            else
+            {
+                if (radIngreso.Checked)
+                {
+                    //hacer interacambio de acticvos hacia la cuenta del broker
+                }
+                else
+                {
+                    //hacer intercambio de activos desde la cuenta del broker
+                }
+            }
+        }
+
+        private void checkEnabled()
+        {
+            if (cboFecha.Text != "" && cboCtaEgreso.Text != "" && cboActivoEgreso.Text != "" && txtMontoEgreso.Text != ""
+                && cboCtaIngreso.Text != "" && cboActivoIngreso.Text != "" && txtMontoIngreso.Text != "")
+            {
+                btnInsertar.Enabled = true;
+            }
+            else
+            {
+                btnInsertar.Enabled = false;
+            }
+        }
+
+        private void cboFecha_ValueChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
+        }
+
+        private void cboActivoEgreso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
+        }
+
+        private void txtMontoEgreso_TextChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
+        }
+
+        private void cboCtaIngreso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
+        }
+
+        private void cboActivoIngreso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
+        }
+
+        private void txtMontoIngreso_TextChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
         }
     }
 }
