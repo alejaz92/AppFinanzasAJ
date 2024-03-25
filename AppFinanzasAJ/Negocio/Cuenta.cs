@@ -33,6 +33,10 @@ namespace AppFinanzasAJ.Negocio
         {
             return CuentaData.Getcuentas(tipoCta);
         }
+        public List<Cuenta> GetCuentasActivas(string tipoCta)
+        {
+            return CuentaData.GetcuentasActivas(tipoCta);
+        }
 
         public void insertCuenta(string nombreVar, string tipoVar)
         {

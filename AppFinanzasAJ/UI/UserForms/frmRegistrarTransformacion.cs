@@ -23,7 +23,7 @@ namespace AppFinanzasAJ.UI.UserForms
             
         }
 
-        private void updateCombos()
+        private void updateCombosCuenta()
         {
             cboActivoEgreso.Items.Clear();
             cboActivoIngreso.Items.Clear();
@@ -38,7 +38,7 @@ namespace AppFinanzasAJ.UI.UserForms
 
             if (radIngreso.Checked && radCrypto.Checked)
             {
-                ListaCuentas = cuentaLogic.GetCuentas("Dinero");
+                ListaCuentas = cuentaLogic.GetCuentasActivas("Dinero");
 
                 foreach (Cuenta cta in ListaCuentas)
                 {
@@ -76,7 +76,7 @@ namespace AppFinanzasAJ.UI.UserForms
             }
             else if(radIngreso.Checked && radBolsa.Checked)
             {
-                ListaCuentas = cuentaLogic.GetCuentas("Dinero");
+                ListaCuentas = cuentaLogic.GetCuentasActivas("Dinero");
 
                 foreach (Cuenta cta in ListaCuentas)
                 {
@@ -119,7 +119,7 @@ namespace AppFinanzasAJ.UI.UserForms
                     cboActivoIngreso.Items.Add(activo.NOMBRE.ToString());
                 }
 
-                ListaCuentas = cuentaLogic.GetCuentas("Crypto");
+                ListaCuentas = cuentaLogic.GetCuentasActivas("Crypto");
 
                 foreach (Cuenta cta in ListaCuentas)
                 {
@@ -155,7 +155,7 @@ namespace AppFinanzasAJ.UI.UserForms
                     cboActivoIngreso.Items.Add(activo.NOMBRE.ToString());
                 }
 
-                ListaCuentas = cuentaLogic.GetCuentas("Broker Bolsa");
+                ListaCuentas = cuentaLogic.GetCuentasActivas("Broker Bolsa");
 
                 foreach (Cuenta cta in ListaCuentas)
                 {
@@ -187,7 +187,7 @@ namespace AppFinanzasAJ.UI.UserForms
                 txtCotizIng.Enabled = true;
             }
             
-            updateCombos();
+            updateCombosCuenta();
             checkEnabled();
         }
 
@@ -206,7 +206,7 @@ namespace AppFinanzasAJ.UI.UserForms
                 txtCotizIng.Enabled = false;
             }
             
-            updateCombos();
+            updateCombosCuenta();
             checkEnabled();
         }
 
@@ -227,7 +227,7 @@ namespace AppFinanzasAJ.UI.UserForms
                 txtCotizIng.Enabled = true;
             }
 
-            updateCombos();
+            updateCombosCuenta();
             checkEnabled();
         }
 
@@ -239,7 +239,7 @@ namespace AppFinanzasAJ.UI.UserForms
             txtCotizIng.Enabled = false;
             cboActivoIngreso.Enabled = false;
             txtMontoIngreso.Enabled = false;    
-            updateCombos();
+            updateCombosCuenta();
             checkEnabled();
         }
 
