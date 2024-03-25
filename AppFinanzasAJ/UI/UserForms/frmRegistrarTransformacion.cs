@@ -65,6 +65,12 @@ namespace AppFinanzasAJ.UI.UserForms
                 {
                     cboActivoIngreso.Items.Add(activo.NOMBRE.ToString());
                 }
+                ListaActivos = activoLogic.GetActivos("Moneda");
+
+                foreach (Activo activo in ListaActivos)
+                {
+                    cboActivoIngreso.Items.Add(activo.NOMBRE.ToString());
+                }
 
 
             }
@@ -126,6 +132,12 @@ namespace AppFinanzasAJ.UI.UserForms
                 {
                     cboActivoEgreso.Items.Add(activo.NOMBRE.ToString());
                 }
+                ListaActivos = activoLogic.GetActivos("Moneda");
+
+                foreach (Activo activo in ListaActivos)
+                {
+                    cboActivoEgreso.Items.Add(activo.NOMBRE.ToString());
+                }
             }
             else if (radEgreso.Checked && radEgreso.Checked)
             {
@@ -160,24 +172,73 @@ namespace AppFinanzasAJ.UI.UserForms
 
         private void radIngreso_CheckedChanged(object sender, EventArgs e)
         {
+
+
+            if (radBolsa.Checked)
+            {
+                txtCotizEgr.Enabled = false;
+                txtCotizEgr.Text = "";
+                txtCotizIng.Enabled = false;
+            }
+            else
+            {
+                txtCotizEgr.Enabled = false;
+                txtCotizEgr.Text = "";
+                txtCotizIng.Enabled = true;
+            }
+            
             updateCombos();
             checkEnabled();
         }
 
         private void radEgreso_CheckedChanged(object sender, EventArgs e)
         {
+            if (radBolsa.Checked)
+            {
+                txtCotizEgr.Enabled = false;
+                txtCotizIng.Text = "";
+                txtCotizIng.Enabled = false;
+            }
+            else
+            {
+                txtCotizEgr.Enabled = true;
+                txtCotizIng.Text = "";
+                txtCotizIng.Enabled = false;
+            }
+            
             updateCombos();
             checkEnabled();
         }
 
         private void radCrypto_CheckedChanged(object sender, EventArgs e)
         {
+            cboActivoIngreso.Enabled = true;
+            txtMontoIngreso.Enabled = true;
+            if (radEgreso.Checked)
+            {
+                txtCotizEgr.Enabled = true;
+                txtCotizIng.Text = "";
+                txtCotizIng.Enabled = false;
+            }
+            else
+            {
+                txtCotizEgr.Enabled = false;
+                txtCotizEgr.Text = "";
+                txtCotizIng.Enabled = true;
+            }
+
             updateCombos();
             checkEnabled();
         }
 
         private void radBolsa_CheckedChanged(object sender, EventArgs e)
         {
+            txtCotizEgr.Enabled = false;
+            txtCotizEgr.Text = "";
+            txtCotizIng.Text = "";
+            txtCotizIng.Enabled = false;
+            cboActivoIngreso.Enabled = false;
+            txtMontoIngreso.Enabled = false;    
             updateCombos();
             checkEnabled();
         }
@@ -207,10 +268,10 @@ namespace AppFinanzasAJ.UI.UserForms
 
 
 
-                    // FALTA VER COMO INSERTAR EL PRECIO
+                    // insertar en tabla inversiones
                     InversionLogic inversionLogic = new InversionLogic();
                     inversionLogic.insertInversion(cboFecha.Value.ToString("yyyyMMdd"), "Ingreso", cboActivoIngreso.Text,
-                        cboCtaIngreso.Text, txtMontoIngreso.Text, "poner precio");
+                        cboCtaIngreso.Text, txtMontoIngreso.Text, txtCotizIng.Text);
                
 
 
@@ -221,35 +282,67 @@ namespace AppFinanzasAJ.UI.UserForms
                     // insertar activos en tabla movimientos y restar activos dinero de fact inversiones
 
                     MovimientoLogic movimientoLogic = new MovimientoLogic();
-                    movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"),
-                        cboActivoIngreso.Text,cboCtaIngreso.Text, , cboCtaEgreso.Text, "Inversiones", "Compra de criptomoneda",
-                        txtMontoEgreso.Text);
+                    movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"),
+                        cboActivoIngreso.Text,cboCtaIngreso.Text, "Ingreso Inversiones", cboCtaEgreso.Text, "" , "Venta de criptomoneda",
+                        txtMontoIngreso.Text);
+
+                    InversionLogic inversionLogic = new InversionLogic();
+                    inversionLogic.insertInversion(cboFecha.Value.ToString("yyyyMMdd"), "Egreso", cboActivoEgreso.Text,
+                        cboCtaEgreso.Text, txtMontoEgreso.Text, txtCotizEgr.Text);
                 }
             }
             else
             {
+                string detalle;
                 if (radIngreso.Checked)
                 {
-                    //hacer interacambio de acticvos hacia la cuenta del broker
+                    detalle = "Ingreso a Broker de Bolsa";
                 }
                 else
                 {
-                    //hacer intercambio de activos desde la cuenta del broker
+                    detalle = "Ingreso desde Broker de Bolsa";
                 }
+                MovimientoLogic movimientoLogic = new MovimientoLogic();
+                movimientoLogic.insertMovimientoRegular("Intercambio", cboFecha.Value.ToString("yyyyMMdd"), 
+                    cboActivoEgreso.Text, cboCtaIngreso.Text, null, cboCtaEgreso.Text, null, detalle,txtMontoEgreso.Text);
+              
             }
+
+            MessageBox.Show("Movimiento registrado");
+
+            Close();
         }
 
         private void checkEnabled()
         {
-            if (cboFecha.Text != "" && cboCtaEgreso.Text != "" && cboActivoEgreso.Text != "" && txtMontoEgreso.Text != ""
-                && cboCtaIngreso.Text != "" && cboActivoIngreso.Text != "" && txtMontoIngreso.Text != "")
+            if (radBolsa.Checked)
             {
-                btnInsertar.Enabled = true;
+                if (cboFecha.Text != "" && cboCtaEgreso.Text != "" && cboActivoEgreso.Text != "" && txtMontoEgreso.Text != ""
+               && cboCtaIngreso.Text != "" )
+
+                {
+                    btnInsertar.Enabled = true;
+                }
+                else
+                {
+                    btnInsertar.Enabled = false;
+                }
             }
             else
             {
-                btnInsertar.Enabled = false;
+               if (cboFecha.Text != "" && cboCtaEgreso.Text != "" && cboActivoEgreso.Text != "" && txtMontoEgreso.Text != ""
+               && cboCtaIngreso.Text != "" && cboActivoIngreso.Text != "" && (txtMontoIngreso.Text != "" || txtMontoEgreso.Text != "") && (txtCotizEgr.Text != "" ||
+               txtCotizIng.Text != ""))
+
+                {
+                    btnInsertar.Enabled = true;
+                }
+                else
+                {
+                    btnInsertar.Enabled = false;
+                }
             }
+           
         }
 
         private void cboFecha_ValueChanged(object sender, EventArgs e)
@@ -278,6 +371,16 @@ namespace AppFinanzasAJ.UI.UserForms
         }
 
         private void txtMontoIngreso_TextChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            checkEnabled();
+        }
+
+        private void txtCotizEgr_TextChanged(object sender, EventArgs e)
         {
             checkEnabled();
         }

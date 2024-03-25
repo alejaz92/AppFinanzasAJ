@@ -124,7 +124,7 @@ namespace AppFinanzasAJ.Data
                 string sqlClase = "(SELECT DISTINCT idClaseMovimiento FROM Dim_ClaseMovimiento WHERE descripcion = '" + claseMovimiento + "')";
                 string sqlFecha = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fechaMovimiento + "')";
 
-                string sqlQuery = "INSERT INTO Fact_Movimiento (idMovimiento, idCuenta, idActivo, fecha, tipoMovimiento, idClaseMovimiento, comentario, monto) "
+                string sqlQuery = "INSERT INTO Fact_Movimiento (idMovimiento, idCuenta, idActivo, IDFECHA, tipoMovimiento, idClaseMovimiento, comentario, monto) "
                     + "VALUES ('@IDMOVIMIENTO', @IDCUENTA, @IDMONEDA, @FECHA, '@IDTIPOMOVIMIENTO', @IDCLASEMOVIMIENTO, '@COMENTARIO', @MONTO)";
 
                 sqlQuery = sqlQuery.Replace("@IDMOVIMIENTO", idMovimiento);

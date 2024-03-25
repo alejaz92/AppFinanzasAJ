@@ -24,7 +24,7 @@ namespace AppFinanzasAJ.Data
                 string sqlCuenta = "(SELECT DISTINCT idCuenta FROM Dim_Cuenta WHERE nombre = '" + ctaMovimiento + "')";
                 string sqlActivo = "(SELECT DISTINCT idActivo FROM Dim_Activo WHERE nombre = '" + activoMovimiento + "')";
 
-                string sqlQuery = "INSERT INTO Fact_Inversion (idFecha, tipoMov, idActivo, idCuenta, cantidad, precio) "
+                string sqlQuery = "INSERT INTO Fact_Inversiones (idFecha, tipoMov, idActivo, idCuenta, cantidad, precio) "
                     + "VALUES (@FECHA,'@IDTIPOMOVIMIENTO',@IDACTIVO, @IDCUENTA, @CANTIDAD, @PRECIO)";
 
 

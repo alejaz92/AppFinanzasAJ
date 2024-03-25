@@ -9,12 +9,7 @@ namespace AppFinanzasAJ.Negocio
 {
     public class Inversion
     {
-        public int IDMOVIMIENTO;
-        public int IDFECHA;
-        public string TIPOMOV;
-        public int IDACTIVO;
-        public int IDCUENTA;
-        public decimal CANTIDAD;
+        public int IDINVERSION;
         public decimal PRECIO;
     }
 

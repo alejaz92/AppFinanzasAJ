@@ -53,6 +53,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radEgreso = new System.Windows.Forms.RadioButton();
             this.radIngreso = new System.Windows.Forms.RadioButton();
+            this.txtCotizIng = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCotizEgr = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -64,7 +68,7 @@
             // 
             this.btnInsertar.Enabled = false;
             this.btnInsertar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertar.Location = new System.Drawing.Point(697, 315);
+            this.btnInsertar.Location = new System.Drawing.Point(697, 369);
             this.btnInsertar.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(173, 59);
@@ -76,7 +80,7 @@
             // btnCerrar
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(878, 315);
+            this.btnCerrar.Location = new System.Drawing.Point(878, 369);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(173, 59);
@@ -97,7 +101,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1021, 284);
+            this.groupBox1.Size = new System.Drawing.Size(1021, 326);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo Movimiento";
@@ -143,6 +147,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.txtCotizEgr);
+            this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.cboActivoEgreso);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.cboCtaEgreso);
@@ -153,7 +159,7 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(460, 130);
+            this.groupBox4.Size = new System.Drawing.Size(460, 180);
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Egreso";
@@ -219,6 +225,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtCotizIng);
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.cboActivoIngreso);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.cboCtaIngreso);
@@ -229,7 +237,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(460, 120);
+            this.groupBox3.Size = new System.Drawing.Size(460, 170);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ingreso";
@@ -351,16 +359,56 @@
             this.radIngreso.UseVisualStyleBackColor = true;
             this.radIngreso.CheckedChanged += new System.EventHandler(this.radIngreso_CheckedChanged);
             // 
+            // txtCotizIng
+            // 
+            this.txtCotizIng.Enabled = false;
+            this.txtCotizIng.Location = new System.Drawing.Point(128, 131);
+            this.txtCotizIng.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCotizIng.Name = "txtCotizIng";
+            this.txtCotizIng.Size = new System.Drawing.Size(321, 22);
+            this.txtCotizIng.TabIndex = 17;
+            this.txtCotizIng.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 137);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(101, 16);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Cotizacion USD";
+            // 
+            // txtCotizEgr
+            // 
+            this.txtCotizEgr.Enabled = false;
+            this.txtCotizEgr.Location = new System.Drawing.Point(126, 141);
+            this.txtCotizEgr.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCotizEgr.Name = "txtCotizEgr";
+            this.txtCotizEgr.Size = new System.Drawing.Size(321, 22);
+            this.txtCotizEgr.TabIndex = 19;
+            this.txtCotizEgr.TextChanged += new System.EventHandler(this.txtCotizEgr_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 147);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 16);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Cotizacion USD";
+            // 
             // frmRegistrarTransformacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 399);
+            this.ClientSize = new System.Drawing.Size(1084, 441);
             this.Controls.Add(this.btnInsertar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmRegistrarTransformacion";
-            this.Text = "frmRegistrarTransformacion";
+            this.Text = "Transformacion";
             this.Load += new System.EventHandler(this.frmRegistrarTransformacion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -403,5 +451,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMontoIngreso;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtCotizIng;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtCotizEgr;
+        private System.Windows.Forms.Label label9;
     }
 }
