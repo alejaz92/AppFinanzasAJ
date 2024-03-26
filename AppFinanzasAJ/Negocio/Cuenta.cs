@@ -29,18 +29,18 @@ namespace AppFinanzasAJ.Negocio
 
   
 
-        public List<Cuenta> GetCuentas(string tipoCta)
+        public List<Cuenta> GetCuentas()
         {
-            return CuentaData.Getcuentas(tipoCta);
+            return CuentaData.Getcuentas();
         }
         public List<Cuenta> GetCuentasActivas(string tipoCta)
         {
             return CuentaData.GetcuentasActivas(tipoCta);
         }
 
-        public void insertCuenta(string nombreVar, string tipoVar)
+        public void insertCuenta(string nombreVar)
         {
-            CuentaData.insertCuenta(nombreVar, tipoVar);
+            CuentaData.insertCuenta(nombreVar);
         }
 
         public void deleteCuenta(string nombreVar)

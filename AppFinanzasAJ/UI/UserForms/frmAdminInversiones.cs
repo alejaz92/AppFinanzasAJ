@@ -22,10 +22,11 @@ namespace AppFinanzasAJ.UI.UserForms
             Close();
         }
 
-        private void btnTransformacion_Click(object sender, EventArgs e)
+
+        private void btnMovCrypto_Click(object sender, EventArgs e)
         {
-            frmRegistrarTransformacion frmRegistrarTransformacion = new frmRegistrarTransformacion();
-            frmRegistrarTransformacion.ShowDialog();
+            frmMovCrypto frmMovCrypto = new frmMovCrypto();
+            frmMovCrypto.ShowDialog();
         }
     }
 }

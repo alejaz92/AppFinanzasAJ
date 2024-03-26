@@ -137,8 +137,8 @@ namespace AppFinanzasAJ.UI.UserForms
             // Cargar cuentas
 
             CuentaLogic cuentalogic = new CuentaLogic();
-
-            List<Cuenta> listaCuentas = cuentalogic.GetCuentas("Dinero");
+            //revisar que tipo de cuentas traer
+            List<Cuenta> listaCuentas = cuentalogic.GetCuentas();
 
             foreach (var cta in listaCuentas)
             {

@@ -100,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CuentaTipoActivoAdapter.cs" />
     <Compile Include="Data\InversionAdapter.cs" />
     <Compile Include="Data\PagoTarjetaAdapter.cs" />
     <Compile Include="Data\TipoActivoAdapter.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Data\MovimientoAdapter.cs" />
     <Compile Include="Data\ActivoAdapter.cs" />
     <Compile Include="Data\CuentaAdapter.cs" />
+    <Compile Include="Negocio\CuentaTipoActivo.cs" />
     <Compile Include="Negocio\Inversion.cs" />
     <Compile Include="Negocio\PagoTarjeta.cs" />
     <Compile Include="Negocio\TipoActivo.cs" />
@@ -153,6 +155,12 @@
     <Compile Include="UI\UserForms\frmAdminTarjetas.Designer.cs">
       <DependentUpon>frmAdminTarjetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForms\frmCuentaTipoActivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmCuentaTipoActivo.Designer.cs">
+      <DependentUpon>frmCuentaTipoActivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserForms\frmEditActivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +192,12 @@
     </Compile>
     <Compile Include="UI\UserForms\frmMonedaRef.Designer.cs">
       <DependentUpon>frmMonedaRef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserForms\frmMovCrypto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmMovCrypto.Designer.cs">
+      <DependentUpon>frmMovCrypto.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserForms\frmPagoTarjeta.cs">
       <SubType>Form</SubType>
@@ -221,12 +235,6 @@
     <Compile Include="UI\UserForms\frmRegistrarMovTarjeta.Designer.cs">
       <DependentUpon>frmRegistrarMovTarjeta.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserForms\frmRegistrarTransformacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\UserForms\frmRegistrarTransformacion.Designer.cs">
-      <DependentUpon>frmRegistrarTransformacion.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\UserForms\frmSaldosGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +259,9 @@
     <EmbeddedResource Include="UI\UserForms\frmAdminTarjetas.resx">
       <DependentUpon>frmAdminTarjetas.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmCuentaTipoActivo.resx">
+      <DependentUpon>frmCuentaTipoActivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmEditActivo.resx">
       <DependentUpon>frmEditActivo.cs</DependentUpon>
@@ -280,6 +291,9 @@
       <DependentUpon>frmMonedaRef.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmMovCrypto.resx">
+      <DependentUpon>frmMovCrypto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmPagoTarjeta.resx">
       <DependentUpon>frmPagoTarjeta.cs</DependentUpon>
     </EmbeddedResource>
@@ -299,9 +313,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmRegistrarMovTarjeta.resx">
       <DependentUpon>frmRegistrarMovTarjeta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserForms\frmRegistrarTransformacion.resx">
-      <DependentUpon>frmRegistrarTransformacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmSaldosGeneral.resx">
       <DependentUpon>frmSaldosGeneral.cs</DependentUpon>

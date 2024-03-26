@@ -25,12 +25,16 @@ namespace AppFinanzasAJ.UI.UserForms
 
         private void frmAdminCuentas_Load(object sender, EventArgs e)
         {
+            lstCuentas.Items.Clear();
 
+            CuentaLogic cuentalogic = new CuentaLogic();
 
-            cboTipoAct.Items.Add("Dinero");
-            cboTipoAct.Items.Add("Crypto");
-            cboTipoAct.Items.Add("Broker Bolsa");
-            
+            List<Cuenta> listaCuentas = cuentalogic.GetCuentas();
+
+            foreach (var cta in listaCuentas)
+            {
+                lstCuentas.Items.Add(cta.NOMBRE);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -39,7 +43,7 @@ namespace AppFinanzasAJ.UI.UserForms
             {
                 CuentaLogic cuentaLogic = new CuentaLogic();
 
-                cuentaLogic.insertCuenta(txtAddCta.Text, cboTipoAct.Text);
+                cuentaLogic.insertCuenta(txtAddCta.Text);
 
                 lstCuentas.Items.Add(txtAddCta.Text);
 
@@ -86,7 +90,7 @@ namespace AppFinanzasAJ.UI.UserForms
 
             CuentaLogic cuentalogic = new CuentaLogic();
 
-            List<Cuenta> listaCuentas = cuentalogic.GetCuentas(cboTipoAct.Text);
+            List<Cuenta> listaCuentas = cuentalogic.GetCuentas();
 
             foreach (var cta in listaCuentas)
             {

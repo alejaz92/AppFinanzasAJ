@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCuentasActivos = new System.Windows.Forms.Button();
             this.btnTarjetas = new System.Windows.Forms.Button();
             this.btnClaseMovimiento = new System.Windows.Forms.Button();
             this.btnActivos = new System.Windows.Forms.Button();
             this.btnCuentas = new System.Windows.Forms.Button();
             this.btnRegMovimiento = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnInversiones = new System.Windows.Forms.Button();
             this.btnMovTarjeta = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgUltMovs = new System.Windows.Forms.DataGridView();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,32 +51,44 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSaldos = new System.Windows.Forms.Button();
-            this.btnInversiones = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgUltMovs)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCuentasActivos);
             this.groupBox1.Controls.Add(this.btnTarjetas);
             this.groupBox1.Controls.Add(this.btnClaseMovimiento);
             this.groupBox1.Controls.Add(this.btnActivos);
             this.groupBox1.Controls.Add(this.btnCuentas);
-            this.groupBox1.Location = new System.Drawing.Point(11, 379);
+            this.groupBox1.Location = new System.Drawing.Point(11, 347);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(244, 174);
+            this.groupBox1.Size = new System.Drawing.Size(244, 206);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos Clave";
             // 
+            // btnCuentasActivos
+            // 
+            this.btnCuentasActivos.Location = new System.Drawing.Point(8, 96);
+            this.btnCuentasActivos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCuentasActivos.Name = "btnCuentasActivos";
+            this.btnCuentasActivos.Size = new System.Drawing.Size(228, 28);
+            this.btnCuentasActivos.TabIndex = 4;
+            this.btnCuentasActivos.Text = "Cuentas - Activos";
+            this.btnCuentasActivos.UseVisualStyleBackColor = true;
+            this.btnCuentasActivos.Click += new System.EventHandler(this.btnCuentasActivos_Click);
+            // 
             // btnTarjetas
             // 
-            this.btnTarjetas.Location = new System.Drawing.Point(9, 132);
+            this.btnTarjetas.Location = new System.Drawing.Point(9, 168);
             this.btnTarjetas.Margin = new System.Windows.Forms.Padding(4);
             this.btnTarjetas.Name = "btnTarjetas";
             this.btnTarjetas.Size = new System.Drawing.Size(228, 28);
@@ -86,7 +99,7 @@
             // 
             // btnClaseMovimiento
             // 
-            this.btnClaseMovimiento.Location = new System.Drawing.Point(9, 96);
+            this.btnClaseMovimiento.Location = new System.Drawing.Point(9, 132);
             this.btnClaseMovimiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnClaseMovimiento.Name = "btnClaseMovimiento";
             this.btnClaseMovimiento.Size = new System.Drawing.Size(228, 28);
@@ -138,10 +151,22 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(244, 243);
+            this.groupBox2.Size = new System.Drawing.Size(237, 177);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Movimientos";
+            // 
+            // btnInversiones
+            // 
+            this.btnInversiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnInversiones.Location = new System.Drawing.Point(8, 107);
+            this.btnInversiones.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInversiones.Name = "btnInversiones";
+            this.btnInversiones.Size = new System.Drawing.Size(213, 33);
+            this.btnInversiones.TabIndex = 3;
+            this.btnInversiones.Text = "Inversiones";
+            this.btnInversiones.UseVisualStyleBackColor = true;
+            this.btnInversiones.Click += new System.EventHandler(this.btnInversiones_Click);
             // 
             // btnMovTarjeta
             // 
@@ -265,7 +290,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnSaldos);
-            this.groupBox3.Location = new System.Drawing.Point(11, 261);
+            this.groupBox3.Location = new System.Drawing.Point(11, 194);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(237, 111);
             this.groupBox3.TabIndex = 7;
@@ -283,18 +308,6 @@
             this.btnSaldos.Text = "Saldos";
             this.btnSaldos.UseVisualStyleBackColor = true;
             this.btnSaldos.Click += new System.EventHandler(this.btnSaldos_Click);
-            // 
-            // btnInversiones
-            // 
-            this.btnInversiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnInversiones.Location = new System.Drawing.Point(8, 107);
-            this.btnInversiones.Margin = new System.Windows.Forms.Padding(4);
-            this.btnInversiones.Name = "btnInversiones";
-            this.btnInversiones.Size = new System.Drawing.Size(213, 33);
-            this.btnInversiones.TabIndex = 3;
-            this.btnInversiones.Text = "Inversiones";
-            this.btnInversiones.UseVisualStyleBackColor = true;
-            this.btnInversiones.Click += new System.EventHandler(this.btnInversiones_Click);
             // 
             // FrmIndex
             // 
@@ -314,9 +327,9 @@
             this.Load += new System.EventHandler(this.FrmIndex_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgUltMovs)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,6 +359,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnSaldos;
         private System.Windows.Forms.Button btnInversiones;
+        private System.Windows.Forms.Button btnCuentasActivos;
     }
 }
 

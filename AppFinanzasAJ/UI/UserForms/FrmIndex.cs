@@ -127,5 +127,11 @@ namespace AppFinanzasAJ
             frmAdminInversiones frmAInv = new frmAdminInversiones();
             frmAInv.ShowDialog();
         }
+
+        private void btnCuentasActivos_Click(object sender, EventArgs e)
+        {
+            frmCuentaTipoActivo frmCuentaTipoActivo = new frmCuentaTipoActivo();
+            frmCuentaTipoActivo.ShowDialog();
+        }
     }
 }

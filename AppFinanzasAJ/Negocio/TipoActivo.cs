@@ -11,6 +11,7 @@ namespace AppFinanzasAJ.Negocio
     {
         public int IDTIPOACTIVO;
         public string NOMBRE;
+        public int ACTIVA;
     }
 
     public class TipoActivoLogic
@@ -30,6 +31,11 @@ namespace AppFinanzasAJ.Negocio
         public List<TipoActivo> GetTiposActivo()
         {
             return TipoActivoData.GetTiposActivo();
+        }
+
+        public List<TipoActivo> GetTiposActivosPorCuenta(string cta)
+        {
+            return TipoActivoData.GetTiposActivoPorCuenta(cta);
         }
     }
 }
