@@ -33,6 +33,11 @@ namespace AppFinanzasAJ.Negocio
         {
             return CuentaData.Getcuentas();
         }
+        public List<Cuenta> GetCuentasPorTipo(string tipo) 
+        {
+           return  CuentaData.GetCuentasPorTipo(tipo);   
+        }
+
         public List<Cuenta> GetCuentasActivas(string tipoCta)
         {
             return CuentaData.GetcuentasActivas(tipoCta);
