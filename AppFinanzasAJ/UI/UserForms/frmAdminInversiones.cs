@@ -28,5 +28,11 @@ namespace AppFinanzasAJ.UI.UserForms
             frmMovCrypto frmMovCrypto = new frmMovCrypto();
             frmMovCrypto.ShowDialog();
         }
+
+        private void btnMovBolsa_Click(object sender, EventArgs e)
+        {
+            frmMovBolsa frmMovBolsa = new frmMovBolsa();
+            frmMovBolsa.ShowDialog();  
+        }
     }
 }

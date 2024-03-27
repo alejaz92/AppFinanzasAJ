@@ -136,15 +136,16 @@ namespace AppFinanzasAJ.Data
                     }
                     else
                     {
-                        sqlPrecioCotiz = "SELECT TOP 1 VALOR FROM [dbo].[Cotizacion_Activo] CA WHERE IDACTIVOCOMP = " +
-                            "" + sqlMoneda + " AND IDFECHA <= " + fechaMovimiento.Replace("-", "") + " ORDER BY " +
-                            "idFecha DESC";
+                        sqlPrecioCotiz = precioCotiz;
                     }
                     
                 }
                 else
                 {
-                    sqlPrecioCotiz = precioCotiz;
+                    sqlPrecioCotiz = "(SELECT TOP 1 VALOR FROM [dbo].[Cotizacion_Activo] CA WHERE IDACTIVOCOMP = " +
+                        "" + sqlMoneda + " AND IDFECHA <= " + fechaMovimiento.Replace("-", "") + " ORDER BY " +
+                        "idFecha DESC)";
+
                 }
 
 

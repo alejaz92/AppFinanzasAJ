@@ -180,7 +180,6 @@
             // 
             // btnInsertar
             // 
-            this.btnInsertar.Enabled = false;
             this.btnInsertar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsertar.Location = new System.Drawing.Point(711, 358);
             this.btnInsertar.Margin = new System.Windows.Forms.Padding(4);

@@ -345,33 +345,55 @@ namespace AppFinanzasAJ.UI.UserForms
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
+            MovimientoLogic movimientoLogic = new MovimientoLogic();
             if (radIngreso.Checked)
             {
-                if (cboTipoComercio.Text == "Ajuste de Saldos")
+                movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"),
+                    cboActivoIngreso.Text, cboCtaIngreso.Text, null, null, null, null, txtCantidadIngreso.Text,
+                    txtCotizacionIngreso.Text);
+
+                if (cboTipoComercio.Text == "Comercio Fiat/Cripto")
                 {
-                    //insertar en fact inversion, trayendo el idinversion
-                }
-                else if (cboTipoComercio.Text == "Comercio Fiat/Cripto")
-                {
-                    //insertar en fact inversion, trayendo el idinversion
-                    //registrar salida del monto fiat
+                    movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"),
+                        cboActivoEgreso.Text, null, null, cboCtaEgreso.Text, "Inversion", null, txtCantidadEgreso.Text,
+                        "");
                 }
             }
             else if (radEgreso.Checked)
             {
-                if (cboTipoComercio.Text == "Ajuste de Saldos")
-                {
+                movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"),
+                    cboActivoEgreso.Text, null, null,cboCtaEgreso.Text, null, null, txtCantidadEgreso.Text,
+                    txtCotizacionEgreso.Text);
 
-                }
-                else if (cboTipoComercio.Text == "Comercio Fiat/Cripto")
+                if (cboTipoComercio.Text == "Comercio Fiat/Cripto")
                 {
-
+                    movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"),
+                        cboActivoIngreso.Text, cboCtaIngreso.Text, "Ingreso Inversiones", null, null, null, txtCantidadIngreso.Text,
+                        "");
                 }
             }
             else if (radIntercambio.Checked && cboTipoComercio.Text == "Trading")
             {
-                
+                movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"),
+                    cboActivoIngreso.Text, cboCtaIngreso.Text, null, null, null, null, txtCantidadIngreso.Text,
+                    txtCotizacionIngreso.Text);
+
+                movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"),
+                    cboActivoEgreso.Text, null, null, cboCtaEgreso.Text, null, null, txtCantidadEgreso.Text,
+                    txtCotizacionEgreso.Text);
+
             }
+
+            MessageBox.Show("Movimiento registrado");
+
+            cboActivoEgreso.Text = "";
+            cboCtaEgreso.Text = "";
+            txtCantidadEgreso.Text = "";
+            txtCotizacionEgreso.Text = "";
+            cboActivoIngreso.Text = "";
+            cboCtaIngreso.Text = "";
+            txtCantidadIngreso.Text = "";
+            txtCotizacionIngreso.Text = "";
         }
     }
 }

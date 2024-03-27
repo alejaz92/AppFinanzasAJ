@@ -67,6 +67,7 @@
             this.btnMovBolsa.TabIndex = 13;
             this.btnMovBolsa.Text = "Mov. Bolsa";
             this.btnMovBolsa.UseVisualStyleBackColor = true;
+            this.btnMovBolsa.Click += new System.EventHandler(this.btnMovBolsa_Click);
             // 
             // frmAdminInversiones
             // 
