@@ -187,17 +187,20 @@ namespace AppFinanzasAJ.UI.UserForms
 
                 for (int i = 0; i < lstErogaciones.Rows.Count -1; i++)
                 {
-                    
+
+                    string precioCotiz;
 
                     if (radDolar.Checked && lstErogaciones.Rows[i].Cells[3].Value.ToString() == "Dolar Estadounidense")
                     {
                         monedaMovimiento = "Dolar Estadounidense";
                         montoMov = lstErogaciones.Rows[i].Cells[5].Value.ToString();
+                        precioCotiz = "1";
                     }
                     else
                     {
                         monedaMovimiento = "Peso Argentino";
                         montoMov = lstErogaciones.Rows[i].Cells[6].Value.ToString();
+                        precioCotiz = "";
                     }
 
                     
@@ -208,7 +211,7 @@ namespace AppFinanzasAJ.UI.UserForms
 
 
                     movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento, 
-                        "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov);
+                        "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov, precioCotiz);
                         
                 }
 
@@ -223,7 +226,7 @@ namespace AppFinanzasAJ.UI.UserForms
                 montoMov = txtGtosTarj.Text;
 
                 movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento,
-                        "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov);
+                        "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov, "");
 
 
                 //registrar el pago

@@ -171,18 +171,32 @@ namespace AppFinanzasAJ.UI.UserForms
         {
             MovimientoLogic movimientoLogic = new MovimientoLogic();
 
+            string precioCotiz;
+            if (cboMoneda.Text == "Dolar Estadounidense")
+            {
+                precioCotiz = "1";
+            }
+            else
+            {
+                 precioCotiz = "";
+            }
+
             if (radIngreso.Checked == true)
             {
-                movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"), cboMoneda.Text, cboCtaIngreso.Text, cboClaseIngreso.Text, null, null, txtDetalle.Text, txtMonto.Text);
+                movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"), cboMoneda.Text, 
+                    cboCtaIngreso.Text, cboClaseIngreso.Text, null, null, txtDetalle.Text, txtMonto.Text, precioCotiz);
             }
             if (radEgreso.Checked == true)
             {
-                movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"), cboMoneda.Text, null, null, this.cboCtaEgreso.Text, cboClaseEgreso.Text, txtDetalle.Text, txtMonto.Text);
+                movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"), cboMoneda.Text, 
+                    null, null, this.cboCtaEgreso.Text, cboClaseEgreso.Text, txtDetalle.Text, txtMonto.Text, precioCotiz);
             }
 
             if (radIntercambio.Checked == true)
             {
-                movimientoLogic.insertMovimientoRegular("Intercambio", cboFecha.Value.ToString("yyyyMMdd"), cboMoneda.Text, cboCtaIngreso.Text, null, cboCtaEgreso.Text, null, txtDetalle.Text, txtMonto.Text);
+                movimientoLogic.insertMovimientoRegular("Intercambio", cboFecha.Value.ToString("yyyyMMdd"), 
+                    cboMoneda.Text, cboCtaIngreso.Text, null, cboCtaEgreso.Text, null, txtDetalle.Text, txtMonto.Text, 
+                    precioCotiz);
             }
 
             MessageBox.Show("Registro insertado");

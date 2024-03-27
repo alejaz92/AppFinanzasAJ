@@ -186,12 +186,16 @@ namespace AppFinanzasAJ.Data
                     }
                     else
                     {
-                        if (par == "USDARST" | par == "USDARSB" | par == "USDARSBO")
+                        if (par == "USDARSB" | par == "USDARSBO")
                         {
 
                             decimal cot1 = (Convert.ToDecimal(data["venta"]));
                             decimal cot2 = (Convert.ToDecimal(data["compra"]));
                             cotiz = Convert.ToString((cot1 + cot2) / 2);
+                        }
+                        else if (par == "USDARST")
+                        {
+                            cotiz = Convert.ToString(data["venta"]);
                         }
                         else 
                         {
@@ -243,7 +247,7 @@ namespace AppFinanzasAJ.Data
                 string valorCotiz;
                 if(tipoActivo == "Moneda" || tipoActivo == "Criptomoneda")
                 {
-                    if(par == "USDUSDT" || par == "USDDAI")
+                    if(par == "USDTUSD" || par == "DAIUSD")
                     {
                         valorCotiz = "1";
                     }

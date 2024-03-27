@@ -21,6 +21,7 @@ namespace AppFinanzasAJ.Negocio
         public string MONEDATEXT;
         public string CLASEMOVTEXT;
         public string CUENTATEXT;
+        public decimal PRECIOCOTIZ;
 
     }
 
@@ -39,7 +40,7 @@ namespace AppFinanzasAJ.Negocio
         }
         public void insertMovimientoRegular(string tipoMovimiento, string fechaMovimiento, string monedaMovimiento, 
             string ctaIngresoMovimiento, string claseIngresoMovimiento,
-            string ctaEgresoMovimiento, string claseEgresoMovimiento, string detalleMovimiento, string montoMovimiento)
+            string ctaEgresoMovimiento, string claseEgresoMovimiento, string detalleMovimiento, string montoMovimiento, string precioCotiz)
         {
             var idMovimiento = MovimientoData.GetNextID()[0].IDMOVIMIENTO.ToString();
             
@@ -47,21 +48,21 @@ namespace AppFinanzasAJ.Negocio
             if (tipoMovimiento == "Ingreso")
             {
                 MovimientoData.insertMovimiento(idMovimiento, tipoMovimiento, fechaMovimiento, monedaMovimiento, ctaIngresoMovimiento, claseIngresoMovimiento, detalleMovimiento,
-                montoMovimiento);
+                montoMovimiento, precioCotiz);
             }
             if (tipoMovimiento == "Egreso")
             {
                 MovimientoData.insertMovimiento(idMovimiento, tipoMovimiento, fechaMovimiento, monedaMovimiento, ctaEgresoMovimiento, claseEgresoMovimiento, detalleMovimiento,
-                "-" + montoMovimiento);
+                "-" + montoMovimiento, precioCotiz);
             }
 
             if (tipoMovimiento == "Intercambio")
             {
                 MovimientoData.insertMovimiento(idMovimiento, tipoMovimiento, fechaMovimiento, monedaMovimiento, ctaEgresoMovimiento, claseEgresoMovimiento, detalleMovimiento,
-                "-" + montoMovimiento);
+                "-" + montoMovimiento, precioCotiz);
 
                 MovimientoData.insertMovimiento(idMovimiento, tipoMovimiento, fechaMovimiento, monedaMovimiento, ctaIngresoMovimiento, claseIngresoMovimiento, detalleMovimiento,
-                montoMovimiento);
+                montoMovimiento, precioCotiz);
             }
 
         }

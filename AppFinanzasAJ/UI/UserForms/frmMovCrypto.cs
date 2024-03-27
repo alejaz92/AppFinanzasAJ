@@ -296,53 +296,81 @@ namespace AppFinanzasAJ.UI.UserForms
                     }
                 }
             }
-            else if (radIntercambio.Checked)
+            else if (radIntercambio.Checked && cboTipoComercio.Text == "Trading")
             {
-                if (cboTipoComercio.Text == "Trading")
+                cboActivoEgreso.Items.Clear();
+                cboCtaEgreso.Items.Clear();
+                txtCantidadEgreso.Text = "";
+                txtCotizacionEgreso.Text = "";
+                cboActivoIngreso.Items.Clear();
+                cboCtaIngreso.Items.Clear();
+                txtCantidadIngreso.Text = "";
+                txtCotizacionIngreso.Text = "";
+
+                cboActivoEgreso.Enabled = true;
+                cboCtaEgreso.Enabled = true;
+                txtCantidadEgreso.Enabled = true;
+                txtCotizacionEgreso.Enabled = true;
+                cboActivoIngreso.Enabled = true;
+                cboCtaIngreso.Enabled = true;
+                txtCantidadIngreso.Enabled = true;
+                txtCotizacionIngreso.Enabled = true;
+
+
+                cboActivoIngreso.Items.Clear();
+                cboActivoEgreso.Items.Clear();
+
+                ActivoLogic activoLogic = new ActivoLogic();
+
+                List<Activo> listaActivos = activoLogic.GetActivos("Criptomoneda");
+                foreach (Activo activo in listaActivos)
                 {
-                    cboActivoEgreso.Items.Clear();
-                    cboCtaEgreso.Items.Clear();
-                    txtCantidadEgreso.Text = "";
-                    txtCotizacionEgreso.Text = "";
-                    cboActivoIngreso.Items.Clear();
-                    cboCtaIngreso.Items.Clear();
-                    txtCantidadIngreso.Text = "";
-                    txtCotizacionIngreso.Text = "";
-
-                    cboActivoEgreso.Enabled = true;
-                    cboCtaEgreso.Enabled = true;
-                    txtCantidadEgreso.Enabled = true;
-                    txtCotizacionEgreso.Enabled = true;
-                    cboActivoIngreso.Enabled = true;
-                    cboCtaIngreso.Enabled = true;
-                    txtCantidadIngreso.Enabled = true;
-                    txtCotizacionIngreso.Enabled = true;
-
-
-                    cboActivoIngreso.Items.Clear();
-                    cboActivoEgreso.Items.Clear();
-
-                    ActivoLogic activoLogic = new ActivoLogic();
-
-                    List<Activo> listaActivos = activoLogic.GetActivos("Criptomoneda");
-                    foreach (Activo activo in listaActivos)
-                    {
-                        cboActivoIngreso.Items.Add(activo.NOMBRE);
-                        cboActivoEgreso.Items.Add(activo.NOMBRE);
-                    }
-                    
-                    cboCtaEgreso.Items.Clear();
-                    cboCtaIngreso.Items.Clear();
-
-                    CuentaLogic cuentaLogic = new CuentaLogic();
-
-                    List<Cuenta> listaCuentas = cuentaLogic.GetCuentasPorTipo("Criptomoneda");
-                    foreach (Cuenta cuenta in listaCuentas)
-                    {
-                        cboCtaEgreso.Items.Add(cuenta.NOMBRE);
-                        cboCtaIngreso.Items.Add(cuenta.NOMBRE);
-                    }    
+                    cboActivoIngreso.Items.Add(activo.NOMBRE);
+                    cboActivoEgreso.Items.Add(activo.NOMBRE);
                 }
+                    
+                cboCtaEgreso.Items.Clear();
+                cboCtaIngreso.Items.Clear();
+
+                CuentaLogic cuentaLogic = new CuentaLogic();
+
+                List<Cuenta> listaCuentas = cuentaLogic.GetCuentasPorTipo("Criptomoneda");
+                foreach (Cuenta cuenta in listaCuentas)
+                {
+                    cboCtaEgreso.Items.Add(cuenta.NOMBRE);
+                    cboCtaIngreso.Items.Add(cuenta.NOMBRE);
+                }                    
+            }
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            if (radIngreso.Checked)
+            {
+                if (cboTipoComercio.Text == "Ajuste de Saldos")
+                {
+                    //insertar en fact inversion, trayendo el idinversion
+                }
+                else if (cboTipoComercio.Text == "Comercio Fiat/Cripto")
+                {
+                    //insertar en fact inversion, trayendo el idinversion
+                    //registrar salida del monto fiat
+                }
+            }
+            else if (radEgreso.Checked)
+            {
+                if (cboTipoComercio.Text == "Ajuste de Saldos")
+                {
+
+                }
+                else if (cboTipoComercio.Text == "Comercio Fiat/Cripto")
+                {
+
+                }
+            }
+            else if (radIntercambio.Checked && cboTipoComercio.Text == "Trading")
+            {
+                
             }
         }
     }

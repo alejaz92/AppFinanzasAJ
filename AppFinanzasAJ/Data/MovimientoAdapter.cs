@@ -111,7 +111,7 @@ namespace AppFinanzasAJ.Data
         //}
 
         public void insertMovimiento(string idMovimiento ,string tipoMovimiento, string fechaMovimiento, string monedaMovimiento, string ctaMovimiento, string claseMovimiento,
-            string detalleMovimiento, string montoMovimiento)
+            string detalleMovimiento, string montoMovimiento, string precioCotiz)
         {
             try
             {
@@ -124,8 +124,34 @@ namespace AppFinanzasAJ.Data
                 string sqlClase = "(SELECT DISTINCT idClaseMovimiento FROM Dim_ClaseMovimiento WHERE descripcion = '" + claseMovimiento + "')";
                 string sqlFecha = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fechaMovimiento + "')";
 
-                string sqlQuery = "INSERT INTO Fact_Movimiento (idMovimiento, idCuenta, idActivo, IDFECHA, tipoMovimiento, idClaseMovimiento, comentario, monto) "
-                    + "VALUES ('@IDMOVIMIENTO', @IDCUENTA, @IDMONEDA, @FECHA, '@IDTIPOMOVIMIENTO', @IDCLASEMOVIMIENTO, '@COMENTARIO', @MONTO)";
+
+                string sqlPrecioCotiz;
+                if (precioCotiz != "")
+                {
+                    if (monedaMovimiento == "Peso Argentino")
+                    {
+                        sqlPrecioCotiz = "SELECT TOP 1 VALOR FROM [dbo].[Cotizacion_Activo] CA WHERE IDACTIVOCOMP = " +
+                            "" + sqlMoneda + " AND TIPO = " +
+                            "'BLUE' AND IDFECHA <= " + fechaMovimiento.Replace("-", "") + " ORDER BY idFecha DESC";
+                    }
+                    else
+                    {
+                        sqlPrecioCotiz = "SELECT TOP 1 VALOR FROM [dbo].[Cotizacion_Activo] CA WHERE IDACTIVOCOMP = " +
+                            "" + sqlMoneda + " AND IDFECHA <= " + fechaMovimiento.Replace("-", "") + " ORDER BY " +
+                            "idFecha DESC";
+                    }
+                    
+                }
+                else
+                {
+                    sqlPrecioCotiz = precioCotiz;
+                }
+
+
+                string sqlQuery = "INSERT INTO Fact_Movimiento (idMovimiento, idCuenta, idActivo, IDFECHA, tipoMovimiento," +
+                    " idClaseMovimiento, comentario, monto, precioCotiz) "
+                    + "VALUES ('@IDMOVIMIENTO', @IDCUENTA, @IDMONEDA, @FECHA, '@IDTIPOMOVIMIENTO', @IDCLASEMOVIMIENTO, " +
+                    "'@COMENTARIO', @MONTO, @PRECIOCOTIZ)";
 
                 sqlQuery = sqlQuery.Replace("@IDMOVIMIENTO", idMovimiento);
                 sqlQuery = sqlQuery.Replace("@IDCUENTA", sqlCuenta);
@@ -133,8 +159,9 @@ namespace AppFinanzasAJ.Data
                 sqlQuery = sqlQuery.Replace("@FECHA", sqlFecha);
                 sqlQuery = sqlQuery.Replace("@IDTIPOMOVIMIENTO", tipoMovimiento);
                 sqlQuery = sqlQuery.Replace("@IDCLASEMOVIMIENTO", sqlClase);
-                sqlQuery = sqlQuery.Replace("@COMENTARIO", detalleMovimiento);
+                sqlQuery = sqlQuery.Replace("@COMENTARIO", detalleMovimiento);                
                 sqlQuery = sqlQuery.Replace("@MONTO", montoMovimiento.Replace(",", "."));
+                sqlQuery = sqlQuery.Replace("@PRECIOCOTIZ", sqlPrecioCotiz.Replace(",", "."));
 
 
 
