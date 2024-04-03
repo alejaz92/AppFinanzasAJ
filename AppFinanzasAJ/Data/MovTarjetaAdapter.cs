@@ -28,7 +28,7 @@ namespace AppFinanzasAJ.Data
                 string sqlFecha2 = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fecha2 + "')";
 
                 string sqlQuery = "INSERT INTO Fact_Tarjetas (fechaMov, detalle, idTarjeta, idClaseMovimiento, idActivo, montoTotal, cuotas, mesPrimerCuota, mesUltimaCuota, repite, montoCuota) "
-                    + "VALUES (@FECHAMOV, '@DETALLE', @IDTARJETA, @IDCLASEMOVIMIENTO, @IDMONEDA, @MONTOTOTAL, @CUOTAS, '@FECHA1', '@FECHA2', '@REPITE', @MONTOTOTAL / @CUOTAS)";
+                    + "VALUES (@FECHAMOV, '@DETALLE', @IDTARJETA, @IDCLASEMOVIMIENTO, @IDMONEDA, @MONTOTOTAL, @CUOTAS, @FECHA1, @FECHA2, '@REPITE', @MONTOTOTAL / @CUOTAS)";
 
                 sqlQuery = sqlQuery.Replace("@FECHAMOV", sqlFechaMov);
                 sqlQuery = sqlQuery.Replace("@DETALLE", detalle);
@@ -135,7 +135,7 @@ namespace AppFinanzasAJ.Data
                     +"ft.idClaseMovimiento INNER JOIN Dim_Activo A ON A.idActivo = FT.idActivo INNER JOIN Dim_Tiempo T1 ON " +
                     "T1.IDFECHA = FT.FECHAMOV INNER JOIN Dim_Tiempo T2 ON T2.IDFECHA = FT.MESPRIMERCUOTA INNER JOIN " +
                     "Dim_Tiempo T3 ON T3.IDFECHA = FT.MESULTIMACUOTA WHERE FT.repite = "
-                    + "'SI' OR DATEADD(month ,1, T3.FECHA) >= GETDATE();";
+                    + "'SI' OR DATEADD(month ,1, T3.FECHA) >= DATEADD(MONTH, -1, GETDATE());";
 
 
 
