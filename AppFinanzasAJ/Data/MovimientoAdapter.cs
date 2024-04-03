@@ -189,11 +189,13 @@ namespace AppFinanzasAJ.Data
                 this.OpenConnection();
                 SqlCommand cmdMovimientos = null;
 
-                string sqlQuery = "SELECT   CAST(SUM( CASE WHEN A.simbolo = 'ARS' THEN  MONTO ELSE MONTO * VALORCOTIZ END ) AS DECIMAL(18,2))  tot" +
-                    " FROM [dbo].[Fact_Movimiento] FM INNER JOIN [dbo].[Dim_Activo] A ON FM.idActivo = A.idActivo" +
-                    " LEFT JOIN ( SELECT 1 ID, VALOR VALORCOTIZ FROM [dbo].[Cotizacion_Activo] WHERE tipo = 'BLUE'" +
-                    " AND IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo) ) T1 " +
-                    " ON T1.ID = 1";
+                string sqlQuery = "SELECT CAST( SUM( CASE WHEN A.esReferencia = 1 THEN MONTO ELSE CASE WHEN " +
+                    "CA.valor IS NOT NULL THEN MONTO / CA.VALOR ELSE 0 END END) AS DECIMAL (18,2)) * " +
+                    "(SELECT VALOR FROM [dbo].[Cotizacion_Activo] WHERE TIPO = 'BLUE' AND IDFECHA = (SELECT " +
+                    "MAX(IDFECHA) FROM [dbo].[Cotizacion_Activo])) TOT FROM [dbo].[Fact_Movimiento] M INNER JOIN " +
+                    "Dim_Activo A ON M.idActivo = A.idActivo LEFT JOIN [dbo].[Cotizacion_Activo] CA ON " +
+                    "CA.idActivoComp = A.idActivo AND CA.idFecha = (SELECT MAX(IDFECHA) FROM " +
+                    "[dbo].[Cotizacion_Activo]) AND CA.tipo <> 'TARJETA' AND CA.tipo <> 'BOLSA'";
 
                 cmdMovimientos = new SqlCommand(sqlQuery, SqlConn);
 
@@ -234,11 +236,12 @@ namespace AppFinanzasAJ.Data
                 this.OpenConnection();
                 SqlCommand cmdMovimientos = null;
 
-                string sqlQuery = "SELECT   CAST(SUM( CASE WHEN A.simbolo = 'USD' THEN  MONTO ELSE MONTO / VALORCOTIZ END ) AS DECIMAL(18,2))  tot" +
-                    " FROM [dbo].[Fact_Movimiento] FM INNER JOIN [dbo].[Dim_Activo] A ON FM.idActivo = A.idActivo" +
-                    " LEFT JOIN ( SELECT 1 ID, VALOR VALORCOTIZ FROM [dbo].[Cotizacion_Activo] WHERE tipo = 'BLUE'" +
-                    " AND IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo)) T1 " +
-                    " ON T1.ID = 1";
+                string sqlQuery = "SELECT CAST( SUM( CASE WHEN A.esReferencia = 1 THEN MONTO ELSE CASE WHEN " +
+                    "CA.valor IS NOT NULL THEN MONTO / CA.VALOR ELSE 0 END END) AS DECIMAL (18,2)) tot FROM " +
+                    "[dbo].[Fact_Movimiento] M INNER JOIN Dim_Activo A ON M.idActivo = A.idActivo LEFT JOIN " +
+                    "[dbo].[Cotizacion_Activo] CA ON CA.idActivoComp = A.idActivo AND CA.idFecha = (SELECT " +
+                    "MAX(IDFECHA) FROM [dbo].[Cotizacion_Activo]) AND CA.tipo <> 'TARJETA' AND CA.tipo <> " +
+                    "'BOLSA'";
 
                 cmdMovimientos = new SqlCommand(sqlQuery, SqlConn);
 
