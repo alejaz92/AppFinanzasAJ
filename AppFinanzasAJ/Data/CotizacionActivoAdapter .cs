@@ -96,7 +96,7 @@ namespace AppFinanzasAJ.Data
 
                 cotiz = cotiz.Replace(",", ".");
 
-                
+                                
             }
             else if (tipo == "Bonos")
             {
@@ -126,6 +126,8 @@ namespace AppFinanzasAJ.Data
                 cotiz = cotiz.Replace(",", ".");
             }
 
+            decimal transformacion = 1 / Convert.ToDecimal(cotiz);
+            cotiz = transformacion.ToString();
 
             return cotiz;
         }
