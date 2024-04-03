@@ -187,7 +187,7 @@ namespace AppFinanzasAJ.Data
             {
                 OpenConnection();
                 string consulta_select = "SELECT T1.FECHA FECHAMOV,CM.descripcion ,T.detalle, A.nombre,CASE WHEN "
-                    + "T.repite = 'SI' THEN 'Recurrente' ELSE CAST(DATEDIFF(MONTH, T1.FECHA, '@FECHA')+ 1 AS"
+                    + "T.repite = 'SI' THEN 'Recurrente' ELSE CAST(DATEDIFF(MONTH, T2.FECHA, '@FECHA') + 1 AS"
                     + " VARCHAR) + '/' + cast(T.cuotas as varchar) END Cuota,T.montoCuota, CASE WHEN A.NOMBRE = "
                     + "'Peso Argentino' THEN T.montoCuota ELSE (T.montoCuota * CA.VALOR)  END valPesos FROM "
                     + "[dbo].[Fact_Tarjetas] T INNER JOIN [dbo].[Dim_Activo] A ON T.idActivo = A.idActivo INNER "
