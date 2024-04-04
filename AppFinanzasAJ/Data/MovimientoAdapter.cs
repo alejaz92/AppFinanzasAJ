@@ -305,6 +305,51 @@ namespace AppFinanzasAJ.Data
                 throw Excepcion;
             }
         }
+
+        public List<Movimiento> getTotalesPorCuentaMon(string activoV)
+        {
+            List<Movimiento> ListaMovimiento = new List<Movimiento>();
+            try
+            {
+                OpenConnection();
+                string consulta_select = "SELECT C.nombre, SUM(MONTO) MONTO FROM [dbo].[Fact_Movimiento] FM " +
+                    "INNER JOIN [dbo].[Dim_Cuenta] C ON C.idCuenta = FM.idCuenta INNER JOIN " +
+                    "[dbo].[Dim_Activo] A ON A.idActivo = FM.idActivo WHERE A.nombre = '@ACTIVO' " +
+                    "GROUP BY C.nombre;";
+
+                consulta_select = consulta_select.Replace("@ACTIVO", activoV);
+
+                SqlCommand cmdMovimientos = null;
+
+                cmdMovimientos = new SqlCommand(consulta_select, SqlConn);
+
+                SqlDataReader reader = cmdMovimientos.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Movimiento newMovimiento = new Movimiento();
+                    newMovimiento.CUENTATEXT = (string)reader["NOMBRE"];
+                    newMovimiento.MONTO = (decimal)reader["MONTO"];
+                    ListaMovimiento.Add(newMovimiento);
+                }
+
+                reader.Close();
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                ; Exception Excepcion = new Exception("Error al recuperar los totales por cuenta", Ex);
+                throw Excepcion;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return ListaMovimiento;
+        }
     }
        
 }

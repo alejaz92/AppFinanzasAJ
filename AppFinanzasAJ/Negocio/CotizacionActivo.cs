@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using HtmlAgilityPack;
 
 namespace AppFinanzasAJ.Negocio
@@ -15,8 +14,6 @@ namespace AppFinanzasAJ.Negocio
         public int IDACTIVOCOMP;
         public int FECHA;
         public decimal VALOR;
-
-
     }
 
     public class CotizacionActivoLogic
@@ -52,14 +49,12 @@ namespace AppFinanzasAJ.Negocio
                 {
                     if (mon1.IDACTIVO != mon2.IDACTIVO)
                     {
-
                         string par = mon1.SIMBOLO + mon2.SIMBOLO;
 
                         if (mon2.TIPOACTIVO != "Moneda" && mon2.TIPOACTIVO != "Criptomoneda")
                         {
                             par = mon2.SIMBOLO;
-                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
-                            
+                            CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);  
                         }
 
                         else
@@ -74,26 +69,16 @@ namespace AppFinanzasAJ.Negocio
                             {
                                 contCotiz++;
                                 par = mon2.SIMBOLO + mon1.SIMBOLO;
-                               CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
+                                CotizacionMonedaData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
                             }
-                        }
-
-                        
-                        
+                        }                         
                     }
                 }
-
             }
-
-           
-
         }
         public decimal GetCotizDolar()
         {
             return CotizacionMonedaData.getCotizDolarTarjeta();
         }
-
- 
-
     }
 }

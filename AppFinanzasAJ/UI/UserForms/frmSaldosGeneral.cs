@@ -29,16 +29,76 @@ namespace AppFinanzasAJ.UI.UserForms
 
             lblTotalPesos.Text = "$ " + movimientoLogic.getTotalEnPesos().ToString();
             lblTotalDolar.Text = "U$S " + movimientoLogic.getTotalEnDolares().ToString();
+
+
+            showTenenciasMonetarias();
+
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void showTenenciasMonetarias()
+        {
+            foreach (Panel panel in this.Controls)
+            {
+
+                if (panel.Name == "panTenenciasMonetarias")
+                {
+                    panel.Visible = true;
+                    panel.Location = new Point(247, 0);
+
+                    //llenar combobox de monedas
+
+                    ActivoLogic activoLogic = new ActivoLogic();   
+                    List<Activo> listaActivos = activoLogic.GetActivos("Moneda");
+
+                    foreach (Activo activo in listaActivos)
+                    {
+                        cboActivoTenencias.Items.Add(activo.NOMBRE);
+                        if (activo.ESPRINCIPAL == true)
+                        {
+                            cboActivoTenencias.Text = activo.NOMBRE;
+                        }
+                    }
+
+                    updateTenenciasMonetarias();
+
+                }
+                else if (panel.Name != "panMenu")
+                {
+                    panel.Visible = false;
+                    panel.Location = new Point(30000, 0);
+                }
+                   
+
+            }
+
+        }
+
+        private void updateTenenciasMonetarias()
+        {
+            charTenencias1.Series[0].Points.Clear();
+
+            MovimientoLogic movimientoLogic = new MovimientoLogic();
+            List<Movimiento> listaTotalesCuenta = movimientoLogic.getTotalesPorCuentaMon(cboActivoTenencias.Text);
+
+            foreach (Movimiento movimiento in listaTotalesCuenta)
+            {
+                charTenencias1.Series[0].Points.AddXY(movimiento.CUENTATEXT, movimiento.MONTO);
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void cboActivoTenencias_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            updateTenenciasMonetarias();
         }
     }
 }

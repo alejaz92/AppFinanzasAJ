@@ -17,7 +17,7 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT A.NOMBRE FROM Dim_Activo A INNER JOIN Dim_Tipo_Activo TA ON TA.idTipoActivo = A.idTipoActivo WHERE TA.nombre = '@TA';";
+                string consulta_select = "SELECT A.NOMBRE, A.ESPRINCIPAL FROM Dim_Activo A INNER JOIN Dim_Tipo_Activo TA ON TA.idTipoActivo = A.idTipoActivo WHERE TA.nombre = '@TA';";
 
                 consulta_select = consulta_select.Replace("@TA", tipoAct);
 
@@ -31,6 +31,7 @@ namespace AppFinanzasAJ.Data
                 {
                     Activo newActivo = new Activo();
                     newActivo.NOMBRE = (string)reader["NOMBRE"];
+                    newActivo.ESPRINCIPAL = (bool)reader["ESPRINCIPAL"];
                     ListaActivos.Add(newActivo);
                 }
 
