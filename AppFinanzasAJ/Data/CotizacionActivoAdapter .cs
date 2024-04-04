@@ -126,8 +126,9 @@ namespace AppFinanzasAJ.Data
                 cotiz = cotiz.Replace(",", ".");
             }
 
-            decimal transformacion = 1 / Convert.ToDecimal(cotiz);
-            cotiz = transformacion.ToString();
+            //decimal transformacion = 1 / Convert.ToDecimal(cotiz);
+            //cotiz = transformacion.ToString();
+            //cotiz = cotiz.Replace(",", ".");
 
             return cotiz;
         }
@@ -296,8 +297,8 @@ namespace AppFinanzasAJ.Data
                     if (tipoActivo == "FCI" || tipoActivo == "Bonos" || tipoActivo == "CEDEAR" || 
                         tipoActivo == "Accion Argentina")
                     {
-                        string sqlValor = valorCotiz + "/ (SELECT VALOR FROM Cotizacion_Activo WHERE TIPO = 'BLUE' AND " +
-                            "IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo WHERE TIPO = 'BOLSA'))";
+                        string sqlValor = "1/(" + valorCotiz + "/ (SELECT VALOR FROM Cotizacion_Activo WHERE TIPO = 'BLUE' AND " +
+                            "IDFECHA = (SELECT MAX(IDFECHA) FROM Cotizacion_Activo WHERE TIPO = 'BOLSA')))";
                         sqlQuery = sqlQuery.Replace("@VALOR", sqlValor);
                         
                     }
