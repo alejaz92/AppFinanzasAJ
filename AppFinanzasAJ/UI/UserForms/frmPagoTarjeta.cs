@@ -185,7 +185,7 @@ namespace AppFinanzasAJ.UI.UserForms
                 string montoMov;
                 ctaEgresoMov = cboCuenta.Text;
 
-                for (int i = 0; i < lstErogaciones.Rows.Count -1; i++)
+                for (int i = 0; i <= lstErogaciones.Rows.Count -1; i++)
                 {
 
                     string precioCotiz;
@@ -217,16 +217,20 @@ namespace AppFinanzasAJ.UI.UserForms
 
                 // gastos tarjeta
 
-                fechaMovimiento = cboFecha.Value.ToString("yyyy-MM-dd");
+                if (Convert.ToDecimal(txtGtosTarj.Text) != 0)
+                {
+                    fechaMovimiento = cboFecha.Value.ToString("yyyy-MM-dd");
 
-                monedaMovimiento = "Peso Argentino";
-                claseEgreso = "Gastos Tarjeta";
+                    monedaMovimiento = "Peso Argentino";
+                    claseEgreso = "Gastos Tarjeta";
 
-                detalleMov = "Gastos Tarjeta - " + cboTarjeta.Text;
-                montoMov = txtGtosTarj.Text;
+                    detalleMov = "Gastos Tarjeta - " + cboTarjeta.Text;
+                    montoMov = txtGtosTarj.Text;
 
-                movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento,
-                        "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov, "");
+                    movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento,
+                            "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov, "");
+                }
+                
 
 
                 //registrar el pago

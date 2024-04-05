@@ -292,10 +292,10 @@
             this.groupBox3.Controls.Add(this.btnSaldos);
             this.groupBox3.Location = new System.Drawing.Point(11, 194);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(237, 111);
+            this.groupBox3.Size = new System.Drawing.Size(237, 70);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Saldos";
+            this.groupBox3.Text = "Estadisticas";
             // 
             // btnSaldos
             // 
@@ -305,7 +305,7 @@
             this.btnSaldos.Name = "btnSaldos";
             this.btnSaldos.Size = new System.Drawing.Size(213, 33);
             this.btnSaldos.TabIndex = 3;
-            this.btnSaldos.Text = "Saldos";
+            this.btnSaldos.Text = "Estadisticas";
             this.btnSaldos.UseVisualStyleBackColor = true;
             this.btnSaldos.Click += new System.EventHandler(this.btnSaldos_Click);
             // 

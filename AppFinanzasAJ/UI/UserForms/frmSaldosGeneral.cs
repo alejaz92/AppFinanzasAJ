@@ -100,5 +100,10 @@ namespace AppFinanzasAJ.UI.UserForms
         {
             updateTenenciasMonetarias();
         }
+
+        private void btnPBI_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("www.google.com");
+        }
     }
 }

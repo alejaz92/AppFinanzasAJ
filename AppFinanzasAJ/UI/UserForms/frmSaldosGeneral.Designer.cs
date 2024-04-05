@@ -45,6 +45,7 @@
             this.panTenenciasMonetarias = new System.Windows.Forms.Panel();
             this.cboActivoTenencias = new System.Windows.Forms.ComboBox();
             this.charTenencias1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnPBI = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -128,6 +129,7 @@
             // panMenu
             // 
             this.panMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panMenu.Controls.Add(this.btnPBI);
             this.panMenu.Controls.Add(this.btnTenenciasMonetarias);
             this.panMenu.Controls.Add(this.btnSalir);
             this.panMenu.Controls.Add(this.groupBox1);
@@ -212,6 +214,20 @@
             title1.Text = "Distribución Monetaria";
             this.charTenencias1.Titles.Add(title1);
             // 
+            // btnPBI
+            // 
+            this.btnPBI.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPBI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnPBI.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnPBI.Location = new System.Drawing.Point(0, 235);
+            this.btnPBI.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPBI.Name = "btnPBI";
+            this.btnPBI.Size = new System.Drawing.Size(243, 33);
+            this.btnPBI.TabIndex = 19;
+            this.btnPBI.Text = "Tablero Power BI";
+            this.btnPBI.UseVisualStyleBackColor = false;
+            this.btnPBI.Click += new System.EventHandler(this.btnPBI_Click);
+            // 
             // frmSaldosGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -250,5 +266,6 @@
         private System.Windows.Forms.Button btnTenenciasMonetarias;
         private System.Windows.Forms.DataVisualization.Charting.Chart charTenencias1;
         private System.Windows.Forms.ComboBox cboActivoTenencias;
+        private System.Windows.Forms.Button btnPBI;
     }
 }

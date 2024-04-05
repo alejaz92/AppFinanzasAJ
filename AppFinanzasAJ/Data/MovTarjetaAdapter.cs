@@ -194,7 +194,7 @@ namespace AppFinanzasAJ.Data
                     + "JOIN [dbo].[Cotizacion_Activo] CA ON CA.idActivoComp = (SELECT idActivo FROM Dim_Activo "
                     + "WHERE simbolo = 'ARS') AND CA. TIPO = 'TARJETA' AND CA.IDFECHA = (SELECT MAX(IDFECHA) "
                     + "FROM Cotizacion_Activo) INNER JOIN Dim_ClaseMovimiento CM ON CM.idClaseMovimiento = T.idClaseMovimiento INNER JOIN [dbo].[Dim_Tarjeta] TA ON T.idTarjeta = TA.idTarjeta "
-                    + " LEFT JOIN Pago_Tarjeta PT ON PT.idTarjeta = T.idTarjeta AND FORMAT(PT.fechaMes, 'yyyy-MM-dd') = '@FECHA' INNER JOIN Dim_Tiempo T1 ON " +
+                    + " LEFT JOIN Pago_Tarjeta PT ON PT.idTarjeta = T.idTarjeta AND PT.fechaMes = REPLACE('@FECHA', '-','') INNER JOIN Dim_Tiempo T1 ON " +
                     "  T1.IDFECHA = T.FECHAMOV INNER JOIN Dim_Tiempo T2 ON T2.IDFECHA = T.MESPRIMERCUOTA INNER JOIN " +
                     "   Dim_Tiempo T3 ON T3.IDFECHA = T.MESULTIMACUOTA WHERE  "
                     + "(T3.FECHA >= '@FECHA' OR T.repite = 'SI') AND T2.FECHA <= '@FECHA' AND "
