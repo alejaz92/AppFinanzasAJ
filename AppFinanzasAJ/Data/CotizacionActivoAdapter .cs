@@ -374,7 +374,50 @@ namespace AppFinanzasAJ.Data
             }
             return cotizDolar;
         }
-       
+
+
+        public decimal getCotizDolarPorDia(string fecha)
+        {
+            decimal cotizDolar = 0;
+            try
+            {
+
+                OpenConnection();
+                string consulta_select = "SELECT VALOR FROM Cotizacion_Activo WHERE TIPO = 'BLUE' "
+                    + " AND IDFECHA = (SELECT IDFECHA FROM Dim_Activo WHERE FECHA = '@FECHA')";
+
+                consulta_select = consulta_select.Replace("@FECHA", fecha);
+
+                SqlCommand cmdCotizacion = null;
+
+                cmdCotizacion = new SqlCommand(consulta_select, SqlConn);
+
+                SqlDataReader reader = cmdCotizacion.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cotizDolar = (decimal)reader["VALOR"];
+                }
+
+                reader.Close();
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                ; Exception Excepcion = new Exception("Error al recuperar las cotizaciones", Ex);
+                throw Excepcion;
+                ;
+            }
+            finally
+            {
+
+                this.CloseConnection();
+            }
+            return cotizDolar;
+        }
     }
        
 }

@@ -289,9 +289,11 @@ namespace AppFinanzasAJ.UI.UserForms
             MovimientoLogic movimientoLogic = new MovimientoLogic();
             if (radIngreso.Checked)
             {
+                string cotiz = Convert.ToString(1 / Convert.ToDecimal(txtCotizacionIngreso.Text));
+
                 movimientoLogic.insertMovimientoRegular("Ingreso", cboFecha.Value.ToString("yyyyMMdd"),
                     cboActivoIngreso.Text, cboCtaIngreso.Text, null, null, null, null, txtCantidadIngreso.Text,
-                    txtCotizacionIngreso.Text);
+                    cotiz);
 
                 if (cboTipoComercio.Text == "General")
                 {
@@ -302,9 +304,11 @@ namespace AppFinanzasAJ.UI.UserForms
             }
             else if (radEgreso.Checked)
             {
+                string cotiz = Convert.ToString(1 / Convert.ToDecimal(txtCotizacionEgreso.Text));
+
                 movimientoLogic.insertMovimientoRegular("Egreso", cboFecha.Value.ToString("yyyyMMdd"),
                     cboActivoEgreso.Text, null, null, cboCtaEgreso.Text, null, null, txtCantidadEgreso.Text,
-                    txtCotizacionEgreso.Text);
+                    cotiz);
 
                 if (cboTipoComercio.Text == "General")
                 {

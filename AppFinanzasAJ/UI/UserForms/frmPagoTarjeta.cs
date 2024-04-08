@@ -185,6 +185,11 @@ namespace AppFinanzasAJ.UI.UserForms
                 string montoMov;
                 ctaEgresoMov = cboCuenta.Text;
 
+                CotizacionActivoLogic cotizacionActivoLogic = new CotizacionActivoLogic();
+                decimal cotizacion = cotizacionActivoLogic.getCotizDolarPorDia(cboFecha.Value.ToString("yyyy-MM-dd"));
+
+
+
                 for (int i = 0; i <= lstErogaciones.Rows.Count -1; i++)
                 {
 
@@ -200,7 +205,7 @@ namespace AppFinanzasAJ.UI.UserForms
                     {
                         monedaMovimiento = "Peso Argentino";
                         montoMov = lstErogaciones.Rows[i].Cells[6].Value.ToString();
-                        precioCotiz = "";
+                        precioCotiz = cotizacion.ToString();
                     }
 
                     
@@ -228,7 +233,7 @@ namespace AppFinanzasAJ.UI.UserForms
                     montoMov = txtGtosTarj.Text;
 
                     movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento,
-                            "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov, "");
+                            "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov, cotizacion.ToString());
                 }
                 
 

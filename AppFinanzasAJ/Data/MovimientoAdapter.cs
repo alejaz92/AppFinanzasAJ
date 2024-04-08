@@ -124,7 +124,7 @@ namespace AppFinanzasAJ.Data
                 string sqlClase = "(SELECT DISTINCT idClaseMovimiento FROM Dim_ClaseMovimiento WHERE descripcion = '" + claseMovimiento + "')";
                 string sqlFecha = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fechaMovimiento + "')";
 
-
+                
                 string sqlPrecioCotiz;
                 if (precioCotiz != "")
                 {
@@ -136,7 +136,7 @@ namespace AppFinanzasAJ.Data
                     }
                     else
                     {
-                        sqlPrecioCotiz = precioCotiz;
+                        sqlPrecioCotiz = Convert.ToString(1 / Convert.ToDecimal(precioCotiz));
                     }
                     
                 }
