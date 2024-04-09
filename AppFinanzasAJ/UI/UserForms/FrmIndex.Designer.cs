@@ -254,6 +254,7 @@
             this.btnPBI.TabIndex = 4;
             this.btnPBI.Text = "Tablero PBI";
             this.btnPBI.UseVisualStyleBackColor = true;
+            this.btnPBI.Click += new System.EventHandler(this.btnPBI_Click);
             // 
             // btnSaldos
             // 

@@ -133,5 +133,10 @@ namespace AppFinanzasAJ
             frmCuentaTipoActivo frmCuentaTipoActivo = new frmCuentaTipoActivo();
             frmCuentaTipoActivo.ShowDialog();
         }
+
+        private void btnPBI_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://app.powerbi.com/groups/me/reports/4c15ebf5-24c0-494c-9684-272cb1013d11/ReportSection");
+        }
     }
 }
