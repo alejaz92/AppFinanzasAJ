@@ -86,5 +86,9 @@ namespace AppFinanzasAJ.Negocio
             return MovimientoData.getTotalesPorCuentaMon(activoV);
         }
 
+        public  List<Movimiento> getTotalesPorCuenta(string activoV, string tipoV)
+        {
+            return MovimientoData.getTotalesPorCuenta(activoV, tipoV);
+        }
     }
 }

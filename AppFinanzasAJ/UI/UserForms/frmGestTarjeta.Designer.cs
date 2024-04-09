@@ -66,6 +66,7 @@
             this.dgLista.MultiSelect = false;
             this.dgLista.Name = "dgLista";
             this.dgLista.ReadOnly = true;
+            this.dgLista.RowHeadersVisible = false;
             this.dgLista.RowHeadersWidth = 51;
             this.dgLista.RowTemplate.Height = 24;
             this.dgLista.RowTemplate.ReadOnly = true;

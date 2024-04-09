@@ -350,6 +350,63 @@ namespace AppFinanzasAJ.Data
             }
             return ListaMovimiento;
         }
+
+        public List<Movimiento> getTotalesPorCuenta(string activoV, string tipoV)
+        {
+            List<Movimiento> ListaMovimiento = new List<Movimiento>();
+            try
+            {
+                OpenConnection();
+
+                string consulta_select;
+                if (tipoV == "Criptomoneda")
+                {
+                    consulta_select = "SELECT C.nombre, SUM(FM.MONTO) MONTO FROM [dbo].[Fact_Movimiento] FM INNER JOIN " +
+                        "[dbo].[Dim_Activo] A ON A.idActivo = FM.idActivo INNER JOIN [dbo].[Dim_Cuenta] C ON C.idCuenta = " +
+                        "FM.idCuenta WHERE A.nombre = '@ACTIVO' GROUP BY C.nombre";
+                }
+                else
+                {
+                    consulta_select = "SELECT C.nombre, CAST(SUM(FM.MONTO) AS DECIMAL (18,2) ) MONTO FROM " +
+                        "[dbo].[Fact_Movimiento] FM INNER JOIN [dbo].[Dim_Activo] A ON A.idActivo = FM.idActivo INNER " +
+                        "JOIN [dbo].[Dim_Cuenta] C ON C.idCuenta = FM.idCuenta WHERE A.nombre = '@ACTIVO' " +
+                        "GROUP BY C.nombre";
+                }
+                 
+
+                consulta_select = consulta_select.Replace("@ACTIVO", activoV);
+
+                SqlCommand cmdMovimientos = null;
+
+                cmdMovimientos = new SqlCommand(consulta_select, SqlConn);
+
+                SqlDataReader reader = cmdMovimientos.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Movimiento newMovimiento = new Movimiento();
+                    newMovimiento.CUENTATEXT = (string)reader["NOMBRE"];
+                    newMovimiento.MONTO = (decimal)reader["MONTO"];
+                    ListaMovimiento.Add(newMovimiento);
+                }
+
+                reader.Close();
+
+
+
+            }
+
+            catch (Exception Ex)
+            {
+                ; Exception Excepcion = new Exception("Error al recuperar los totales por cuenta", Ex);
+                throw Excepcion;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return ListaMovimiento;
+        }
     }
        
 }

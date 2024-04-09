@@ -295,13 +295,14 @@
             this.lstErogaciones.MultiSelect = false;
             this.lstErogaciones.Name = "lstErogaciones";
             this.lstErogaciones.ReadOnly = true;
+            this.lstErogaciones.RowHeadersVisible = false;
             this.lstErogaciones.RowHeadersWidth = 51;
             this.lstErogaciones.RowTemplate.Height = 24;
             this.lstErogaciones.ShowCellErrors = false;
             this.lstErogaciones.ShowCellToolTips = false;
             this.lstErogaciones.ShowEditingIcon = false;
             this.lstErogaciones.ShowRowErrors = false;
-            this.lstErogaciones.Size = new System.Drawing.Size(947, 429);
+            this.lstErogaciones.Size = new System.Drawing.Size(906, 429);
             this.lstErogaciones.TabIndex = 20;
             this.lstErogaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -327,7 +328,7 @@
             this.detalle.MinimumWidth = 6;
             this.detalle.Name = "detalle";
             this.detalle.ReadOnly = true;
-            this.detalle.Width = 125;
+            this.detalle.Width = 135;
             // 
             // nombre
             // 
@@ -359,13 +360,13 @@
             this.valPesos.MinimumWidth = 6;
             this.valPesos.Name = "valPesos";
             this.valPesos.ReadOnly = true;
-            this.valPesos.Width = 60;
+            this.valPesos.Width = 75;
             // 
             // frmPagoTarjeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1358, 519);
+            this.ClientSize = new System.Drawing.Size(1305, 519);
             this.Controls.Add(this.lstErogaciones);
             this.Controls.Add(this.cboMesPago);
             this.Controls.Add(this.label8);

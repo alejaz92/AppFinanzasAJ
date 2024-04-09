@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTotalDolar = new System.Windows.Forms.Label();
@@ -40,18 +36,19 @@
             this.lblTotalPesos = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panMenu = new System.Windows.Forms.Panel();
-            this.btnTenenciasMonetarias = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboTipoActivo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboActivo = new System.Windows.Forms.ComboBox();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.panTenenciasMonetarias = new System.Windows.Forms.Panel();
-            this.cboActivoTenencias = new System.Windows.Forms.ComboBox();
-            this.charTenencias1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnPBI = new System.Windows.Forms.Button();
+            this.dgvCuentas = new System.Windows.Forms.DataGridView();
+            this.Cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panMenu.SuspendLayout();
-            this.panTenenciasMonetarias.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.charTenencias1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuentas)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -129,28 +126,52 @@
             // panMenu
             // 
             this.panMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panMenu.Controls.Add(this.btnPBI);
-            this.panMenu.Controls.Add(this.btnTenenciasMonetarias);
+            this.panMenu.Controls.Add(this.label3);
+            this.panMenu.Controls.Add(this.cboTipoActivo);
+            this.panMenu.Controls.Add(this.label2);
+            this.panMenu.Controls.Add(this.cboActivo);
             this.panMenu.Controls.Add(this.btnSalir);
             this.panMenu.Controls.Add(this.groupBox1);
             this.panMenu.Location = new System.Drawing.Point(0, -1);
             this.panMenu.Name = "panMenu";
-            this.panMenu.Size = new System.Drawing.Size(243, 693);
+            this.panMenu.Size = new System.Drawing.Size(251, 419);
             this.panMenu.TabIndex = 16;
             // 
-            // btnTenenciasMonetarias
+            // label3
             // 
-            this.btnTenenciasMonetarias.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTenenciasMonetarias.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnTenenciasMonetarias.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnTenenciasMonetarias.Location = new System.Drawing.Point(0, 203);
-            this.btnTenenciasMonetarias.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTenenciasMonetarias.Name = "btnTenenciasMonetarias";
-            this.btnTenenciasMonetarias.Size = new System.Drawing.Size(243, 33);
-            this.btnTenenciasMonetarias.TabIndex = 18;
-            this.btnTenenciasMonetarias.Text = "Tenencias Monetarias";
-            this.btnTenenciasMonetarias.UseVisualStyleBackColor = false;
-            this.btnTenenciasMonetarias.Click += new System.EventHandler(this.button1_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 209);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 18);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Tipo Activo";
+            // 
+            // cboTipoActivo
+            // 
+            this.cboTipoActivo.FormattingEnabled = true;
+            this.cboTipoActivo.Location = new System.Drawing.Point(5, 230);
+            this.cboTipoActivo.Name = "cboTipoActivo";
+            this.cboTipoActivo.Size = new System.Drawing.Size(236, 26);
+            this.cboTipoActivo.TabIndex = 21;
+            this.cboTipoActivo.SelectedIndexChanged += new System.EventHandler(this.cboTipoActivo_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 259);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 18);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Activo";
+            // 
+            // cboActivo
+            // 
+            this.cboActivo.FormattingEnabled = true;
+            this.cboActivo.Location = new System.Drawing.Point(5, 280);
+            this.cboActivo.Name = "cboActivo";
+            this.cboActivo.Size = new System.Drawing.Size(236, 26);
+            this.cboActivo.TabIndex = 4;
+            this.cboActivo.SelectedIndexChanged += new System.EventHandler(this.cboActivo_SelectedIndexChanged);
             // 
             // btnSalir
             // 
@@ -158,7 +179,7 @@
             this.btnSalir.FlatAppearance.BorderSize = 0;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnSalir.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSalir.Location = new System.Drawing.Point(0, 660);
+            this.btnSalir.Location = new System.Drawing.Point(3, 386);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(243, 33);
@@ -167,74 +188,54 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // panTenenciasMonetarias
+            // dgvCuentas
             // 
-            this.panTenenciasMonetarias.Controls.Add(this.cboActivoTenencias);
-            this.panTenenciasMonetarias.Controls.Add(this.charTenencias1);
-            this.panTenenciasMonetarias.Location = new System.Drawing.Point(247, 3);
-            this.panTenenciasMonetarias.Name = "panTenenciasMonetarias";
-            this.panTenenciasMonetarias.Size = new System.Drawing.Size(1173, 689);
-            this.panTenenciasMonetarias.TabIndex = 17;
+            this.dgvCuentas.AllowUserToAddRows = false;
+            this.dgvCuentas.AllowUserToDeleteRows = false;
+            this.dgvCuentas.AllowUserToResizeColumns = false;
+            this.dgvCuentas.AllowUserToResizeRows = false;
+            this.dgvCuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCuentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Cuenta,
+            this.Monto});
+            this.dgvCuentas.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dgvCuentas.Location = new System.Drawing.Point(247, 2);
+            this.dgvCuentas.Name = "dgvCuentas";
+            this.dgvCuentas.RowHeadersVisible = false;
+            this.dgvCuentas.RowHeadersWidth = 51;
+            this.dgvCuentas.RowTemplate.Height = 24;
+            this.dgvCuentas.ShowCellErrors = false;
+            this.dgvCuentas.ShowCellToolTips = false;
+            this.dgvCuentas.ShowEditingIcon = false;
+            this.dgvCuentas.ShowRowErrors = false;
+            this.dgvCuentas.Size = new System.Drawing.Size(315, 416);
+            this.dgvCuentas.TabIndex = 17;
             // 
-            // cboActivoTenencias
+            // Cuenta
             // 
-            this.cboActivoTenencias.FormattingEnabled = true;
-            this.cboActivoTenencias.Location = new System.Drawing.Point(0, 0);
-            this.cboActivoTenencias.Name = "cboActivoTenencias";
-            this.cboActivoTenencias.Size = new System.Drawing.Size(547, 26);
-            this.cboActivoTenencias.TabIndex = 1;
-            this.cboActivoTenencias.SelectedIndexChanged += new System.EventHandler(this.cboActivoTenencias_SelectedIndexChanged);
+            this.Cuenta.Frozen = true;
+            this.Cuenta.HeaderText = "Cuenta";
+            this.Cuenta.MinimumWidth = 6;
+            this.Cuenta.Name = "Cuenta";
+            this.Cuenta.ReadOnly = true;
+            this.Cuenta.Width = 193;
             // 
-            // charTenencias1
+            // Monto
             // 
-            this.charTenencias1.BorderlineColor = System.Drawing.Color.Black;
-            chartArea1.AxisY2.TitleForeColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.charTenencias1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.charTenencias1.Legends.Add(legend1);
-            this.charTenencias1.Location = new System.Drawing.Point(0, 27);
-            this.charTenencias1.Name = "charTenencias1";
-            this.charTenencias1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            this.charTenencias1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.charTenencias1.Series.Add(series1);
-            this.charTenencias1.Size = new System.Drawing.Size(547, 358);
-            this.charTenencias1.TabIndex = 0;
-            this.charTenencias1.Text = "Distribucion monetaria";
-            title1.Alignment = System.Drawing.ContentAlignment.TopLeft;
-            title1.BackColor = System.Drawing.Color.Transparent;
-            title1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
-            title1.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "Distribucion Monetaria";
-            title1.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            title1.Text = "Distribución Monetaria";
-            this.charTenencias1.Titles.Add(title1);
-            // 
-            // btnPBI
-            // 
-            this.btnPBI.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnPBI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnPBI.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnPBI.Location = new System.Drawing.Point(0, 235);
-            this.btnPBI.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPBI.Name = "btnPBI";
-            this.btnPBI.Size = new System.Drawing.Size(243, 33);
-            this.btnPBI.TabIndex = 19;
-            this.btnPBI.Text = "Tablero Power BI";
-            this.btnPBI.UseVisualStyleBackColor = false;
-            this.btnPBI.Click += new System.EventHandler(this.btnPBI_Click);
+            this.Monto.Frozen = true;
+            this.Monto.HeaderText = "Monto";
+            this.Monto.MinimumWidth = 6;
+            this.Monto.Name = "Monto";
+            this.Monto.ReadOnly = true;
+            this.Monto.Width = 119;
             // 
             // frmSaldosGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(1421, 692);
-            this.Controls.Add(this.panTenenciasMonetarias);
+            this.ClientSize = new System.Drawing.Size(563, 418);
+            this.Controls.Add(this.dgvCuentas);
             this.Controls.Add(this.panMenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmSaldosGeneral";
@@ -246,8 +247,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panMenu.ResumeLayout(false);
-            this.panTenenciasMonetarias.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.charTenencias1)).EndInit();
+            this.panMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCuentas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,10 +263,12 @@
         private System.Windows.Forms.Label lblTotalPesos;
         private System.Windows.Forms.Panel panMenu;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Panel panTenenciasMonetarias;
-        private System.Windows.Forms.Button btnTenenciasMonetarias;
-        private System.Windows.Forms.DataVisualization.Charting.Chart charTenencias1;
-        private System.Windows.Forms.ComboBox cboActivoTenencias;
-        private System.Windows.Forms.Button btnPBI;
+        private System.Windows.Forms.ComboBox cboActivo;
+        private System.Windows.Forms.DataGridView dgvCuentas;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboTipoActivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cuenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
     }
 }

@@ -31,79 +31,72 @@ namespace AppFinanzasAJ.UI.UserForms
             lblTotalDolar.Text = "U$S " + movimientoLogic.getTotalEnDolares().ToString();
 
 
-            showTenenciasMonetarias();
+            loadTiposActivo();
 
         }
 
-        private void showTenenciasMonetarias()
+        private void loadTiposActivo()
         {
-            foreach (Panel panel in this.Controls)
+            cboTipoActivo.Items.Clear();
+            TipoActivoLogic tipoActivoLogic = new TipoActivoLogic();
+
+            List<TipoActivo> ListaTiposActivo = tipoActivoLogic.GetTiposActivo();
+
+            foreach (TipoActivo ta in ListaTiposActivo)
             {
-
-                if (panel.Name == "panTenenciasMonetarias")
-                {
-                    panel.Visible = true;
-                    panel.Location = new Point(247, 0);
-
-                    //llenar combobox de monedas
-
-                    ActivoLogic activoLogic = new ActivoLogic();   
-                    List<Activo> listaActivos = activoLogic.GetActivos("Moneda");
-
-                    foreach (Activo activo in listaActivos)
-                    {
-                        cboActivoTenencias.Items.Add(activo.NOMBRE);
-                        if (activo.ESPRINCIPAL == true)
-                        {
-                            cboActivoTenencias.Text = activo.NOMBRE;
-                        }
-                    }
-
-                    updateTenenciasMonetarias();
-
-                }
-                else if (panel.Name != "panMenu")
-                {
-                    panel.Visible = false;
-                    panel.Location = new Point(30000, 0);
-                }
-                   
-
-            }
-
-        }
-
-        private void updateTenenciasMonetarias()
-        {
-            charTenencias1.Series[0].Points.Clear();
-
-            MovimientoLogic movimientoLogic = new MovimientoLogic();
-            List<Movimiento> listaTotalesCuenta = movimientoLogic.getTotalesPorCuentaMon(cboActivoTenencias.Text);
-
-            foreach (Movimiento movimiento in listaTotalesCuenta)
-            {
-                charTenencias1.Series[0].Points.AddXY(movimiento.CUENTATEXT, movimiento.MONTO);
+                cboTipoActivo.Items.Add(ta.NOMBRE);
             }
         }
+
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
+
+
+        private void cboTipoActivo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadActivos();
         }
 
-        private void cboActivoTenencias_SelectedIndexChanged(object sender, EventArgs e)
+        private void loadActivos()
         {
-            updateTenenciasMonetarias();
+            cboActivo.Items.Clear();
+            cboActivo.Text = "";
+
+            ActivoLogic activoLogic = new ActivoLogic();
+
+            List<Activo> ListaActivos = activoLogic.GetActivos(cboTipoActivo.Text);
+
+            foreach (Activo activo in ListaActivos)
+            {
+                cboActivo.Items.Add(activo.NOMBRE);
+            }
         }
 
-        private void btnPBI_Click(object sender, EventArgs e)
+        private void cboActivo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("www.google.com");
+            loadTenencias();
+        }
+
+        private void loadTenencias()
+        {
+            dgvCuentas.Rows.Clear();
+
+            MovimientoLogic movimientoLogic = new MovimientoLogic();
+
+            List<Movimiento> ListaMovimientos = movimientoLogic.getTotalesPorCuenta(cboActivo.Text, cboTipoActivo.Text);
+
+
+            foreach (Movimiento mov in ListaMovimientos)
+            {
+                dgvCuentas.Rows.Add(mov.CUENTATEXT, mov.MONTO);
+               
+            }
         }
     }
 }

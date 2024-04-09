@@ -41,6 +41,11 @@
             this.btnMovTarjeta = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgUltMovs = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnPBI = new System.Windows.Forms.Button();
+            this.btnSaldos = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoMov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.claseMov = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,10 +53,6 @@
             this.cuenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnSaldos = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUltMovs)).BeginInit();
@@ -133,7 +134,7 @@
             // btnRegMovimiento
             // 
             this.btnRegMovimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnRegMovimiento.Location = new System.Drawing.Point(9, 25);
+            this.btnRegMovimiento.Location = new System.Drawing.Point(10, 28);
             this.btnRegMovimiento.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegMovimiento.Name = "btnRegMovimiento";
             this.btnRegMovimiento.Size = new System.Drawing.Size(213, 33);
@@ -151,7 +152,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(237, 177);
+            this.groupBox2.Size = new System.Drawing.Size(237, 153);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Movimientos";
@@ -159,7 +160,7 @@
             // btnInversiones
             // 
             this.btnInversiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnInversiones.Location = new System.Drawing.Point(8, 107);
+            this.btnInversiones.Location = new System.Drawing.Point(9, 110);
             this.btnInversiones.Margin = new System.Windows.Forms.Padding(4);
             this.btnInversiones.Name = "btnInversiones";
             this.btnInversiones.Size = new System.Drawing.Size(213, 33);
@@ -171,7 +172,7 @@
             // btnMovTarjeta
             // 
             this.btnMovTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnMovTarjeta.Location = new System.Drawing.Point(9, 66);
+            this.btnMovTarjeta.Location = new System.Drawing.Point(10, 69);
             this.btnMovTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.btnMovTarjeta.Name = "btnMovTarjeta";
             this.btnMovTarjeta.Size = new System.Drawing.Size(213, 33);
@@ -211,6 +212,7 @@
             this.dgUltMovs.MultiSelect = false;
             this.dgUltMovs.Name = "dgUltMovs";
             this.dgUltMovs.ReadOnly = true;
+            this.dgUltMovs.RowHeadersVisible = false;
             this.dgUltMovs.RowHeadersWidth = 51;
             this.dgUltMovs.RowTemplate.Height = 24;
             this.dgUltMovs.RowTemplate.ReadOnly = true;
@@ -221,6 +223,49 @@
             this.dgUltMovs.ShowRowErrors = false;
             this.dgUltMovs.Size = new System.Drawing.Size(1105, 559);
             this.dgUltMovs.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(263, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Ultimos Movimientos";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnPBI);
+            this.groupBox3.Controls.Add(this.btnSaldos);
+            this.groupBox3.Location = new System.Drawing.Point(11, 194);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(237, 108);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Estadisticas";
+            // 
+            // btnPBI
+            // 
+            this.btnPBI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnPBI.Location = new System.Drawing.Point(9, 63);
+            this.btnPBI.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPBI.Name = "btnPBI";
+            this.btnPBI.Size = new System.Drawing.Size(213, 33);
+            this.btnPBI.TabIndex = 4;
+            this.btnPBI.Text = "Tablero PBI";
+            this.btnPBI.UseVisualStyleBackColor = true;
+            // 
+            // btnSaldos
+            // 
+            this.btnSaldos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSaldos.Location = new System.Drawing.Point(9, 22);
+            this.btnSaldos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSaldos.Name = "btnSaldos";
+            this.btnSaldos.Size = new System.Drawing.Size(213, 33);
+            this.btnSaldos.TabIndex = 3;
+            this.btnSaldos.Text = "Saldos";
+            this.btnSaldos.UseVisualStyleBackColor = true;
+            this.btnSaldos.Click += new System.EventHandler(this.btnSaldos_Click);
             // 
             // fecha
             // 
@@ -236,7 +281,7 @@
             this.tipoMov.MinimumWidth = 6;
             this.tipoMov.Name = "tipoMov";
             this.tipoMov.ReadOnly = true;
-            this.tipoMov.Width = 70;
+            this.tipoMov.Width = 65;
             // 
             // claseMov
             // 
@@ -252,7 +297,7 @@
             this.detalle.MinimumWidth = 6;
             this.detalle.Name = "detalle";
             this.detalle.ReadOnly = true;
-            this.detalle.Width = 200;
+            this.detalle.Width = 230;
             // 
             // cuenta
             // 
@@ -277,37 +322,6 @@
             this.monto.Name = "monto";
             this.monto.ReadOnly = true;
             this.monto.Width = 75;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(263, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Ultimos Movimientos";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnSaldos);
-            this.groupBox3.Location = new System.Drawing.Point(11, 194);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(237, 70);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Estadisticas";
-            // 
-            // btnSaldos
-            // 
-            this.btnSaldos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnSaldos.Location = new System.Drawing.Point(9, 22);
-            this.btnSaldos.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSaldos.Name = "btnSaldos";
-            this.btnSaldos.Size = new System.Drawing.Size(213, 33);
-            this.btnSaldos.TabIndex = 3;
-            this.btnSaldos.Text = "Estadisticas";
-            this.btnSaldos.UseVisualStyleBackColor = true;
-            this.btnSaldos.Click += new System.EventHandler(this.btnSaldos_Click);
             // 
             // FrmIndex
             // 
@@ -349,6 +363,11 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DataGridView dgUltMovs;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnSaldos;
+        private System.Windows.Forms.Button btnInversiones;
+        private System.Windows.Forms.Button btnCuentasActivos;
+        private System.Windows.Forms.Button btnPBI;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoMov;
         private System.Windows.Forms.DataGridViewTextBoxColumn claseMov;
@@ -356,10 +375,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn moneda;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnSaldos;
-        private System.Windows.Forms.Button btnInversiones;
-        private System.Windows.Forms.Button btnCuentasActivos;
     }
 }
 
