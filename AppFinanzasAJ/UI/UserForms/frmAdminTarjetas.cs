@@ -25,7 +25,7 @@ namespace AppFinanzasAJ.UI.UserForms
 
             foreach(var tarj in listaTarjetas)
             {
-                lstTarjetas.Items.Add(tarj);
+                lstTarjetas.Items.Add(tarj.NOMBRE);
             }
         }
 
@@ -50,6 +50,28 @@ namespace AppFinanzasAJ.UI.UserForms
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtAgregar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            string nombreVar = lstTarjetas.Text;
+
+
+
+            if (nombreVar.Length != 0)
+            {
+                TarjetaLogic tarjetaLogic = new TarjetaLogic();
+
+                tarjetaLogic.deleteTarjeta(nombreVar);
+
+
+                lstTarjetas.Items.Remove(nombreVar);
+            }
         }
     }
 }

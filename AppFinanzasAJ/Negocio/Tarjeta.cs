@@ -38,5 +38,10 @@ namespace AppFinanzasAJ.Negocio
         {
             TarjetaData.insertTarjeta(nombreVar);
         }
+
+        public void deleteTarjeta(string nombreVar)
+        {
+            TarjetaData.deleteTarjeta(nombreVar);
+        }
     }
 }

@@ -53,6 +53,7 @@
             this.txtAgregar.Name = "txtAgregar";
             this.txtAgregar.Size = new System.Drawing.Size(200, 22);
             this.txtAgregar.TabIndex = 10;
+            this.txtAgregar.TextChanged += new System.EventHandler(this.txtAgregar_TextChanged);
             // 
             // btnCerrar
             // 
@@ -74,6 +75,7 @@
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 

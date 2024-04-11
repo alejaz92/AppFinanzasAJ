@@ -74,6 +74,29 @@ namespace AppFinanzasAJ.Data
                 throw Excepcion;
             }
         }
+
+        public void deleteTarjeta(string nombreVar)
+        {
+            try
+            {
+                this.OpenConnection();
+                SqlCommand insertSQL = null;
+
+                string sqlQuery = "DELETE FROM Dim_Tarjeta WHERE NOMBRE = '@NOMBRE'";
+
+                sqlQuery = sqlQuery.Replace("@NOMBRE", nombreVar);
+
+                insertSQL = new SqlCommand(sqlQuery, SqlConn);
+
+                insertSQL.ExecuteNonQuery();
+
+            }
+            catch (Exception Ex)
+            {
+                Exception Excepcion = new Exception("Error al eliminar tarjeta", Ex);
+                throw Excepcion;
+            }
+        }
     }
        
 }
