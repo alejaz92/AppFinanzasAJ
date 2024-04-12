@@ -110,7 +110,7 @@ namespace AppFinanzasAJ.UI.UserForms
 
             foreach (MovTarjeta movTarjeta in  ListamovTarjeta)
             {
-                lstErogaciones.Rows.Add(movTarjeta.FECHAMOV.ToString("yyyy/MM/dd"),movTarjeta.TIPOMOV, movTarjeta.DETALLE, movTarjeta.NOMBREMON, movTarjeta.CUOTATEXTO, movTarjeta.MONTOCUOTA, movTarjeta.VALORPESOS);
+                lstErogaciones.Rows.Add(movTarjeta.FECHAMOV.ToString("yyyy/MM/dd"),movTarjeta.TIPOMOV, movTarjeta.DETALLE, movTarjeta.NOMBREMON, movTarjeta.CUOTATEXTO, movTarjeta.MONTOCUOTA, movTarjeta.VALORPESOS, true);
             }
 
             
@@ -118,7 +118,8 @@ namespace AppFinanzasAJ.UI.UserForms
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            checkResto();
+            checkEnabled();
         }
 
         private void radPesos_CheckedChanged(object sender, EventArgs e)
@@ -142,7 +143,10 @@ namespace AppFinanzasAJ.UI.UserForms
 
                 for (int i = 0; i < lstErogaciones.Rows.Count; i++)
                 {
-                    total = total + Convert.ToDecimal( lstErogaciones.Rows[i].Cells[6].Value);           
+                    if (lstErogaciones.Rows[i].Cells[7].Value is true)
+                    {
+                        total = total + Convert.ToDecimal(lstErogaciones.Rows[i].Cells[6].Value);
+                    }                              
                 }
 
                 if (txtDolar.Text != "")
@@ -192,32 +196,35 @@ namespace AppFinanzasAJ.UI.UserForms
 
                 for (int i = 0; i <= lstErogaciones.Rows.Count -1; i++)
                 {
-
-                    string precioCotiz;
-
-                    if (radDolar.Checked && lstErogaciones.Rows[i].Cells[3].Value.ToString() == "Dolar Estadounidense")
+                    if (lstErogaciones.Rows[i].Cells[7].Value is true)
                     {
-                        monedaMovimiento = "Dolar Estadounidense";
-                        montoMov = lstErogaciones.Rows[i].Cells[5].Value.ToString();
-                        precioCotiz = "1";
+                        string precioCotiz;
+
+                        if (radDolar.Checked && lstErogaciones.Rows[i].Cells[3].Value.ToString() == "Dolar Estadounidense")
+                        {
+                            monedaMovimiento = "Dolar Estadounidense";
+                            montoMov = lstErogaciones.Rows[i].Cells[5].Value.ToString();
+                            precioCotiz = "1";
+                        }
+                        else
+                        {
+                            monedaMovimiento = "Peso Argentino";
+                            montoMov = lstErogaciones.Rows[i].Cells[6].Value.ToString();
+                            precioCotiz = cotizacion.ToString();
+                        }
+
+
+                        claseEgreso = lstErogaciones.Rows[i].Cells[1].Value.ToString();
+
+
+                        detalleMov = "(Tarjeta | " + lstErogaciones.Rows[i].Cells[4].Value.ToString() + ") " + lstErogaciones.Rows[i].Cells[2].Value.ToString();
+
+
+                        movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento,
+                            "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov, precioCotiz);
+
                     }
-                    else
-                    {
-                        monedaMovimiento = "Peso Argentino";
-                        montoMov = lstErogaciones.Rows[i].Cells[6].Value.ToString();
-                        precioCotiz = cotizacion.ToString();
-                    }
 
-                    
-                    claseEgreso = lstErogaciones.Rows[i].Cells[1].Value.ToString();
-
-
-                    detalleMov = "(Tarjeta | " + lstErogaciones.Rows[i].Cells[4].Value.ToString() + ") " + lstErogaciones.Rows[i].Cells[2].Value.ToString();
-
-
-                    movimientoLogic.insertMovimientoRegular(tipoMovimiento, fechaMovimiento, monedaMovimiento, 
-                        "", "", ctaEgresoMov, claseEgreso, detalleMov, montoMov, precioCotiz);
-                        
                 }
 
                 // gastos tarjeta

@@ -65,12 +65,13 @@ namespace AppFinanzasAJ.Data
                 this.OpenConnection();
                 SqlCommand insertSQL = null;
 
-                string sqlFechaMov = "(SELECT DISTINCT IDFECHA FROM Dim_Tiempo WHERE FECHA  = '" + fechaMov + "')";
+                string sqlFechaMov = fechaMov.Replace("/", "");
+                sqlFechaMov = fechaMov.Replace("-", "");
 
                 string sqlQuery = "INSERT INTO Fact_Tarjetas (FECHAMOV, DETALLE, IDTARJETA, IDCLASEMOVIMIENTO, "
                     + " IDACTIVO, MONTOTOTAL, CUOTAS, MESPRIMERCUOTA, MESULTIMACUOTA, REPITE, MONTOCUOTA) " +
-                    "SELECT CAST(FORMAT(@FECHANUEVA, 'yyyyMMdd') as int), DETALLE, IDTARJETA, IDCLASEMOVIMIENTO, IDACTIVO, @MONTONUEVO, 1, " +
-                    "CAST(FORMAT(DATEADD(MONTH, 1, CAST(LEFT(@FECHANUEVA, 7) + '01' AS DATETIME)), 'yyyyMMdd') AS INT), 0 , REPITE, @MONTONUEVO FROM " +
+                    "SELECT @FECHANUEVA, DETALLE, IDTARJETA, IDCLASEMOVIMIENTO, IDACTIVO, @MONTONUEVO, 1, " +
+                    "CAST(REPLACE(LEFT('@FECHANUEVA', 7) + '01', '-', '') AS INT), 0 , REPITE, @MONTONUEVO FROM " +
                     "Fact_Tarjetas WHERE FECHAMOV = @FECHAMOV AND DETALLE = '@DETALLE' AND REPITE = 'SI';";
 
                 sqlQuery = sqlQuery.Replace("@FECHAMOV", sqlFechaMov);
@@ -100,9 +101,9 @@ namespace AppFinanzasAJ.Data
                 this.OpenConnection();
                 SqlCommand insertSQL = null;
 
-                string sqlQuery = "UPDATE Fact_Tarjetas SET repite = 'Cerrado' WHERE FECHAMOV = CAST(FORMAT(@FECHAMOV, 'yyyyMMdd') AS INT) AND DETALLE = '@DETALLE' AND REPITE = 'SI';";
+                string sqlQuery = "UPDATE Fact_Tarjetas SET repite = 'Cerrado' WHERE FECHAMOV = @FECHAMOV AND DETALLE = '@DETALLE' AND REPITE = 'SI';";
 
-                sqlQuery = sqlQuery.Replace("@FECHAMOV", fechaMov);
+                sqlQuery = sqlQuery.Replace("@FECHAMOV", fechaMov.Replace("/", "").Replace("-", ""));
                 sqlQuery = sqlQuery.Replace("@DETALLE", detalle);
 
 

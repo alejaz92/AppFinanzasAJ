@@ -57,6 +57,7 @@
             this.cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montoCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valPesos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pagar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstErogaciones)).BeginInit();
             this.SuspendLayout();
@@ -271,7 +272,6 @@
             // 
             // lstErogaciones
             // 
-            this.lstErogaciones.AllowUserToAddRows = false;
             this.lstErogaciones.AllowUserToDeleteRows = false;
             this.lstErogaciones.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -290,19 +290,18 @@
             this.nombre,
             this.cuota,
             this.montoCuota,
-            this.valPesos});
+            this.valPesos,
+            this.Pagar});
             this.lstErogaciones.Location = new System.Drawing.Point(376, 60);
             this.lstErogaciones.MultiSelect = false;
             this.lstErogaciones.Name = "lstErogaciones";
-            this.lstErogaciones.ReadOnly = true;
             this.lstErogaciones.RowHeadersVisible = false;
             this.lstErogaciones.RowHeadersWidth = 51;
             this.lstErogaciones.RowTemplate.Height = 24;
             this.lstErogaciones.ShowCellErrors = false;
             this.lstErogaciones.ShowCellToolTips = false;
-            this.lstErogaciones.ShowEditingIcon = false;
             this.lstErogaciones.ShowRowErrors = false;
-            this.lstErogaciones.Size = new System.Drawing.Size(906, 429);
+            this.lstErogaciones.Size = new System.Drawing.Size(996, 429);
             this.lstErogaciones.TabIndex = 20;
             this.lstErogaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -311,7 +310,6 @@
             this.fecha.HeaderText = "Fecha";
             this.fecha.MinimumWidth = 6;
             this.fecha.Name = "fecha";
-            this.fecha.ReadOnly = true;
             this.fecha.Width = 80;
             // 
             // tipoMov
@@ -319,7 +317,6 @@
             this.tipoMov.HeaderText = "Tipo Mov.";
             this.tipoMov.MinimumWidth = 6;
             this.tipoMov.Name = "tipoMov";
-            this.tipoMov.ReadOnly = true;
             this.tipoMov.Width = 125;
             // 
             // detalle
@@ -327,7 +324,6 @@
             this.detalle.HeaderText = "Detalle";
             this.detalle.MinimumWidth = 6;
             this.detalle.Name = "detalle";
-            this.detalle.ReadOnly = true;
             this.detalle.Width = 135;
             // 
             // nombre
@@ -335,7 +331,6 @@
             this.nombre.HeaderText = "Moneda";
             this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
             this.nombre.Width = 125;
             // 
             // cuota
@@ -343,7 +338,6 @@
             this.cuota.HeaderText = "Cuota";
             this.cuota.MinimumWidth = 6;
             this.cuota.Name = "cuota";
-            this.cuota.ReadOnly = true;
             this.cuota.Width = 75;
             // 
             // montoCuota
@@ -351,7 +345,6 @@
             this.montoCuota.HeaderText = "Monto Cuota";
             this.montoCuota.MinimumWidth = 6;
             this.montoCuota.Name = "montoCuota";
-            this.montoCuota.ReadOnly = true;
             this.montoCuota.Width = 60;
             // 
             // valPesos
@@ -359,14 +352,20 @@
             this.valPesos.HeaderText = "Valor Pesos";
             this.valPesos.MinimumWidth = 6;
             this.valPesos.Name = "valPesos";
-            this.valPesos.ReadOnly = true;
             this.valPesos.Width = 75;
+            // 
+            // Pagar
+            // 
+            this.Pagar.HeaderText = "Pagar";
+            this.Pagar.MinimumWidth = 6;
+            this.Pagar.Name = "Pagar";
+            this.Pagar.Width = 65;
             // 
             // frmPagoTarjeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1305, 519);
+            this.ClientSize = new System.Drawing.Size(1393, 519);
             this.Controls.Add(this.lstErogaciones);
             this.Controls.Add(this.cboMesPago);
             this.Controls.Add(this.label8);
@@ -426,5 +425,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn montoCuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn valPesos;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Pagar;
     }
 }
