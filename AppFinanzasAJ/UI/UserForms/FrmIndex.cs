@@ -9,11 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppFinanzasAJ.UI.UserForms;
+using System.Threading;
 
 namespace AppFinanzasAJ
 {
     public partial class FrmIndex : Form
     {
+
+
         public FrmIndex()
         {
             InitializeComponent();
@@ -49,20 +52,59 @@ namespace AppFinanzasAJ
             }
 
         }
-
+               
 
         private void FrmIndex_Load(object sender, EventArgs e)
         {
-            //chequeo cotizacion
-            //chequear si ya se cargo en el dia
 
-  
+            ActivoLogic activo = new ActivoLogic();
+            List<Activo> listaActivos = activo.GetPares();
 
             CotizacionActivoLogic cotizacionActivoLogic = new CotizacionActivoLogic();
 
-            cotizacionActivoLogic.updateCotizacionesGral();
+            bool yaActualizado = cotizacionActivoLogic.checkCotizacionDiaria();
 
-            //loadTabla();
+            if (yaActualizado == false)
+            {
+                int maximo = listaActivos.Count;
+                frmProgress frmProgress = new frmProgress(maximo);
+                Thread thread = new Thread(() => updateCotiz(listaActivos, frmProgress));
+                thread.Start();
+                
+                frmProgress.ShowDialog();
+            }
+        }
+
+
+        private void updateCotiz(List<Activo> listaActivos, frmProgress frm)
+        {
+
+            Activo mon1 = listaActivos.First();
+
+            int contCotiz = 0;
+            int progresoInd = 1;
+            int progresoTotal = 0;
+
+            CotizacionActivoLogic cotizacionActivoLogic = new CotizacionActivoLogic();
+            foreach (Activo mon2 in listaActivos)
+            {
+                contCotiz = cotizacionActivoLogic.updateCotizacionesGral(mon1, mon2, contCotiz);
+                progresoTotal = progresoTotal + progresoInd;
+
+                OnProgressChanged(progresoTotal);
+            }
+
+            if (frm != null && !frm.IsDisposed)
+            {
+                frm.Invoke(new Action(() => frm.Close()));
+            }
+        }
+
+        public delegate void ProgressChangedEventHandler(int progress);
+        public event ProgressChangedEventHandler ProgressChanged;
+        protected virtual void OnProgressChanged(int progress)
+        {
+            ProgressChanged?.Invoke(progress);
         }
 
         private void btnClaseMovimiento_Click(object sender, EventArgs e)

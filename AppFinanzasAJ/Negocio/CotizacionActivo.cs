@@ -30,51 +30,53 @@ namespace AppFinanzasAJ.Negocio
             CotizacionActivoData = new CotizacionActivoAdapter();
         }
 
-        public void updateCotizacionesGral()
+        public bool checkCotizacionDiaria()
         {
-            Boolean yaActualizado;
+            return CotizacionActivoData.checkDatosDia();
+        }
 
-            yaActualizado = CotizacionActivoData.checkDatosDia();
+        public int updateCotizacionesGral(Activo mon1, Activo mon2, int contCotiz)
+        {          
+             
+            //ActivoLogic activo = new ActivoLogic();
+            //List<Activo> listaActivos = activo.GetPares();
 
-            if (yaActualizado == false)
-            {   
-                ActivoLogic activo = new ActivoLogic();
-                List<Activo> listaActivos = activo.GetPares();
+            //Activo mon1 = listaActivos.First();
 
-                Activo mon1 = listaActivos.First();
+            //int contCotiz = 0;
 
-                int contCotiz = 0;
+            //foreach(Activo mon2 in listaActivos )
+            //{
+            //    if (mon1.IDACTIVO != mon2.IDACTIVO)
+            //    {
+                    string par = mon1.SIMBOLO + mon2.SIMBOLO;
 
-                foreach(Activo mon2 in listaActivos )
-                {
-                    if (mon1.IDACTIVO != mon2.IDACTIVO)
+                    if (mon2.TIPOACTIVO != "Moneda" && mon2.TIPOACTIVO != "Criptomoneda")
                     {
-                        string par = mon1.SIMBOLO + mon2.SIMBOLO;
-
-                        if (mon2.TIPOACTIVO != "Moneda" && mon2.TIPOACTIVO != "Criptomoneda")
-                        {
-                            par = mon2.SIMBOLO;
-                            CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);  
-                        }
-
-                        else
-                        {
-                            if (par == "USDARS")
-                            {
-                                CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "B", 0, mon2.TIPOACTIVO);
-                                CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "BO", 0, mon2.TIPOACTIVO);
-                                CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "T", 0, mon2.TIPOACTIVO);
-                            }
-                            else 
-                            {
-                                contCotiz++;
-                                par = mon2.SIMBOLO + mon1.SIMBOLO;
-                                CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
-                            }
-                        }                         
+                        par = mon2.SIMBOLO;
+                        CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);  
                     }
-                }
-            }
+
+                    else
+                    {
+                        if (par == "USDARS")
+                        {
+                            CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "B", 0, mon2.TIPOACTIVO);
+                            CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "BO", 0, mon2.TIPOACTIVO);
+                            CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par + "T", 0, mon2.TIPOACTIVO);
+                        }
+                        else 
+                        {
+                            contCotiz++;
+                            par = mon2.SIMBOLO + mon1.SIMBOLO;
+                            CotizacionActivoData.insertCotizaciones(mon1.IDACTIVO.ToString(), mon2.IDACTIVO.ToString(), par, contCotiz, mon2.TIPOACTIVO);
+                        }
+                    }  
+                    
+                    return contCotiz;
+            //    }
+                
+            //}
         }
         public decimal GetCotizDolar()
         {
