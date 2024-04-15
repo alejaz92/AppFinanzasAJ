@@ -384,9 +384,9 @@ namespace AppFinanzasAJ.Data
 
                 OpenConnection();
                 string consulta_select = "SELECT VALOR FROM Cotizacion_Activo WHERE TIPO = 'BLUE' "
-                    + " AND IDFECHA = (SELECT IDFECHA FROM Dim_Activo WHERE FECHA = '@FECHA')";
+                    + " AND IDFECHA = @FECHA";
 
-                consulta_select = consulta_select.Replace("@FECHA", fecha);
+                consulta_select = consulta_select.Replace("@FECHA", fecha.Replace("/", "").Replace("-", ""));
 
                 SqlCommand cmdCotizacion = null;
 

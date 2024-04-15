@@ -65,13 +65,13 @@ namespace AppFinanzasAJ.Data
                 this.OpenConnection();
                 SqlCommand insertSQL = null;
 
-                string sqlFechaMov = fechaMov.Replace("/", "");
-                sqlFechaMov = fechaMov.Replace("-", "");
+                string sqlFechaMov = fechaMov.Replace("/", "").Replace("-", "");
+                fechaNueva = fechaNueva.Replace("/", "").Replace("-", "");
 
                 string sqlQuery = "INSERT INTO Fact_Tarjetas (FECHAMOV, DETALLE, IDTARJETA, IDCLASEMOVIMIENTO, "
                     + " IDACTIVO, MONTOTOTAL, CUOTAS, MESPRIMERCUOTA, MESULTIMACUOTA, REPITE, MONTOCUOTA) " +
                     "SELECT @FECHANUEVA, DETALLE, IDTARJETA, IDCLASEMOVIMIENTO, IDACTIVO, @MONTONUEVO, 1, " +
-                    "CAST(REPLACE(LEFT('@FECHANUEVA', 7) + '01', '-', '') AS INT), 0 , REPITE, @MONTONUEVO FROM " +
+                    "CAST(REPLACE(LEFT('@FECHANUEVA', 6) + '01', '-', '') AS INT), 0 , 'SI', @MONTONUEVO FROM " +
                     "Fact_Tarjetas WHERE FECHAMOV = @FECHAMOV AND DETALLE = '@DETALLE' AND REPITE = 'SI';";
 
                 sqlQuery = sqlQuery.Replace("@FECHAMOV", sqlFechaMov);

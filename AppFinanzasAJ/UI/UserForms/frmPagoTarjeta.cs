@@ -151,11 +151,11 @@ namespace AppFinanzasAJ.UI.UserForms
 
                 if (txtDolar.Text != "")
                 {
-                    txtGtosTarj.Text = (Convert.ToDecimal(txtPesos.Text) - total + Convert.ToDecimal(txtDolar.Text) * cotizDolar).ToString();
+                    txtGtosTarj.Text = (Convert.ToDecimal(txtPesos.Text.Replace(".", ",")) - total + Convert.ToDecimal(txtDolar.Text) * cotizDolar).ToString();
                 }
                 else
                 {
-                    txtGtosTarj.Text = (Convert.ToDecimal(txtPesos.Text) - total).ToString();
+                    txtGtosTarj.Text = (Convert.ToDecimal(txtPesos.Text.Replace(".", ",")) - total).ToString();
                 } 
                 
             }

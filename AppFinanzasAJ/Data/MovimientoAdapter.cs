@@ -130,9 +130,10 @@ namespace AppFinanzasAJ.Data
                 {
                     if (monedaMovimiento == "Peso Argentino")
                     {
-                        sqlPrecioCotiz = "SELECT TOP 1 VALOR FROM [dbo].[Cotizacion_Activo] CA WHERE IDACTIVOCOMP = " +
-                            "" + sqlMoneda + " AND TIPO = " +
-                            "'BLUE' AND IDFECHA <= " + fechaMovimiento.Replace("-", "") + " ORDER BY idFecha DESC";
+                        sqlPrecioCotiz = precioCotiz;
+                        //sqlPrecioCotiz = "SELECT TOP 1 VALOR FROM [dbo].[Cotizacion_Activo] CA WHERE IDACTIVOCOMP = " +
+                        //    "" + sqlMoneda + " AND TIPO = " +
+                        //    "'BLUE' AND IDFECHA <= " + fechaMovimiento.Replace("-", "") + " ORDER BY idFecha DESC";
                     }
                     else
                     {
