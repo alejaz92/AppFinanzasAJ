@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCuentaTipoActivo));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstTipoActivo = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lstSeleccionados = new System.Windows.Forms.ListBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.cboCuentas = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lstSeleccionados = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +52,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipos de Activo";
             // 
+            // lstTipoActivo
+            // 
+            this.lstTipoActivo.FormattingEnabled = true;
+            this.lstTipoActivo.ItemHeight = 16;
+            this.lstTipoActivo.Location = new System.Drawing.Point(18, 30);
+            this.lstTipoActivo.Name = "lstTipoActivo";
+            this.lstTipoActivo.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstTipoActivo.Size = new System.Drawing.Size(262, 164);
+            this.lstTipoActivo.TabIndex = 0;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lstSeleccionados);
@@ -61,15 +72,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Seleccionados";
             // 
-            // lstTipoActivo
+            // lstSeleccionados
             // 
-            this.lstTipoActivo.FormattingEnabled = true;
-            this.lstTipoActivo.ItemHeight = 16;
-            this.lstTipoActivo.Location = new System.Drawing.Point(18, 30);
-            this.lstTipoActivo.Name = "lstTipoActivo";
-            this.lstTipoActivo.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstTipoActivo.Size = new System.Drawing.Size(262, 164);
-            this.lstTipoActivo.TabIndex = 0;
+            this.lstSeleccionados.FormattingEnabled = true;
+            this.lstSeleccionados.ItemHeight = 16;
+            this.lstSeleccionados.Location = new System.Drawing.Point(18, 30);
+            this.lstSeleccionados.Name = "lstSeleccionados";
+            this.lstSeleccionados.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstSeleccionados.Size = new System.Drawing.Size(262, 164);
+            this.lstSeleccionados.TabIndex = 1;
             // 
             // btnSalir
             // 
@@ -122,16 +133,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Cuenta";
             // 
-            // lstSeleccionados
-            // 
-            this.lstSeleccionados.FormattingEnabled = true;
-            this.lstSeleccionados.ItemHeight = 16;
-            this.lstSeleccionados.Location = new System.Drawing.Point(18, 30);
-            this.lstSeleccionados.Name = "lstSeleccionados";
-            this.lstSeleccionados.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lstSeleccionados.Size = new System.Drawing.Size(262, 164);
-            this.lstSeleccionados.TabIndex = 1;
-            // 
             // frmCuentaTipoActivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -144,6 +145,7 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCuentaTipoActivo";
             this.Text = "Tipos de Activo por cuenta";
             this.Load += new System.EventHandler(this.frmCuentaTipoActivo_Load);

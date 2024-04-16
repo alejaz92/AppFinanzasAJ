@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestTarjeta));
             this.dgLista = new System.Windows.Forms.DataGridView();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -216,6 +217,7 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnPagoTarjeta);
             this.Controls.Add(this.dgLista);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGestTarjeta";
             this.Text = "Gestion de Tarjetas";
             this.Activated += new System.EventHandler(this.frmGestTarjeta_Activated);

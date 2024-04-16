@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrarMovTarjeta));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grpUltima = new System.Windows.Forms.GroupBox();
             this.cboAnio2 = new System.Windows.Forms.NumericUpDown();
@@ -472,6 +473,7 @@
             this.Controls.Add(this.btnInsertar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRegistrarMovTarjeta";
             this.Text = "Registrar movimiento de tarjeta";
             this.Load += new System.EventHandler(this.frmRegistrarMovTarjeta_Load);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminInversiones));
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnMovCrypto = new System.Windows.Forms.Button();
             this.btnMovBolsa = new System.Windows.Forms.Button();
@@ -77,6 +78,7 @@
             this.Controls.Add(this.btnMovBolsa);
             this.Controls.Add(this.btnMovCrypto);
             this.Controls.Add(this.btnCerrar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdminInversiones";
             this.Text = "Gestion de Inversiones";
             this.ResumeLayout(false);

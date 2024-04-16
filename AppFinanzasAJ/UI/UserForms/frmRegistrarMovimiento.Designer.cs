@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrarMovimiento));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cboClaseEgreso = new System.Windows.Forms.ComboBox();
@@ -73,9 +74,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(24, 31);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(489, 427);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -88,9 +89,9 @@
             this.groupBox4.Controls.Add(this.cboCtaEgreso);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Location = new System.Drawing.Point(12, 236);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(460, 91);
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
@@ -101,7 +102,7 @@
             this.cboClaseEgreso.Enabled = false;
             this.cboClaseEgreso.FormattingEnabled = true;
             this.cboClaseEgreso.Location = new System.Drawing.Point(128, 58);
-            this.cboClaseEgreso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboClaseEgreso.Margin = new System.Windows.Forms.Padding(4);
             this.cboClaseEgreso.Name = "cboClaseEgreso";
             this.cboClaseEgreso.Size = new System.Drawing.Size(323, 24);
             this.cboClaseEgreso.TabIndex = 8;
@@ -121,7 +122,7 @@
             this.cboCtaEgreso.Enabled = false;
             this.cboCtaEgreso.FormattingEnabled = true;
             this.cboCtaEgreso.Location = new System.Drawing.Point(128, 20);
-            this.cboCtaEgreso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCtaEgreso.Margin = new System.Windows.Forms.Padding(4);
             this.cboCtaEgreso.Name = "cboCtaEgreso";
             this.cboCtaEgreso.Size = new System.Drawing.Size(323, 24);
             this.cboCtaEgreso.TabIndex = 7;
@@ -140,7 +141,7 @@
             // txtDetalle
             // 
             this.txtDetalle.Location = new System.Drawing.Point(141, 335);
-            this.txtDetalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDetalle.Margin = new System.Windows.Forms.Padding(4);
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(321, 22);
             this.txtDetalle.TabIndex = 9;
@@ -162,9 +163,9 @@
             this.groupBox3.Controls.Add(this.cboCtaIngreso);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(12, 155);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(460, 81);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
@@ -175,7 +176,7 @@
             this.cboClaseIngreso.Enabled = false;
             this.cboClaseIngreso.FormattingEnabled = true;
             this.cboClaseIngreso.Location = new System.Drawing.Point(128, 48);
-            this.cboClaseIngreso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboClaseIngreso.Margin = new System.Windows.Forms.Padding(4);
             this.cboClaseIngreso.Name = "cboClaseIngreso";
             this.cboClaseIngreso.Size = new System.Drawing.Size(323, 24);
             this.cboClaseIngreso.TabIndex = 6;
@@ -195,7 +196,7 @@
             this.cboCtaIngreso.Enabled = false;
             this.cboCtaIngreso.FormattingEnabled = true;
             this.cboCtaIngreso.Location = new System.Drawing.Point(128, 15);
-            this.cboCtaIngreso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCtaIngreso.Margin = new System.Windows.Forms.Padding(4);
             this.cboCtaIngreso.Name = "cboCtaIngreso";
             this.cboCtaIngreso.Size = new System.Drawing.Size(323, 24);
             this.cboCtaIngreso.TabIndex = 5;
@@ -214,7 +215,7 @@
             // txtMonto
             // 
             this.txtMonto.Location = new System.Drawing.Point(141, 379);
-            this.txtMonto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(4);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(321, 22);
             this.txtMonto.TabIndex = 10;
@@ -234,7 +235,7 @@
             // 
             this.cboMoneda.FormattingEnabled = true;
             this.cboMoneda.Location = new System.Drawing.Point(140, 121);
-            this.cboMoneda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMoneda.Margin = new System.Windows.Forms.Padding(4);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Size = new System.Drawing.Size(323, 24);
             this.cboMoneda.TabIndex = 4;
@@ -252,7 +253,7 @@
             // cboFecha
             // 
             this.cboFecha.Location = new System.Drawing.Point(140, 87);
-            this.cboFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboFecha.Margin = new System.Windows.Forms.Padding(4);
             this.cboFecha.Name = "cboFecha";
             this.cboFecha.Size = new System.Drawing.Size(323, 22);
             this.cboFecha.TabIndex = 3;
@@ -274,9 +275,9 @@
             this.groupBox2.Controls.Add(this.radEgreso);
             this.groupBox2.Controls.Add(this.radIngreso);
             this.groupBox2.Location = new System.Drawing.Point(24, 23);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(440, 57);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -286,7 +287,7 @@
             // 
             this.radIntercambio.AutoSize = true;
             this.radIntercambio.Location = new System.Drawing.Point(325, 23);
-            this.radIntercambio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radIntercambio.Margin = new System.Windows.Forms.Padding(4);
             this.radIntercambio.Name = "radIntercambio";
             this.radIntercambio.Size = new System.Drawing.Size(98, 20);
             this.radIntercambio.TabIndex = 2;
@@ -299,7 +300,7 @@
             // 
             this.radEgreso.AutoSize = true;
             this.radEgreso.Location = new System.Drawing.Point(189, 23);
-            this.radEgreso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radEgreso.Margin = new System.Windows.Forms.Padding(4);
             this.radEgreso.Name = "radEgreso";
             this.radEgreso.Size = new System.Drawing.Size(72, 20);
             this.radEgreso.TabIndex = 1;
@@ -312,7 +313,7 @@
             // 
             this.radIngreso.AutoSize = true;
             this.radIngreso.Location = new System.Drawing.Point(8, 23);
-            this.radIngreso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radIngreso.Margin = new System.Windows.Forms.Padding(4);
             this.radIngreso.Name = "radIngreso";
             this.radIngreso.Size = new System.Drawing.Size(73, 20);
             this.radIngreso.TabIndex = 0;
@@ -325,7 +326,7 @@
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.Location = new System.Drawing.Point(340, 465);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(173, 59);
             this.btnCerrar.TabIndex = 12;
@@ -338,7 +339,7 @@
             this.btnInsertar.Enabled = false;
             this.btnInsertar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInsertar.Location = new System.Drawing.Point(159, 465);
-            this.btnInsertar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInsertar.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(173, 59);
             this.btnInsertar.TabIndex = 11;
@@ -354,7 +355,8 @@
             this.Controls.Add(this.btnInsertar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmRegistrarMovimiento";
             this.Text = "Registrar Movimiento";
             this.Load += new System.EventHandler(this.frmRegistrarMovimiento_Load);

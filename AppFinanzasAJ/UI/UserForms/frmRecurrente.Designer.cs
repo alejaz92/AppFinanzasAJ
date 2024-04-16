@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecurrente));
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,14 +38,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtMontoAct = new System.Windows.Forms.TextBox();
             this.grpEdicion = new System.Windows.Forms.GroupBox();
-            this.radCerrar = new System.Windows.Forms.RadioButton();
-            this.radEditar = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtMontoNuevo = new System.Windows.Forms.TextBox();
-            this.btnInsertar = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
             this.cboFechaNueva = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.radEditar = new System.Windows.Forms.RadioButton();
+            this.txtMontoNuevo = new System.Windows.Forms.TextBox();
+            this.radCerrar = new System.Windows.Forms.RadioButton();
+            this.btnInsertar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.grpEdicion.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,17 +132,33 @@
             this.grpEdicion.TabStop = false;
             this.grpEdicion.Text = "Edicion";
             // 
-            // radCerrar
+            // cboFechaNueva
             // 
-            this.radCerrar.AutoSize = true;
-            this.radCerrar.Location = new System.Drawing.Point(73, 39);
-            this.radCerrar.Name = "radCerrar";
-            this.radCerrar.Size = new System.Drawing.Size(65, 20);
-            this.radCerrar.TabIndex = 0;
-            this.radCerrar.TabStop = true;
-            this.radCerrar.Text = "Cerrar";
-            this.radCerrar.UseVisualStyleBackColor = true;
-            this.radCerrar.CheckedChanged += new System.EventHandler(this.radCerrar_CheckedChanged);
+            this.cboFechaNueva.Enabled = false;
+            this.cboFechaNueva.Location = new System.Drawing.Point(112, 84);
+            this.cboFechaNueva.Margin = new System.Windows.Forms.Padding(4);
+            this.cboFechaNueva.Name = "cboFechaNueva";
+            this.cboFechaNueva.Size = new System.Drawing.Size(268, 22);
+            this.cboFechaNueva.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 89);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 16);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Fecha Nueva";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1, 128);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 16);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Monto Nuevo";
             // 
             // radEditar
             // 
@@ -155,15 +172,6 @@
             this.radEditar.UseVisualStyleBackColor = true;
             this.radEditar.CheckedChanged += new System.EventHandler(this.radEditar_CheckedChanged);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 128);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 16);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Monto Nuevo";
-            // 
             // txtMontoNuevo
             // 
             this.txtMontoNuevo.Enabled = false;
@@ -171,6 +179,18 @@
             this.txtMontoNuevo.Name = "txtMontoNuevo";
             this.txtMontoNuevo.Size = new System.Drawing.Size(268, 22);
             this.txtMontoNuevo.TabIndex = 9;
+            // 
+            // radCerrar
+            // 
+            this.radCerrar.AutoSize = true;
+            this.radCerrar.Location = new System.Drawing.Point(73, 39);
+            this.radCerrar.Name = "radCerrar";
+            this.radCerrar.Size = new System.Drawing.Size(65, 20);
+            this.radCerrar.TabIndex = 0;
+            this.radCerrar.TabStop = true;
+            this.radCerrar.Text = "Cerrar";
+            this.radCerrar.UseVisualStyleBackColor = true;
+            this.radCerrar.CheckedChanged += new System.EventHandler(this.radCerrar_CheckedChanged);
             // 
             // btnInsertar
             // 
@@ -196,25 +216,6 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // cboFechaNueva
-            // 
-            this.cboFechaNueva.Enabled = false;
-            this.cboFechaNueva.Location = new System.Drawing.Point(112, 84);
-            this.cboFechaNueva.Margin = new System.Windows.Forms.Padding(4);
-            this.cboFechaNueva.Name = "cboFechaNueva";
-            this.cboFechaNueva.Size = new System.Drawing.Size(268, 22);
-            this.cboFechaNueva.TabIndex = 21;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 89);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 16);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Fecha Nueva";
-            // 
             // frmRecurrente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -231,6 +232,7 @@
             this.Controls.Add(this.txtTarjeta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFecha);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRecurrente";
             this.Text = "frmRecurrente";
             this.Load += new System.EventHandler(this.frmRecurrente_Load);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditActivo));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtSimbolo = new System.Windows.Forms.TextBox();
@@ -49,7 +50,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(167, 58);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(277, 22);
             this.txtNombre.TabIndex = 1;
@@ -58,7 +59,7 @@
             // 
             this.txtSimbolo.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.txtSimbolo.Location = new System.Drawing.Point(167, 90);
-            this.txtSimbolo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSimbolo.Margin = new System.Windows.Forms.Padding(4);
             this.txtSimbolo.Name = "txtSimbolo";
             this.txtSimbolo.Size = new System.Drawing.Size(277, 22);
             this.txtSimbolo.TabIndex = 3;
@@ -77,7 +78,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Location = new System.Drawing.Point(198, 138);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(119, 39);
             this.btnGuardar.TabIndex = 5;
@@ -88,7 +89,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(325, 138);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(119, 39);
             this.btnCancelar.TabIndex = 6;
@@ -107,7 +108,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEditActivo";
             this.Text = "Edicion de Activo";
             this.Load += new System.EventHandler(this.frmEditActivo_Load);
