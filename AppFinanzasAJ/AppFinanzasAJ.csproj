@@ -249,6 +249,12 @@
     <Compile Include="UI\UserForms\frmRegistrarMovTarjeta.Designer.cs">
       <DependentUpon>frmRegistrarMovTarjeta.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserForms\frmReintegro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmReintegro.Designer.cs">
+      <DependentUpon>frmReintegro.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserForms\frmSaldosGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmRegistrarMovTarjeta.resx">
       <DependentUpon>frmRegistrarMovTarjeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserForms\frmReintegro.resx">
+      <DependentUpon>frmReintegro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmSaldosGeneral.resx">
       <DependentUpon>frmSaldosGeneral.cs</DependentUpon>

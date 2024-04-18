@@ -48,7 +48,7 @@ namespace AppFinanzasAJ
 
             foreach (Movimiento mov in listaMovimientos)
             {
-                dgUltMovs.Rows.Add(mov.FECHA.ToString("yyyy/MM/dd"), mov.TIPOMOVIMIENTO,mov.CLASEMOVTEXT, mov.COMENTARIO, mov.CUENTATEXT, mov.MONEDATEXT, mov.MONTO);
+                dgUltMovs.Rows.Add(mov.FECHA.ToString("yyyy/MM/dd"), mov.TIPOMOVIMIENTO,mov.CLASEMOVTEXT, mov.COMENTARIO, mov.CUENTATEXT, mov.MONEDATEXT, mov.MONTO, mov.IDMOVIMIENTO);
             }
 
         }
@@ -179,6 +179,21 @@ namespace AppFinanzasAJ
         private void btnPBI_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://app.powerbi.com/groups/me/reports/4c15ebf5-24c0-494c-9684-272cb1013d11/ReportSection");
+        }
+
+        private void btnReintegros_Click(object sender, EventArgs e)
+        {
+            int dgRow = dgUltMovs.CurrentRow.Index;
+            if (dgUltMovs.Rows[dgRow].Cells[1].Value.ToString() == "Egreso")
+            {
+                frmReintegro frmReintegro = new frmReintegro(dgUltMovs.Rows[dgRow].Cells[0].Value.ToString(), 
+                    dgUltMovs.Rows[dgRow].Cells[2].Value.ToString(), dgUltMovs.Rows[dgRow].Cells[3].Value.ToString(), 
+                    dgUltMovs.Rows[dgRow].Cells[4].Value.ToString(), dgUltMovs.Rows[dgRow].Cells[6].Value.ToString(),
+                    dgUltMovs.Rows[dgRow].Cells[7].Value.ToString()); 
+                frmReintegro.ShowDialog();
+
+
+            }
         }
     }
 }

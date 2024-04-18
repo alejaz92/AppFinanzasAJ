@@ -23,7 +23,7 @@ namespace AppFinanzasAJ.Data
                 OpenConnection();
                 string consulta_select = "SELECT  TOP 20 F.fecha, MO.tipoMovimiento TIPO,CM.descripcion CLASEMOV "
                     + ", MO.comentario , "
-                    + "C.nombre CUENTA, A.nombre MONEDA, CAST(MO.monto AS decimal (18,2)) MONTO FROM [dbo].[Fact_Movimiento] "
+                    + "C.nombre CUENTA, A.nombre MONEDA, CAST(MO.monto AS decimal (18,2)) MONTO, MO.IDMOVIMIENTO FROM [dbo].[Fact_Movimiento] "
                     + "MO "
                     + "INNER JOIN [dbo].[Dim_ClaseMovimiento] CM ON CM.idClaseMovimiento = MO.idClaseMovimiento "
                     + "INNER JOIN Dim_Activo A ON A.idActivo = MO.idActivo INNER JOIN Dim_Cuenta C ON C.idCuenta = "
@@ -45,6 +45,7 @@ namespace AppFinanzasAJ.Data
                     newMovimiento.CUENTATEXT = (string)reader["CUENTA"];
                     newMovimiento.MONEDATEXT = (string)reader["MONEDA"];
                     newMovimiento.MONTO = (decimal)reader["MONTO"];
+                    newMovimiento.IDMOVIMIENTO = (int)reader["IDMOVIMIENTO"];
                     listaMovimientos.Add(newMovimiento);
                 }
 
