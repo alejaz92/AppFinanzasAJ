@@ -65,6 +65,17 @@ namespace AppFinanzasAJ.Negocio
                 montoMovimiento, precioCotiz);
             }
 
+            if (tipoMovimiento == "IngMoneda")
+            {
+                MovimientoData.insertMovimiento(idMovimiento, "", fechaMovimiento, monedaMovimiento, ctaIngresoMovimiento, "", detalleMovimiento,
+                montoMovimiento, precioCotiz);
+            }
+            if (tipoMovimiento == "EgrMoneda")
+            {
+                MovimientoData.insertMovimiento(idMovimiento, "", fechaMovimiento, monedaMovimiento, ctaEgresoMovimiento, "", detalleMovimiento,
+                "-" + montoMovimiento, precioCotiz);
+            }
+
         }
 
         public List<Movimiento> getTopMovimientos()

@@ -34,5 +34,11 @@ namespace AppFinanzasAJ.UI.UserForms
             frmMovBolsa frmMovBolsa = new frmMovBolsa();
             frmMovBolsa.ShowDialog();  
         }
+
+        private void btnDolar_Click(object sender, EventArgs e)
+        {
+            frmIntMoneda frmIntMon = new frmIntMoneda();
+            frmIntMon.ShowDialog();
+        }
     }
 }

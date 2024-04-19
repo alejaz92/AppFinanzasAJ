@@ -32,12 +32,13 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnMovCrypto = new System.Windows.Forms.Button();
             this.btnMovBolsa = new System.Windows.Forms.Button();
+            this.btnIntMonedas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCerrar
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnCerrar.Location = new System.Drawing.Point(13, 137);
+            this.btnCerrar.Location = new System.Drawing.Point(13, 180);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(213, 33);
@@ -70,11 +71,24 @@
             this.btnMovBolsa.UseVisualStyleBackColor = true;
             this.btnMovBolsa.Click += new System.EventHandler(this.btnMovBolsa_Click);
             // 
+            // btnIntMonedas
+            // 
+            this.btnIntMonedas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnIntMonedas.Location = new System.Drawing.Point(13, 118);
+            this.btnIntMonedas.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIntMonedas.Name = "btnIntMonedas";
+            this.btnIntMonedas.Size = new System.Drawing.Size(213, 33);
+            this.btnIntMonedas.TabIndex = 14;
+            this.btnIntMonedas.Text = "Intercambio Monedas";
+            this.btnIntMonedas.UseVisualStyleBackColor = true;
+            this.btnIntMonedas.Click += new System.EventHandler(this.btnDolar_Click);
+            // 
             // frmAdminInversiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(242, 189);
+            this.ClientSize = new System.Drawing.Size(242, 226);
+            this.Controls.Add(this.btnIntMonedas);
             this.Controls.Add(this.btnMovBolsa);
             this.Controls.Add(this.btnMovCrypto);
             this.Controls.Add(this.btnCerrar);
@@ -90,5 +104,6 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnMovCrypto;
         private System.Windows.Forms.Button btnMovBolsa;
+        private System.Windows.Forms.Button btnIntMonedas;
     }
 }

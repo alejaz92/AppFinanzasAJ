@@ -183,6 +183,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\UserForms\frmIntMoneda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserForms\frmIntMoneda.Designer.cs">
+      <DependentUpon>frmIntMoneda.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserForms\frmMonedaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\UserForms\frmIntMoneda.resx">
+      <DependentUpon>frmIntMoneda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserForms\frmMonedaPrincipal.resx">
       <DependentUpon>frmMonedaPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
