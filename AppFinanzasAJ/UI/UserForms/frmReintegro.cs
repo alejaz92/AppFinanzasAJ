@@ -17,10 +17,12 @@ namespace AppFinanzasAJ.UI.UserForms
         public string claseMovV;
         public string detalleV;
         public string cuentaOrigV;
+        public string activoV;
         public string montoTotV;
         public string idMovimientoV;
 
-        public frmReintegro(string fecha, string claseMov, string detalle, string cuentaOrig, string montoTot, string idMovimiento)
+        public frmReintegro(string fecha, string claseMov, string detalle, string cuentaOrig, string activo,
+            string montoTot, string idMovimiento)
         {
             InitializeComponent();
 
@@ -28,6 +30,7 @@ namespace AppFinanzasAJ.UI.UserForms
             claseMovV = claseMov;
             detalleV = detalle;
             cuentaOrigV = cuentaOrig;
+            activoV = activo;
             montoTotV = montoTot;
             idMovimientoV = idMovimiento;
         }
@@ -38,6 +41,7 @@ namespace AppFinanzasAJ.UI.UserForms
             txtClase.Text = claseMovV;
             txtDetalle.Text = detalleV;
             txtCtaOrig.Text = cuentaOrigV;
+            txtActivo.Text = activoV;
             txtMontoTot.Text = montoTotV.Replace("-", "");
 
             CuentaLogic cuentaLogic = new CuentaLogic();
@@ -86,6 +90,25 @@ namespace AppFinanzasAJ.UI.UserForms
         private void txtMontoReint_TextChanged(object sender, EventArgs e)
         {
             checkEnabled();
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            string reintegro = txtMontoReint.Text.ToString();
+            MovimientoLogic movimientoLogic = new MovimientoLogic();
+
+            movimientoLogic.registrarReintegro(idMovimientoV, reintegro);
+
+            if (cboCtaReint.Text != txtCtaOrig.Text)
+            {
+                movimientoLogic.insertMovimientoRegular("Intercambio", 
+                    Convert.ToDateTime(txtFecha.Text).ToString("yyyyMMdd"),
+                    txtActivo.Text, cboCtaReint.Text, null, txtCtaOrig.Text, null, txtDetalle.Text, 
+                    txtMontoReint.Text, "");
+            }
+
+            MessageBox.Show("Reintegro registrado");
+            Close();
         }
     }
 }

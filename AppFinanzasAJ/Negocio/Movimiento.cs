@@ -90,5 +90,10 @@ namespace AppFinanzasAJ.Negocio
         {
             return MovimientoData.getTotalesPorCuenta(activoV, tipoV);
         }
+
+        public void registrarReintegro(string idMovimiento, string reintegro)
+        {
+            MovimientoData.registrarReintegro(idMovimiento, reintegro);
+        }
     }
 }

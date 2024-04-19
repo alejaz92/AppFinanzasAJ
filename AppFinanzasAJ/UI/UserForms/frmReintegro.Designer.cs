@@ -44,6 +44,8 @@
             this.cboCtaReint = new System.Windows.Forms.ComboBox();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtActivo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtFecha
@@ -117,7 +119,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 198);
+            this.label5.Location = new System.Drawing.Point(13, 235);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 9;
@@ -126,7 +128,7 @@
             // txtMontoTot
             // 
             this.txtMontoTot.Enabled = false;
-            this.txtMontoTot.Location = new System.Drawing.Point(100, 192);
+            this.txtMontoTot.Location = new System.Drawing.Point(100, 229);
             this.txtMontoTot.Name = "txtMontoTot";
             this.txtMontoTot.Size = new System.Drawing.Size(219, 22);
             this.txtMontoTot.TabIndex = 8;
@@ -134,7 +136,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 308);
+            this.label6.Location = new System.Drawing.Point(13, 344);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 16);
             this.label6.TabIndex = 11;
@@ -142,7 +144,7 @@
             // 
             // txtMontoReint
             // 
-            this.txtMontoReint.Location = new System.Drawing.Point(100, 302);
+            this.txtMontoReint.Location = new System.Drawing.Point(100, 338);
             this.txtMontoReint.Name = "txtMontoReint";
             this.txtMontoReint.Size = new System.Drawing.Size(219, 22);
             this.txtMontoReint.TabIndex = 10;
@@ -151,7 +153,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 274);
+            this.label7.Location = new System.Drawing.Point(11, 310);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 16);
             this.label7.TabIndex = 13;
@@ -160,7 +162,7 @@
             // cboCtaReint
             // 
             this.cboCtaReint.FormattingEnabled = true;
-            this.cboCtaReint.Location = new System.Drawing.Point(100, 266);
+            this.cboCtaReint.Location = new System.Drawing.Point(100, 302);
             this.cboCtaReint.Name = "cboCtaReint";
             this.cboCtaReint.Size = new System.Drawing.Size(219, 24);
             this.cboCtaReint.TabIndex = 14;
@@ -170,18 +172,19 @@
             // 
             this.btnInsertar.Enabled = false;
             this.btnInsertar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertar.Location = new System.Drawing.Point(73, 358);
+            this.btnInsertar.Location = new System.Drawing.Point(73, 394);
             this.btnInsertar.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertar.Name = "btnInsertar";
             this.btnInsertar.Size = new System.Drawing.Size(119, 28);
             this.btnInsertar.TabIndex = 15;
             this.btnInsertar.Text = "Insertar";
             this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // btnCerrar
             // 
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(200, 358);
+            this.btnCerrar.Location = new System.Drawing.Point(200, 394);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(119, 28);
@@ -190,11 +193,30 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 197);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 16);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Moneda";
+            // 
+            // txtActivo
+            // 
+            this.txtActivo.Enabled = false;
+            this.txtActivo.Location = new System.Drawing.Point(100, 191);
+            this.txtActivo.Name = "txtActivo";
+            this.txtActivo.Size = new System.Drawing.Size(219, 22);
+            this.txtActivo.TabIndex = 17;
+            // 
             // frmReintegro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 400);
+            this.ClientSize = new System.Drawing.Size(335, 445);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtActivo);
             this.Controls.Add(this.btnInsertar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.cboCtaReint);
@@ -237,5 +259,7 @@
         private System.Windows.Forms.ComboBox cboCtaReint;
         private System.Windows.Forms.Button btnInsertar;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtActivo;
     }
 }

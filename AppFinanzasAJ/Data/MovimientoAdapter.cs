@@ -106,10 +106,28 @@ namespace AppFinanzasAJ.Data
             return ListaMovimiento;
         }
 
-        //public int getTotalDevBSF()
-        //{
+        public void registrarReintegro(string idMov, string reintegro)
+        {
+            try 
+            {
+                this.OpenConnection();
+                SqlCommand updateSQL = null;
 
-        //}
+                string sqlQuery = "UPDATE Fact_Movimiento SET MONTO = MONTO + @REINT WHERE IDMOVIMIENTO = @IDMOV";
+
+                sqlQuery = sqlQuery.Replace("@REINT", reintegro);
+                sqlQuery = sqlQuery.Replace("@IDMOV", idMov);
+
+                updateSQL = new SqlCommand(sqlQuery, SqlConn);
+                updateSQL.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                Exception Excepcion = new Exception("Error al registrar reintegro", Ex);
+                throw Excepcion;
+
+            }
+        }
 
         public void insertMovimiento(string idMovimiento ,string tipoMovimiento, string fechaMovimiento, string monedaMovimiento, string ctaMovimiento, string claseMovimiento,
             string detalleMovimiento, string montoMovimiento, string precioCotiz)
@@ -132,9 +150,6 @@ namespace AppFinanzasAJ.Data
                     if (monedaMovimiento == "Peso Argentino")
                     {
                         sqlPrecioCotiz = precioCotiz;
-                        //sqlPrecioCotiz = "SELECT TOP 1 VALOR FROM [dbo].[Cotizacion_Activo] CA WHERE IDACTIVOCOMP = " +
-                        //    "" + sqlMoneda + " AND TIPO = " +
-                        //    "'BLUE' AND IDFECHA <= " + fechaMovimiento.Replace("-", "") + " ORDER BY idFecha DESC";
                     }
                     else
                     {
@@ -147,7 +162,6 @@ namespace AppFinanzasAJ.Data
                     sqlPrecioCotiz = "(SELECT TOP 1 VALOR FROM [dbo].[Cotizacion_Activo] CA WHERE IDACTIVOCOMP = " +
                         "" + sqlMoneda + " AND IDFECHA <= " + fechaMovimiento.Replace("-", "") + " ORDER BY " +
                         "idFecha DESC)";
-
                 }
 
 
@@ -169,7 +183,6 @@ namespace AppFinanzasAJ.Data
 
 
                 insertSQL = new SqlCommand(sqlQuery, SqlConn);
-
                 insertSQL.ExecuteNonQuery();
 
             }

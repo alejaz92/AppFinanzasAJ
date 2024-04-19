@@ -188,7 +188,8 @@ namespace AppFinanzasAJ
             {
                 frmReintegro frmReintegro = new frmReintegro(dgUltMovs.Rows[dgRow].Cells[0].Value.ToString(), 
                     dgUltMovs.Rows[dgRow].Cells[2].Value.ToString(), dgUltMovs.Rows[dgRow].Cells[3].Value.ToString(), 
-                    dgUltMovs.Rows[dgRow].Cells[4].Value.ToString(), dgUltMovs.Rows[dgRow].Cells[6].Value.ToString(),
+                    dgUltMovs.Rows[dgRow].Cells[4].Value.ToString(), dgUltMovs.Rows[dgRow].Cells[5].Value.ToString(), 
+                    dgUltMovs.Rows[dgRow].Cells[6].Value.ToString(),
                     dgUltMovs.Rows[dgRow].Cells[7].Value.ToString()); 
                 frmReintegro.ShowDialog();
 
