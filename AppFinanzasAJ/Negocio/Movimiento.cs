@@ -53,13 +53,13 @@ namespace AppFinanzasAJ.Negocio
             if (tipoMovimiento == "Egreso")
             {
                 MovimientoData.insertMovimiento(idMovimiento, tipoMovimiento, fechaMovimiento, monedaMovimiento, ctaEgresoMovimiento, claseEgresoMovimiento, detalleMovimiento,
-                "-" + montoMovimiento, precioCotiz);
+                "-(" + montoMovimiento + ")", precioCotiz);
             }
 
             if (tipoMovimiento == "Intercambio")
             {
                 MovimientoData.insertMovimiento(idMovimiento, tipoMovimiento, fechaMovimiento, monedaMovimiento, ctaEgresoMovimiento, claseEgresoMovimiento, detalleMovimiento,
-                "-" + montoMovimiento, precioCotiz);
+                "-(" + montoMovimiento + ")", precioCotiz);
 
                 MovimientoData.insertMovimiento(idMovimiento, tipoMovimiento, fechaMovimiento, monedaMovimiento, ctaIngresoMovimiento, claseIngresoMovimiento, detalleMovimiento,
                 montoMovimiento, precioCotiz);
@@ -73,7 +73,7 @@ namespace AppFinanzasAJ.Negocio
             if (tipoMovimiento == "EgrMoneda")
             {
                 MovimientoData.insertMovimiento(idMovimiento, "", fechaMovimiento, monedaMovimiento, ctaEgresoMovimiento, "", detalleMovimiento,
-                "-" + montoMovimiento, precioCotiz);
+                "-(" + montoMovimiento + ")", precioCotiz);
             }
 
         }
