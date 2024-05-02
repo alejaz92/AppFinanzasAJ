@@ -30,8 +30,8 @@ namespace AppFinanzasAJ.UI.UserForms
             cboAnio1.Value = DateTime.Now.Year;
             cboAnio2.Value = DateTime.Now.Year;
 
-            cboMes1.Value = DateTime.Now.Month + 1;
-            cboMes2.Value = DateTime.Now.Month + 1;
+            cboMes1.Value = DateTime.Now.Month;
+            cboMes2.Value = DateTime.Now.Month;
 
             cboAnio2.Enabled = false;
             cboMes2.Enabled = false;   

@@ -103,7 +103,7 @@ namespace AppFinanzasAJ.UI.UserForms
             {
                 movimientoLogic.insertMovimientoRegular("Intercambio", 
                     Convert.ToDateTime(txtFecha.Text).ToString("yyyyMMdd"),
-                    txtActivo.Text, cboCtaReint.Text, null, txtCtaOrig.Text, null, txtDetalle.Text, 
+                    txtActivo.Text, cboCtaReint.Text, null, txtCtaOrig.Text, null, "Reintegro en otra cuenta", 
                     txtMontoReint.Text, "");
             }
 
