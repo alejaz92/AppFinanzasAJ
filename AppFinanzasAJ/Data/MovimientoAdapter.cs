@@ -21,7 +21,7 @@ namespace AppFinanzasAJ.Data
             try
             {
                 OpenConnection();
-                string consulta_select = "SELECT  TOP 20 F.fecha, MO.tipoMovimiento TIPO,CM.descripcion CLASEMOV "
+                string consulta_select = "SELECT  TOP 100 F.fecha, MO.tipoMovimiento TIPO,CM.descripcion CLASEMOV "
                     + ", MO.comentario , "
                     + "C.nombre CUENTA, A.nombre MONEDA, CAST(MO.monto AS decimal (18,2)) MONTO, MO.IDMOVIMIENTO FROM [dbo].[Fact_Movimiento] "
                     + "MO "
