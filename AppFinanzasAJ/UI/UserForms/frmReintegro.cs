@@ -65,7 +65,7 @@ namespace AppFinanzasAJ.UI.UserForms
             
             if (cboCtaReint.Text != "" && txtMontoReint.Text != "")
             {
-                decimal reintegro = Convert.ToDecimal(txtMontoReint.Text.Replace(",", "."));
+                decimal reintegro = Convert.ToDecimal(txtMontoReint.Text.Replace(".", ","));
                 if (reintegro <= total)
                 {
                     btnInsertar.Enabled = true;

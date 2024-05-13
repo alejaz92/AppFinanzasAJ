@@ -115,7 +115,7 @@ namespace AppFinanzasAJ.Data
 
                 string sqlQuery = "UPDATE Fact_Movimiento SET MONTO = MONTO + @REINT WHERE IDMOVIMIENTO = @IDMOV";
 
-                sqlQuery = sqlQuery.Replace("@REINT", reintegro);
+                sqlQuery = sqlQuery.Replace("@REINT", reintegro.Replace(",", "."));
                 sqlQuery = sqlQuery.Replace("@IDMOV", idMov);
 
                 updateSQL = new SqlCommand(sqlQuery, SqlConn);
