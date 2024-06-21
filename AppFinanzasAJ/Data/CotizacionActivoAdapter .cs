@@ -266,7 +266,7 @@ namespace AppFinanzasAJ.Data
                 
                 string tipo;
 
-                if (valorCotiz != null)
+                if (valorCotiz != null && valorCotiz != "0.00")
                 {
                     this.OpenConnection();
                     SqlCommand insertSQL = null;

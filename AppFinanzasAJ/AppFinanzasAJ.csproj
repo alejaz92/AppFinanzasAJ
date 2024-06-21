@@ -49,10 +49,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>FCC7C536721BFC1B7594AE8D7A1ECF34C4E97186</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>EBD60850FEE324C9EF080FD13BCA470676C915A2</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AppFinanzasAJ_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>AppFinanzasAJ_6_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -355,6 +355,7 @@
     <EmbeddedResource Include="UI\UserForms\frmSaldosGeneral.resx">
       <DependentUpon>frmSaldosGeneral.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AppFinanzasAJ_6_TemporaryKey.pfx" />
     <None Include="AppFinanzasAJ_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
